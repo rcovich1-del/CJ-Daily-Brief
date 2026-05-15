@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The CJ Brief — {{DATE}}</title>
+<title>The CJ Brief — 2026-05-14</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -1535,10 +1535,10 @@ html, body {
       <div class="brand-subtitle">Daily Options &amp; Market Intelligence — EOD Edition</div>
     </div>
     <div class="masthead-right">
-      <div class="masthead-date">{{DAY_OF_WEEK}}, {{MONTH}} {{DAY}}, {{YEAR}}</div>
+      <div class="masthead-date">Thursday, May 14, 2026</div>
       <div class="masthead-meta">
-        <div class="badge badge-regime-{{REGIME_CLASS}}">{{REGIME_LABEL}}</div>
-        <div class="badge badge-stance-{{STANCE_CLASS}}">{{STANCE_LABEL}}</div>
+        <div class="badge badge-regime-normal">Normal</div>
+        <div class="badge badge-stance-selective">Selective</div>
       </div>
     </div>
   </div>
@@ -1554,47 +1554,47 @@ html, body {
     <div class="snapshot-grid">
 
       <!-- SPY -->
-      <div class="snap-card {{SPY_DIR}}">
+      <div class="snap-card up">
         <div class="snap-ticker">SPY</div>
-        <div class="snap-price">{{SPY_PRICE}}</div>
-        <div class="snap-change {{SPY_DIR}}">{{SPY_PCT}}</div>
-        <div class="snap-pts">{{SPY_PTS}} pts</div>
+        <div class="snap-price">$748.17</div>
+        <div class="snap-change up">+0.77%</div>
+        <div class="snap-pts">+5.75 pts</div>
         <div class="snap-label">S&amp;P 500 ETF</div>
       </div>
 
       <!-- QQQ -->
-      <div class="snap-card {{QQQ_DIR}}">
+      <div class="snap-card up">
         <div class="snap-ticker">QQQ</div>
-        <div class="snap-price">{{QQQ_PRICE}}</div>
-        <div class="snap-change {{QQQ_DIR}}">{{QQQ_PCT}}</div>
-        <div class="snap-pts">{{QQQ_PTS}} pts</div>
+        <div class="snap-price">$719.62</div>
+        <div class="snap-change up">+0.88%</div>
+        <div class="snap-pts">+6.25 pts</div>
         <div class="snap-label">Nasdaq-100 ETF</div>
       </div>
 
       <!-- IWM -->
-      <div class="snap-card {{IWM_DIR}}">
+      <div class="snap-card flat">
         <div class="snap-ticker">IWM</div>
-        <div class="snap-price">{{IWM_PRICE}}</div>
-        <div class="snap-change {{IWM_DIR}}">{{IWM_PCT}}</div>
-        <div class="snap-pts">{{IWM_PTS}} pts</div>
+        <div class="snap-price">$282.67</div>
+        <div class="snap-change flat">+0.04%</div>
+        <div class="snap-pts">+0.10 pts</div>
         <div class="snap-label">Russell 2000 ETF</div>
       </div>
 
       <!-- DIA -->
-      <div class="snap-card {{DIA_DIR}}">
+      <div class="snap-card up">
         <div class="snap-ticker">DIA</div>
-        <div class="snap-price">{{DIA_PRICE}}</div>
-        <div class="snap-change {{DIA_DIR}}">{{DIA_PCT}}</div>
-        <div class="snap-pts">{{DIA_PTS}} pts</div>
+        <div class="snap-price">$501.19</div>
+        <div class="snap-change up">+0.81%</div>
+        <div class="snap-pts">+4.05 pts</div>
         <div class="snap-label">Dow Jones ETF</div>
       </div>
 
       <!-- VIX -->
-      <div class="snap-card vix-card {{VIX_DIR}}">
+      <div class="snap-card vix-card down">
         <div class="snap-ticker">VIX</div>
-        <div class="snap-price">{{VIX_PRICE}}</div>
-        <div class="snap-change {{VIX_DIR}}">{{VIX_PCT}}</div>
-        <div class="vix-zone {{VIX_ZONE_CLASS}}">{{VIX_ZONE_LABEL}}</div>
+        <div class="snap-price">17.29</div>
+        <div class="snap-change down">-3.89%</div>
+        <div class="vix-zone vix-moderate">Moderate Zone</div>
         <div class="snap-label">Volatility Index</div>
       </div>
 
@@ -1603,9 +1603,9 @@ html, body {
     <!-- Market Tone Bar -->
     <div class="tone-bar">
       <div class="tone-label">Market Tone</div>
-      <div class="tone-value">{{MARKET_TONE}}</div>
+      <div class="tone-value">RECORD CLOSE</div>
       <div class="tone-sep"></div>
-      <div class="tone-note">{{MARKET_TONE_NOTE}}</div>
+      <div class="tone-note">S&amp;P 500 closes above 7,500 for the first time in history; Dow retakes 50,000; Cisco earnings beat and Trump-Xi summit fuel AI-led advance; VIX settles at 17.29.</div>
     </div>
 
   </div>
@@ -1628,81 +1628,81 @@ html, body {
         </div>
 
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_1_NAME}}</div>
+          <div class="sector-name">Energy</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_1_DIR}}" style="width:{{SECTOR_1D_1_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:100%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_1_DIR}}">{{SECTOR_1D_1_PCT}}</div>
+          <div class="sector-pct up">+2.1%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_2_NAME}}</div>
+          <div class="sector-name">Information Technology</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_2_DIR}}" style="width:{{SECTOR_1D_2_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:67%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_2_DIR}}">{{SECTOR_1D_2_PCT}}</div>
+          <div class="sector-pct up">+1.4%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_3_NAME}}</div>
+          <div class="sector-name">Communication Services</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_3_DIR}}" style="width:{{SECTOR_1D_3_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:43%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_3_DIR}}">{{SECTOR_1D_3_PCT}}</div>
+          <div class="sector-pct up">+0.9%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_4_NAME}}</div>
+          <div class="sector-name">Financials</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_4_DIR}}" style="width:{{SECTOR_1D_4_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:29%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_4_DIR}}">{{SECTOR_1D_4_PCT}}</div>
+          <div class="sector-pct up">+0.6%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_5_NAME}}</div>
+          <div class="sector-name">Industrials</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_5_DIR}}" style="width:{{SECTOR_1D_5_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:24%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_5_DIR}}">{{SECTOR_1D_5_PCT}}</div>
+          <div class="sector-pct up">+0.5%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_6_NAME}}</div>
+          <div class="sector-name">Consumer Staples</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_6_DIR}}" style="width:{{SECTOR_1D_6_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:14%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_6_DIR}}">{{SECTOR_1D_6_PCT}}</div>
+          <div class="sector-pct up">+0.3%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_7_NAME}}</div>
+          <div class="sector-name">Materials</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_7_DIR}}" style="width:{{SECTOR_1D_7_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:14%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_7_DIR}}">{{SECTOR_1D_7_PCT}}</div>
+          <div class="sector-pct up">+0.3%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_8_NAME}}</div>
+          <div class="sector-name">Consumer Discretionary</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_8_DIR}}" style="width:{{SECTOR_1D_8_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:10%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_8_DIR}}">{{SECTOR_1D_8_PCT}}</div>
+          <div class="sector-pct up">+0.2%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_9_NAME}}</div>
+          <div class="sector-name">Real Estate</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_9_DIR}}" style="width:{{SECTOR_1D_9_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:5%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_9_DIR}}">{{SECTOR_1D_9_PCT}}</div>
+          <div class="sector-pct up">+0.1%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_10_NAME}}</div>
+          <div class="sector-name">Utilities</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_10_DIR}}" style="width:{{SECTOR_1D_10_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:2%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_10_DIR}}">{{SECTOR_1D_10_PCT}}</div>
+          <div class="sector-pct flat">0.0%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1D_11_NAME}}</div>
+          <div class="sector-name">Health Care</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1D_11_DIR}}" style="width:{{SECTOR_1D_11_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:19%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1D_11_DIR}}">{{SECTOR_1D_11_PCT}}</div>
+          <div class="sector-pct down">-0.4%</div>
         </div>
 
       </div>
@@ -1715,81 +1715,81 @@ html, body {
         </div>
 
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_1_NAME}}</div>
+          <div class="sector-name">Energy</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_1_DIR}}" style="width:{{SECTOR_1W_1_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:100%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_1_DIR}}">{{SECTOR_1W_1_PCT}}</div>
+          <div class="sector-pct up">+3.5%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_2_NAME}}</div>
+          <div class="sector-name">Information Technology</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_2_DIR}}" style="width:{{SECTOR_1W_2_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:71%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_2_DIR}}">{{SECTOR_1W_2_PCT}}</div>
+          <div class="sector-pct up">+2.5%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_3_NAME}}</div>
+          <div class="sector-name">Communication Services</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_3_DIR}}" style="width:{{SECTOR_1W_3_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:57%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_3_DIR}}">{{SECTOR_1W_3_PCT}}</div>
+          <div class="sector-pct up">+2.0%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_4_NAME}}</div>
+          <div class="sector-name">Industrials</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_4_DIR}}" style="width:{{SECTOR_1W_4_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:43%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_4_DIR}}">{{SECTOR_1W_4_PCT}}</div>
+          <div class="sector-pct up">+1.5%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_5_NAME}}</div>
+          <div class="sector-name">Financials</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_5_DIR}}" style="width:{{SECTOR_1W_5_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:34%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_5_DIR}}">{{SECTOR_1W_5_PCT}}</div>
+          <div class="sector-pct up">+1.2%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_6_NAME}}</div>
+          <div class="sector-name">Consumer Staples</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_6_DIR}}" style="width:{{SECTOR_1W_6_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:23%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_6_DIR}}">{{SECTOR_1W_6_PCT}}</div>
+          <div class="sector-pct up">+0.8%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_7_NAME}}</div>
+          <div class="sector-name">Materials</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_7_DIR}}" style="width:{{SECTOR_1W_7_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:17%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_7_DIR}}">{{SECTOR_1W_7_PCT}}</div>
+          <div class="sector-pct up">+0.6%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_8_NAME}}</div>
+          <div class="sector-name">Consumer Discretionary</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_8_DIR}}" style="width:{{SECTOR_1W_8_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:11%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_8_DIR}}">{{SECTOR_1W_8_PCT}}</div>
+          <div class="sector-pct up">+0.4%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_9_NAME}}</div>
+          <div class="sector-name">Real Estate</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_9_DIR}}" style="width:{{SECTOR_1W_9_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:6%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_9_DIR}}">{{SECTOR_1W_9_PCT}}</div>
+          <div class="sector-pct down">-0.2%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_10_NAME}}</div>
+          <div class="sector-name">Utilities</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_10_DIR}}" style="width:{{SECTOR_1W_10_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:9%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_10_DIR}}">{{SECTOR_1W_10_PCT}}</div>
+          <div class="sector-pct down">-0.3%</div>
         </div>
         <div class="sector-row">
-          <div class="sector-name">{{SECTOR_1W_11_NAME}}</div>
+          <div class="sector-name">Health Care</div>
           <div class="sector-bar-wrap">
-            <div class="sector-bar-bg"><div class="sector-bar-fill {{SECTOR_1W_11_DIR}}" style="width:{{SECTOR_1W_11_BAR}}%"></div></div>
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:34%"></div></div>
           </div>
-          <div class="sector-pct {{SECTOR_1W_11_DIR}}">{{SECTOR_1W_11_PCT}}</div>
+          <div class="sector-pct down">-1.2%</div>
         </div>
 
       </div>
@@ -1800,17 +1800,17 @@ html, body {
       <div class="sector-hl-card">
         <div class="sector-hl-label leaders">Leaders Today</div>
         <div class="sector-hl-items">
-          <div class="sector-hl-chip up">{{LEADER_1}}</div>
-          <div class="sector-hl-chip up">{{LEADER_2}}</div>
-          <div class="sector-hl-chip up">{{LEADER_3}}</div>
+          <div class="sector-hl-chip up">Energy +2.1%</div>
+          <div class="sector-hl-chip up">Technology +1.4%</div>
+          <div class="sector-hl-chip up">Comm Services +0.9%</div>
         </div>
       </div>
       <div class="sector-hl-card">
         <div class="sector-hl-label laggards">Laggards Today</div>
         <div class="sector-hl-items">
-          <div class="sector-hl-chip down">{{LAGGARD_1}}</div>
-          <div class="sector-hl-chip down">{{LAGGARD_2}}</div>
-          <div class="sector-hl-chip down">{{LAGGARD_3}}</div>
+          <div class="sector-hl-chip down">Health Care -0.4%</div>
+          <div class="sector-hl-chip down">Utilities 0.0%</div>
+          <div class="sector-hl-chip down">Real Estate +0.1%</div>
         </div>
       </div>
     </div>
@@ -1827,43 +1827,43 @@ html, body {
 
     <!-- Top 2-column drivers -->
     <div class="macro-grid">
-      <div class="macro-card {{MACRO_1_IMPACT}}">
+      <div class="macro-card high">
         <div class="macro-card-top">
-          <div class="macro-card-title">{{MACRO_1_TITLE}}</div>
-          <div class="macro-impact {{MACRO_1_IMPACT}}">{{MACRO_1_IMPACT_LABEL}}</div>
+          <div class="macro-card-title">Import Prices Surge on Iran Energy Shock</div>
+          <div class="macro-impact high">HIGH</div>
         </div>
-        <div class="macro-card-body">{{MACRO_1_BODY}}</div>
+        <div class="macro-card-body">April import prices surged 1.9% — the largest monthly increase in four years — far exceeding the 1.0% consensus estimate. Energy costs tied to the Iran conflict and Strait of Hormuz blockade are the primary driver. Year-over-year import prices jumped 4.2%, extending a third straight week of hot inflation data following CPI and PPI prints.</div>
       </div>
-      <div class="macro-card {{MACRO_2_IMPACT}}">
+      <div class="macro-card medium">
         <div class="macro-card-top">
-          <div class="macro-card-title">{{MACRO_2_TITLE}}</div>
-          <div class="macro-impact {{MACRO_2_IMPACT}}">{{MACRO_2_IMPACT_LABEL}}</div>
+          <div class="macro-card-title">Trump-Xi Summit: Hormuz Deal, Boeing Orders</div>
+          <div class="macro-impact medium">MEDIUM</div>
         </div>
-        <div class="macro-card-body">{{MACRO_2_BODY}}</div>
+        <div class="macro-card-body">President Trump and China's Xi Jinping agreed in Beijing that the Strait of Hormuz must remain a free waterway, with China pledging influence over Iran's decision-making. Treasury Secretary Bessent signaled imminent large Boeing aircraft orders from China as a summit outcome — a constructive catalyst for Industrials and Aerospace.</div>
       </div>
-      <div class="macro-card {{MACRO_3_IMPACT}}">
+      <div class="macro-card medium">
         <div class="macro-card-top">
-          <div class="macro-card-title">{{MACRO_3_TITLE}}</div>
-          <div class="macro-impact {{MACRO_3_IMPACT}}">{{MACRO_3_IMPACT_LABEL}}</div>
+          <div class="macro-card-title">Cisco Q3 Beat + POET Deal + NVDA H200 Unlock</div>
+          <div class="macro-impact medium">MEDIUM</div>
         </div>
-        <div class="macro-card-body">{{MACRO_3_BODY}}</div>
+        <div class="macro-card-body">Cisco surged 17% after fiscal Q3 revenue rose 12% YoY to $15.8B with EPS of $1.06 beating $1.04 consensus and guidance set ~$1B above the Street. POET Technologies jumped 28% on a $500M+ Lumilens optical-networking supply agreement. The U.S. cleared Nvidia H200 chip sales to 10 Chinese firms — Alibaba, Tencent, ByteDance, and JD.com among them.</div>
       </div>
-      <div class="macro-card {{MACRO_4_IMPACT}}">
+      <div class="macro-card medium">
         <div class="macro-card-top">
-          <div class="macro-card-title">{{MACRO_4_TITLE}}</div>
-          <div class="macro-impact {{MACRO_4_IMPACT}}">{{MACRO_4_IMPACT_LABEL}}</div>
+          <div class="macro-card-title">Retail Sales Miss; Jobless Claims Drift Higher</div>
+          <div class="macro-impact medium">MEDIUM</div>
         </div>
-        <div class="macro-card-body">{{MACRO_4_BODY}}</div>
+        <div class="macro-card-body">April retail sales rose 0.5%, below the 0.6% estimate and sharply down from March's 1.6% surge. Initial jobless claims rose 12K to 211K, above the 205K forecast. Consumer momentum is softening under inflation pressure, though markets chose to focus on earnings beats and trade headlines rather than the soft demand signals.</div>
       </div>
     </div>
 
     <!-- Full-width 5th driver (Fed / Rates / Regime context) -->
-    <div class="macro-full {{MACRO_5_IMPACT}}">
+    <div class="macro-full info">
       <div class="macro-full-top">
-        <div class="macro-card-title">{{MACRO_5_TITLE}}</div>
-        <div class="macro-impact {{MACRO_5_IMPACT}}">{{MACRO_5_IMPACT_LABEL}}</div>
+        <div class="macro-card-title">Regime Context — Records Despite Hot Inflation; VIX Declining</div>
+        <div class="macro-impact info">INFO</div>
       </div>
-      <div class="macro-full-body">{{MACRO_5_BODY}}</div>
+      <div class="macro-full-body">The S&amp;P 500 closed above 7,500 for the first time in history, with the Dow retaking 50,000 and the Nasdaq at all-time highs — even as three consecutive hot inflation prints (CPI, PPI, Import Prices) raise Fed rate cut uncertainty. VIX declined to 17.29, remaining in the Moderate Zone. The market is pricing in trade tailwinds over inflation headwinds. Regime reads Normal — SPY above all key SMAs, VIX below 18 — supporting a selective credit-selling posture. Primary risk: geopolitical escalation in the Strait of Hormuz.</div>
     </div>
 
   </div>
@@ -1882,39 +1882,39 @@ html, body {
       <div class="cal-panel">
         <div class="cal-panel-head">
           <div class="cal-panel-title">Today</div>
-          <div class="cal-panel-date">{{CAL_TODAY_DATE}}</div>
+          <div class="cal-panel-date">Thursday, May 14</div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_T1_TIME}}</div>
+          <div class="cal-time">8:30 AM ET</div>
           <div>
-            <div class="cal-event-name">{{CAL_T1_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_T1_NOTE}}</div>
+            <div class="cal-event-name">Import Price Index MoM</div>
+            <div class="cal-event-note">Actual: +1.9% vs est. +1.0% — 4-year high, energy-driven</div>
           </div>
-          <div class="cal-dot {{CAL_T1_IMPACT}}"></div>
+          <div class="cal-dot high"></div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_T2_TIME}}</div>
+          <div class="cal-time">8:30 AM ET</div>
           <div>
-            <div class="cal-event-name">{{CAL_T2_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_T2_NOTE}}</div>
+            <div class="cal-event-name">Retail Sales MoM</div>
+            <div class="cal-event-note">Actual: +0.5% vs est. +0.6% — soft miss</div>
           </div>
-          <div class="cal-dot {{CAL_T2_IMPACT}}"></div>
+          <div class="cal-dot medium"></div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_T3_TIME}}</div>
+          <div class="cal-time">8:30 AM ET</div>
           <div>
-            <div class="cal-event-name">{{CAL_T3_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_T3_NOTE}}</div>
+            <div class="cal-event-name">Initial Jobless Claims</div>
+            <div class="cal-event-note">Actual: 211K vs est. 205K — modest tick higher</div>
           </div>
-          <div class="cal-dot {{CAL_T3_IMPACT}}"></div>
+          <div class="cal-dot medium"></div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_T4_TIME}}</div>
+          <div class="cal-time"></div>
           <div>
-            <div class="cal-event-name">{{CAL_T4_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_T4_NOTE}}</div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
           </div>
-          <div class="cal-dot {{CAL_T4_IMPACT}}"></div>
+          <div class="cal-dot info"></div>
         </div>
       </div>
 
@@ -1922,39 +1922,39 @@ html, body {
       <div class="cal-panel">
         <div class="cal-panel-head">
           <div class="cal-panel-title">Tomorrow</div>
-          <div class="cal-panel-date">{{CAL_TMW_DATE}}</div>
+          <div class="cal-panel-date">Friday, May 15</div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_M1_TIME}}</div>
+          <div class="cal-time">10:00 AM ET</div>
           <div>
-            <div class="cal-event-name">{{CAL_M1_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_M1_NOTE}}</div>
+            <div class="cal-event-name">UMich Consumer Sentiment (May Prelim Final)</div>
+            <div class="cal-event-note">Prior prelim: 48.2 — record low; consensus ~48.5</div>
           </div>
-          <div class="cal-dot {{CAL_M1_IMPACT}}"></div>
+          <div class="cal-dot medium"></div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_M2_TIME}}</div>
+          <div class="cal-time">9:15 AM ET</div>
           <div>
-            <div class="cal-event-name">{{CAL_M2_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_M2_NOTE}}</div>
+            <div class="cal-event-name">Industrial Production MoM</div>
+            <div class="cal-event-note">Scheduled — consensus +0.2%</div>
           </div>
-          <div class="cal-dot {{CAL_M2_IMPACT}}"></div>
+          <div class="cal-dot medium"></div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_M3_TIME}}</div>
+          <div class="cal-time"></div>
           <div>
-            <div class="cal-event-name">{{CAL_M3_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_M3_NOTE}}</div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
           </div>
-          <div class="cal-dot {{CAL_M3_IMPACT}}"></div>
+          <div class="cal-dot info"></div>
         </div>
         <div class="cal-item">
-          <div class="cal-time">{{CAL_M4_TIME}}</div>
+          <div class="cal-time"></div>
           <div>
-            <div class="cal-event-name">{{CAL_M4_EVENT}}</div>
-            <div class="cal-event-note">{{CAL_M4_NOTE}}</div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
           </div>
-          <div class="cal-dot {{CAL_M4_IMPACT}}"></div>
+          <div class="cal-dot info"></div>
         </div>
       </div>
 
@@ -1985,39 +1985,39 @@ html, body {
           <div class="earnings-col-hdr" style="text-align:center">Result</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{BMO_1_TICKER}}</div>
-          <div class="earnings-company">{{BMO_1_NAME}}<span>{{BMO_1_SECTOR}}</span></div>
-          <div class="earnings-exp">{{BMO_1_EXP}}</div>
-          <div class="earnings-actual {{BMO_1_DIR}}">{{BMO_1_ACTUAL}}</div>
-          <div class="earnings-verdict {{BMO_1_VERDICT}}">{{BMO_1_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">CSCO</div>
+          <div class="earnings-company">Cisco Systems<span>Technology</span></div>
+          <div class="earnings-exp">±5.0%</div>
+          <div class="earnings-actual up">+17.4%</div>
+          <div class="earnings-verdict beat">Beat</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{BMO_2_TICKER}}</div>
-          <div class="earnings-company">{{BMO_2_NAME}}<span>{{BMO_2_SECTOR}}</span></div>
-          <div class="earnings-exp">{{BMO_2_EXP}}</div>
-          <div class="earnings-actual {{BMO_2_DIR}}">{{BMO_2_ACTUAL}}</div>
-          <div class="earnings-verdict {{BMO_2_VERDICT}}">{{BMO_2_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">KLAR</div>
+          <div class="earnings-company">Klarna Group<span>Financials / Fintech</span></div>
+          <div class="earnings-exp">±10.0%</div>
+          <div class="earnings-actual up">+16.0%</div>
+          <div class="earnings-verdict beat">Beat</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{BMO_3_TICKER}}</div>
-          <div class="earnings-company">{{BMO_3_NAME}}<span>{{BMO_3_SECTOR}}</span></div>
-          <div class="earnings-exp">{{BMO_3_EXP}}</div>
-          <div class="earnings-actual {{BMO_3_DIR}}">{{BMO_3_ACTUAL}}</div>
-          <div class="earnings-verdict {{BMO_3_VERDICT}}">{{BMO_3_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">BIIB</div>
+          <div class="earnings-company">Biogen Inc.<span>Health Care</span></div>
+          <div class="earnings-exp">±6.0%</div>
+          <div class="earnings-actual up">+7.0%</div>
+          <div class="earnings-verdict in-line">In-Line</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{BMO_4_TICKER}}</div>
-          <div class="earnings-company">{{BMO_4_NAME}}<span>{{BMO_4_SECTOR}}</span></div>
-          <div class="earnings-exp">{{BMO_4_EXP}}</div>
-          <div class="earnings-actual {{BMO_4_DIR}}">{{BMO_4_ACTUAL}}</div>
-          <div class="earnings-verdict {{BMO_4_VERDICT}}">{{BMO_4_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">DOCS</div>
+          <div class="earnings-company">Doximity Inc.<span>Health Care</span></div>
+          <div class="earnings-exp">±9.0%</div>
+          <div class="earnings-actual down">-26.1%</div>
+          <div class="earnings-verdict miss">Miss</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{BMO_5_TICKER}}</div>
-          <div class="earnings-company">{{BMO_5_NAME}}<span>{{BMO_5_SECTOR}}</span></div>
-          <div class="earnings-exp">{{BMO_5_EXP}}</div>
-          <div class="earnings-actual {{BMO_5_DIR}}">{{BMO_5_ACTUAL}}</div>
-          <div class="earnings-verdict {{BMO_5_VERDICT}}">{{BMO_5_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">PBH</div>
+          <div class="earnings-company">Prestige Consumer Healthcare<span>Health Care</span></div>
+          <div class="earnings-exp">±5.0%</div>
+          <div class="earnings-actual down">-13.7%</div>
+          <div class="earnings-verdict miss">Miss</div>
         </div>
       </div>
 
@@ -2035,39 +2035,39 @@ html, body {
           <div class="earnings-col-hdr" style="text-align:center">Result</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{AMC_1_TICKER}}</div>
-          <div class="earnings-company">{{AMC_1_NAME}}<span>{{AMC_1_SECTOR}}</span></div>
-          <div class="earnings-exp">{{AMC_1_EXP}}</div>
-          <div class="earnings-actual {{AMC_1_DIR}}">{{AMC_1_ACTUAL}}</div>
-          <div class="earnings-verdict {{AMC_1_VERDICT}}">{{AMC_1_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">AMAT</div>
+          <div class="earnings-company">Applied Materials<span>Semiconductors</span></div>
+          <div class="earnings-exp">±4.8%</div>
+          <div class="earnings-actual flat">Pending</div>
+          <div class="earnings-verdict watch">Watch</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{AMC_2_TICKER}}</div>
-          <div class="earnings-company">{{AMC_2_NAME}}<span>{{AMC_2_SECTOR}}</span></div>
-          <div class="earnings-exp">{{AMC_2_EXP}}</div>
-          <div class="earnings-actual {{AMC_2_DIR}}">{{AMC_2_ACTUAL}}</div>
-          <div class="earnings-verdict {{AMC_2_VERDICT}}">{{AMC_2_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">ROST</div>
+          <div class="earnings-company">Ross Stores<span>Consumer Discretionary</span></div>
+          <div class="earnings-exp">±5.2%</div>
+          <div class="earnings-actual flat">Pending</div>
+          <div class="earnings-verdict watch">Watch</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{AMC_3_TICKER}}</div>
-          <div class="earnings-company">{{AMC_3_NAME}}<span>{{AMC_3_SECTOR}}</span></div>
-          <div class="earnings-exp">{{AMC_3_EXP}}</div>
-          <div class="earnings-actual {{AMC_3_DIR}}">{{AMC_3_ACTUAL}}</div>
-          <div class="earnings-verdict {{AMC_3_VERDICT}}">{{AMC_3_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">VSNT</div>
+          <div class="earnings-company">Versant Media Group<span>Communication Services</span></div>
+          <div class="earnings-exp">±6.0%</div>
+          <div class="earnings-actual up">+12.0%</div>
+          <div class="earnings-verdict beat">Beat</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{AMC_4_TICKER}}</div>
-          <div class="earnings-company">{{AMC_4_NAME}}<span>{{AMC_4_SECTOR}}</span></div>
-          <div class="earnings-exp">{{AMC_4_EXP}}</div>
-          <div class="earnings-actual {{AMC_4_DIR}}">{{AMC_4_ACTUAL}}</div>
-          <div class="earnings-verdict {{AMC_4_VERDICT}}">{{AMC_4_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">BLSH</div>
+          <div class="earnings-company">Bullish Exchange<span>Financials</span></div>
+          <div class="earnings-exp">±7.0%</div>
+          <div class="earnings-actual down">-8.0%</div>
+          <div class="earnings-verdict miss">Miss</div>
         </div>
         <div class="earnings-row">
-          <div class="earnings-ticker">{{AMC_5_TICKER}}</div>
-          <div class="earnings-company">{{AMC_5_NAME}}<span>{{AMC_5_SECTOR}}</span></div>
-          <div class="earnings-exp">{{AMC_5_EXP}}</div>
-          <div class="earnings-actual {{AMC_5_DIR}}">{{AMC_5_ACTUAL}}</div>
-          <div class="earnings-verdict {{AMC_5_VERDICT}}">{{AMC_5_VERDICT_LABEL}}</div>
+          <div class="earnings-ticker">LWLG</div>
+          <div class="earnings-company">Lightwave Logic<span>Technology</span></div>
+          <div class="earnings-exp">±8.0%</div>
+          <div class="earnings-actual down">-17.4%</div>
+          <div class="earnings-verdict miss">Miss</div>
         </div>
       </div>
 
@@ -2077,38 +2077,38 @@ html, body {
     <div class="earnings-tmw">
       <div class="earnings-tmw-head">
         <div class="earnings-tmw-title">Tomorrow on Watch</div>
-        <div class="earnings-panel-count">{{CAL_TMW_DATE}}</div>
+        <div class="earnings-panel-count">Friday, May 15</div>
       </div>
       <div class="earnings-chips">
         <div class="earnings-chip">
-          <div class="earnings-chip-ticker">{{TMW_E1_TICKER}}</div>
-          <div class="earnings-chip-timing">{{TMW_E1_TIMING}}</div>
-          <div class="earnings-chip-move">±{{TMW_E1_EXP}}</div>
+          <div class="earnings-chip-ticker">DE</div>
+          <div class="earnings-chip-timing">BMO</div>
+          <div class="earnings-chip-move">±3.2%</div>
         </div>
         <div class="earnings-chip">
-          <div class="earnings-chip-ticker">{{TMW_E2_TICKER}}</div>
-          <div class="earnings-chip-timing">{{TMW_E2_TIMING}}</div>
-          <div class="earnings-chip-move">±{{TMW_E2_EXP}}</div>
+          <div class="earnings-chip-ticker">NVDA</div>
+          <div class="earnings-chip-timing">AMC May 20</div>
+          <div class="earnings-chip-move">±8.5%</div>
         </div>
         <div class="earnings-chip">
-          <div class="earnings-chip-ticker">{{TMW_E3_TICKER}}</div>
-          <div class="earnings-chip-timing">{{TMW_E3_TIMING}}</div>
-          <div class="earnings-chip-move">±{{TMW_E3_EXP}}</div>
+          <div class="earnings-chip-ticker">AMSC</div>
+          <div class="earnings-chip-timing">AMC May 20</div>
+          <div class="earnings-chip-move">±4.2%</div>
         </div>
         <div class="earnings-chip">
-          <div class="earnings-chip-ticker">{{TMW_E4_TICKER}}</div>
-          <div class="earnings-chip-timing">{{TMW_E4_TIMING}}</div>
-          <div class="earnings-chip-move">±{{TMW_E4_EXP}}</div>
+          <div class="earnings-chip-ticker">WIX</div>
+          <div class="earnings-chip-timing">Reported 5/13</div>
+          <div class="earnings-chip-move">±4.8%</div>
         </div>
         <div class="earnings-chip">
-          <div class="earnings-chip-ticker">{{TMW_E5_TICKER}}</div>
-          <div class="earnings-chip-timing">{{TMW_E5_TIMING}}</div>
-          <div class="earnings-chip-move">±{{TMW_E5_EXP}}</div>
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
         </div>
         <div class="earnings-chip">
-          <div class="earnings-chip-ticker">{{TMW_E6_TICKER}}</div>
-          <div class="earnings-chip-timing">{{TMW_E6_TIMING}}</div>
-          <div class="earnings-chip-move">±{{TMW_E6_EXP}}</div>
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
         </div>
       </div>
     </div>
@@ -2125,7 +2125,7 @@ html, body {
 
     <div class="desk-intro">
       <div class="desk-intro-dot"></div>
-      {{DESK_INTRO_NOTE}}
+      11 screeners processed &nbsp;·&nbsp; 25+ candidates reviewed &nbsp;·&nbsp; 3 in-play &nbsp;·&nbsp; environment: credit-selling favored &nbsp;·&nbsp; CJ_LONG_PUT: no results — bullish confirmation
     </div>
 
     <!-- ── IN-PLAY ── -->
@@ -2138,53 +2138,53 @@ html, body {
     <div class="trade-card inplay">
       <div class="trade-card-header">
         <div class="trade-ticker-block">
-          <div class="trade-ticker">{{IP1_TICKER}}</div>
-          <div class="trade-company">{{IP1_COMPANY}}</div>
+          <div class="trade-ticker">POET</div>
+          <div class="trade-company">POET Technologies Inc.</div>
         </div>
         <div class="trade-tags">
-          <div class="trade-tag strategy">{{IP1_STRATEGY}}</div>
-          <div class="trade-tag {{IP1_BIAS_CLASS}}">{{IP1_BIAS}}</div>
-          <div class="trade-tag sector">{{IP1_SECTOR}}</div>
+          <div class="trade-tag strategy">Bull Put Spread</div>
+          <div class="trade-tag bullish">Bullish</div>
+          <div class="trade-tag sector">Technology</div>
         </div>
         <div class="trade-price-block">
-          <div class="trade-price">{{IP1_PRICE}}</div>
-          <div class="trade-price-change {{IP1_DIR}}">{{IP1_CHANGE}}</div>
+          <div class="trade-price">$20.57</div>
+          <div class="trade-price-change up">+28.0%</div>
         </div>
       </div>
       <div class="trade-stats">
         <div class="trade-stat">
           <div class="trade-stat-label">IV Rank</div>
-          <div class="trade-stat-value highlight">{{IP1_IVR}}</div>
+          <div class="trade-stat-value highlight">100.0%</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Imp Vol</div>
-          <div class="trade-stat-value">{{IP1_IV}}</div>
+          <div class="trade-stat-value">198.72%</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Exp Move</div>
-          <div class="trade-stat-value">{{IP1_EXP_MOVE}}</div>
+          <div class="trade-stat-value">$2.83</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Delta</div>
-          <div class="trade-stat-value">{{IP1_DELTA}}</div>
+          <div class="trade-stat-value">~0.30</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">RSI</div>
-          <div class="trade-stat-value {{IP1_RSI_CLASS}}">{{IP1_RSI}}</div>
+          <div class="trade-stat-value warn">72.4</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Earnings</div>
-          <div class="trade-stat-value">{{IP1_EARNINGS}}</div>
+          <div class="trade-stat-value">Cleared</div>
         </div>
       </div>
       <div class="trade-body">
         <div class="trade-body-col">
           <div class="trade-body-label">Structure</div>
-          <div class="trade-body-text">{{IP1_STRUCTURE}}</div>
+          <div class="trade-body-text">Sell $17.50 put / Buy $15.00 put &nbsp;·&nbsp; 45 DTE (Jun 28) &nbsp;·&nbsp; Credit target: $0.85+</div>
         </div>
         <div class="trade-body-col">
           <div class="trade-body-label">Thesis</div>
-          <div class="trade-body-text">{{IP1_THESIS}}</div>
+          <div class="trade-body-text">POET exploded +28% today on a $500M+ supply agreement with Lumilens, validating its optical-networking platform and igniting 198% IV with 100% IVR — a rare premium-selling setup. The $17.50 short put strike sits $3+ below current price and well outside the expected move, providing substantial cushion. This is a post-catalyst IV harvest: the news is priced in, time decay begins now. Options volume of 427K confirms exceptional liquidity. Defined risk with strong directional support from the supply deal.</div>
         </div>
       </div>
     </div>
@@ -2193,53 +2193,53 @@ html, body {
     <div class="trade-card inplay">
       <div class="trade-card-header">
         <div class="trade-ticker-block">
-          <div class="trade-ticker">{{IP2_TICKER}}</div>
-          <div class="trade-company">{{IP2_COMPANY}}</div>
+          <div class="trade-ticker">MRVL</div>
+          <div class="trade-company">Marvell Technology Inc.</div>
         </div>
         <div class="trade-tags">
-          <div class="trade-tag strategy">{{IP2_STRATEGY}}</div>
-          <div class="trade-tag {{IP2_BIAS_CLASS}}">{{IP2_BIAS}}</div>
-          <div class="trade-tag sector">{{IP2_SECTOR}}</div>
+          <div class="trade-tag strategy">Bear Call Spread</div>
+          <div class="trade-tag bearish">Bearish</div>
+          <div class="trade-tag sector">Technology</div>
         </div>
         <div class="trade-price-block">
-          <div class="trade-price">{{IP2_PRICE}}</div>
-          <div class="trade-price-change {{IP2_DIR}}">{{IP2_CHANGE}}</div>
+          <div class="trade-price">$182.58</div>
+          <div class="trade-price-change up">+1.2%</div>
         </div>
       </div>
       <div class="trade-stats">
         <div class="trade-stat">
           <div class="trade-stat-label">IV Rank</div>
-          <div class="trade-stat-value highlight">{{IP2_IVR}}</div>
+          <div class="trade-stat-value highlight">100.0%</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Imp Vol</div>
-          <div class="trade-stat-value">{{IP2_IV}}</div>
+          <div class="trade-stat-value">96.86%</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Exp Move</div>
-          <div class="trade-stat-value">{{IP2_EXP_MOVE}}</div>
+          <div class="trade-stat-value">$6.12</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Delta</div>
-          <div class="trade-stat-value">{{IP2_DELTA}}</div>
+          <div class="trade-stat-value">~0.25</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">RSI</div>
-          <div class="trade-stat-value {{IP2_RSI_CLASS}}">{{IP2_RSI}}</div>
+          <div class="trade-stat-value ">58.1</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Earnings</div>
-          <div class="trade-stat-value">{{IP2_EARNINGS}}</div>
+          <div class="trade-stat-value">Jun 3 (est.)</div>
         </div>
       </div>
       <div class="trade-body">
         <div class="trade-body-col">
           <div class="trade-body-label">Structure</div>
-          <div class="trade-body-text">{{IP2_STRUCTURE}}</div>
+          <div class="trade-body-text">Sell $190.00 call / Buy $195.00 call &nbsp;·&nbsp; 30 DTE (Jun 13) &nbsp;·&nbsp; Credit target: $1.00+</div>
         </div>
         <div class="trade-body-col">
           <div class="trade-body-label">Thesis</div>
-          <div class="trade-body-text">{{IP2_THESIS}}</div>
+          <div class="trade-body-text">MRVL carries 100% IVR and 96.86% IV heading into its earnings cycle — peak premium environment for credit sellers. The $190 short call strike sits 4.1% above current price at $182.58, outside the $6.12 expected move boundary of $188.70. With 195K options volume and a RelVol of 1.36, liquidity is solid. The Bear Call Spread captures elevated pre-earnings theta decay while keeping risk fully defined. Earnings are estimated Jun 3, providing 20 days of clear runway for premium collection before the event window.</div>
         </div>
       </div>
     </div>
@@ -2248,53 +2248,53 @@ html, body {
     <div class="trade-card inplay">
       <div class="trade-card-header">
         <div class="trade-ticker-block">
-          <div class="trade-ticker">{{IP3_TICKER}}</div>
-          <div class="trade-company">{{IP3_COMPANY}}</div>
+          <div class="trade-ticker">MSFT</div>
+          <div class="trade-company">Microsoft Corp.</div>
         </div>
         <div class="trade-tags">
-          <div class="trade-tag strategy">{{IP3_STRATEGY}}</div>
-          <div class="trade-tag {{IP3_BIAS_CLASS}}">{{IP3_BIAS}}</div>
-          <div class="trade-tag sector">{{IP3_SECTOR}}</div>
+          <div class="trade-tag strategy">Iron Condor</div>
+          <div class="trade-tag neutral">Neutral</div>
+          <div class="trade-tag sector">Technology</div>
         </div>
         <div class="trade-price-block">
-          <div class="trade-price">{{IP3_PRICE}}</div>
-          <div class="trade-price-change {{IP3_DIR}}">{{IP3_CHANGE}}</div>
+          <div class="trade-price">$409.43</div>
+          <div class="trade-price-change up">+0.7%</div>
         </div>
       </div>
       <div class="trade-stats">
         <div class="trade-stat">
           <div class="trade-stat-label">IV Rank</div>
-          <div class="trade-stat-value highlight">{{IP3_IVR}}</div>
+          <div class="trade-stat-value highlight">49.57%</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Imp Vol</div>
-          <div class="trade-stat-value">{{IP3_IV}}</div>
+          <div class="trade-stat-value">28.78%</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Exp Move</div>
-          <div class="trade-stat-value">{{IP3_EXP_MOVE}}</div>
+          <div class="trade-stat-value">$4.65</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Delta</div>
-          <div class="trade-stat-value">{{IP3_DELTA}}</div>
+          <div class="trade-stat-value">~0.20</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">RSI</div>
-          <div class="trade-stat-value {{IP3_RSI_CLASS}}">{{IP3_RSI}}</div>
+          <div class="trade-stat-value ">61.3</div>
         </div>
         <div class="trade-stat">
           <div class="trade-stat-label">Earnings</div>
-          <div class="trade-stat-value">{{IP3_EARNINGS}}</div>
+          <div class="trade-stat-value">Jul 28 (est.)</div>
         </div>
       </div>
       <div class="trade-body">
         <div class="trade-body-col">
           <div class="trade-body-label">Structure</div>
-          <div class="trade-body-text">{{IP3_STRUCTURE}}</div>
+          <div class="trade-body-text">Sell $415 call / Buy $420 call · Sell $404 put / Buy $399 put &nbsp;·&nbsp; 30 DTE (Jun 13) &nbsp;·&nbsp; Credit target: $0.85+</div>
         </div>
         <div class="trade-body-col">
           <div class="trade-body-label">Thesis</div>
-          <div class="trade-body-text">{{IP3_THESIS}}</div>
+          <div class="trade-body-text">MSFT has reported strong FY Q3 results and is consolidating in the $405-415 range post-earnings. With IVR at 49.57% and the highest options volume on the desk at 737K, this is the desk's liquidity anchor. The Iron Condor brackets the $4.65 expected move with the $415/$404 short strikes symmetrically placed. Note: 3M RelVol at 0.78 is below the 1.0 threshold — confirm bid-ask spreads are tight before entry. Earnings cleared until late July, providing a long premium-decay runway.</div>
         </div>
       </div>
     </div>
@@ -2307,56 +2307,56 @@ html, body {
 
     <div class="monitoring-card">
       <div>
-        <div class="monitoring-ticker">{{MON_1_TICKER}}</div>
-        <div class="monitoring-company">{{MON_1_COMPANY}}</div>
+        <div class="monitoring-ticker">AMSC</div>
+        <div class="monitoring-company">American Superconductor Corp.</div>
       </div>
       <div>
-        <div class="monitoring-body">{{MON_1_NOTE}}</div>
-        <div class="monitoring-reason">{{MON_1_REASON}}</div>
+        <div class="monitoring-body">Top BPS candidate — identical high-IVR profile to POET with 100% IVR and exceptional options volume. Strong setup, but earnings fall on May 20, 2026, placing it squarely within the 14-day exclusion window.</div>
+        <div class="monitoring-reason">Earnings in 6 days (May 20, 2026) — within 14-day clearance window</div>
       </div>
       <div class="monitoring-stats">
-        <div class="monitoring-stat">IVR <span>{{MON_1_IVR}}</span></div>
-        <div class="monitoring-stat">Price <span>{{MON_1_PRICE}}</span></div>
-        <div class="monitoring-stat">RSI <span>{{MON_1_RSI}}</span></div>
+        <div class="monitoring-stat">IVR <span>100.0%</span></div>
+        <div class="monitoring-stat">Price <span>$54.70</span></div>
+        <div class="monitoring-stat">RSI <span>57.2</span></div>
       </div>
     </div>
 
     <div class="monitoring-card">
       <div>
-        <div class="monitoring-ticker">{{MON_2_TICKER}}</div>
-        <div class="monitoring-company">{{MON_2_COMPANY}}</div>
+        <div class="monitoring-ticker">TOST</div>
+        <div class="monitoring-company">Toast Inc.</div>
       </div>
       <div>
-        <div class="monitoring-body">{{MON_2_NOTE}}</div>
-        <div class="monitoring-reason">{{MON_2_REASON}}</div>
+        <div class="monitoring-body">Bearish Diagonal candidate in restaurant technology. IV is expanding in mid-tier software names as sector rotation creates divergence. Setup is directionally interesting but IVR has not reached the entry threshold.</div>
+        <div class="monitoring-reason">IVR below 40% threshold (38.42%) — monitoring for expansion</div>
       </div>
       <div class="monitoring-stats">
-        <div class="monitoring-stat">IVR <span>{{MON_2_IVR}}</span></div>
-        <div class="monitoring-stat">Price <span>{{MON_2_PRICE}}</span></div>
-        <div class="monitoring-stat">RSI <span>{{MON_2_RSI}}</span></div>
+        <div class="monitoring-stat">IVR <span>38.42%</span></div>
+        <div class="monitoring-stat">Price <span>$23.07</span></div>
+        <div class="monitoring-stat">RSI <span>47.1</span></div>
       </div>
     </div>
 
     <div class="monitoring-card">
       <div>
-        <div class="monitoring-ticker">{{MON_3_TICKER}}</div>
-        <div class="monitoring-company">{{MON_3_COMPANY}}</div>
+        <div class="monitoring-ticker">TMDX</div>
+        <div class="monitoring-company">TransMedics Group Inc.</div>
       </div>
       <div>
-        <div class="monitoring-body">{{MON_3_NOTE}}</div>
-        <div class="monitoring-reason">{{MON_3_REASON}}</div>
+        <div class="monitoring-body">Bearish Diagonal Earnings candidate in medical devices with upcoming earnings catalyst. IVR is approaching the threshold — watch for continued expansion. A post-earnings play may emerge if IV structure improves.</div>
+        <div class="monitoring-reason">IVR marginally below threshold (39.40%) — near activation</div>
       </div>
       <div class="monitoring-stats">
-        <div class="monitoring-stat">IVR <span>{{MON_3_IVR}}</span></div>
-        <div class="monitoring-stat">Price <span>{{MON_3_PRICE}}</span></div>
-        <div class="monitoring-stat">RSI <span>{{MON_3_RSI}}</span></div>
+        <div class="monitoring-stat">IVR <span>39.40%</span></div>
+        <div class="monitoring-stat">Price <span>$62.04</span></div>
+        <div class="monitoring-stat">RSI <span>52.8</span></div>
       </div>
     </div>
 
     <!-- Desk Read -->
     <div class="desk-read">
       <div class="desk-read-label">Desk Read</div>
-      <div class="desk-read-text">{{DESK_READ}}</div>
+      <div class="desk-read-text">Today's options environment is firmly constructive for premium sellers. The market printed back-to-back record highs, VIX dropped to 17.29 and is declining, and the screeners surfaced multiple high-IVR setups across post-news and pre-earnings names. POET leads the desk as the top post-catalyst IV opportunity — 198% IV with 100% IVR is exceptionally rare and exploitable with defined risk. MRVL's 100% IVR ahead of its June earnings cycle makes it the cleanest pre-earnings credit play on the desk. MSFT provides a high-liquidity neutral anchor via Iron Condor. The CJ_LONG_PUT screener returned zero results — a confirming bullish signal that the market is generating no bearish debit opportunities. AMSC would have made the top three but earnings proximity (May 20) keeps it on monitoring. Credit-selling is in play. Prioritize defined risk, keep position sizing calibrated, and harvest elevated IV while the regime holds.</div>
     </div>
 
   </div>
@@ -2372,14 +2372,14 @@ html, body {
     <!-- Opening backdrop -->
     <div class="gameplan-backdrop">
       <div class="gameplan-backdrop-label">Opening Backdrop</div>
-      <div class="gameplan-backdrop-text">{{GP_BACKDROP}}</div>
+      <div class="gameplan-backdrop-text">S&amp;P 500 futures are pushing higher in after-hours following a historic record close above 7,500. AI trade tailwinds, Trump-Xi summit follow-through, and Cisco's blowout print are all supporting the bullish narrative. Friday may bring profit-taking in high-momentum names — POET, CSCO, and POET-adjacent plays should be watched for morning gaps. The UMich Consumer Sentiment final print at 10 AM ET is the only scheduled macro catalyst; prior prelim was a record low of 48.2 and could pressure sentiment early if it misses.</div>
     </div>
 
     <!-- Priority watchlist -->
     <div class="gameplan-watchlist">
       <div class="gameplan-watchlist-head">
         <div class="gameplan-watchlist-title">Priority Watchlist</div>
-        <div class="earnings-panel-count">{{CAL_TMW_DATE}}</div>
+        <div class="earnings-panel-count">Friday, May 15</div>
       </div>
       <div class="watchlist-row-hdr">
         <div class="wl-hdr">Ticker</div>
@@ -2389,39 +2389,39 @@ html, body {
         <div class="wl-hdr">Priority</div>
       </div>
       <div class="watchlist-row">
-        <div class="wl-ticker">{{WL1_TICKER}}</div>
-        <div class="wl-setup">{{WL1_SETUP}}</div>
-        <div class="wl-action {{WL1_ACTION_CLASS}}">{{WL1_ACTION}}</div>
-        <div class="wl-timing">{{WL1_TIMING}}</div>
-        <div class="wl-priority {{WL1_PRIORITY_CLASS}}">{{WL1_PRIORITY}}</div>
+        <div class="wl-ticker">POET</div>
+        <div class="wl-setup">BPS post-news — IVR 100%, IV 198%, $17.50/$15 structure</div>
+        <div class="wl-action execute">Execute</div>
+        <div class="wl-timing">After 10:30 AM</div>
+        <div class="wl-priority p1">P1</div>
       </div>
       <div class="watchlist-row">
-        <div class="wl-ticker">{{WL2_TICKER}}</div>
-        <div class="wl-setup">{{WL2_SETUP}}</div>
-        <div class="wl-action {{WL2_ACTION_CLASS}}">{{WL2_ACTION}}</div>
-        <div class="wl-timing">{{WL2_TIMING}}</div>
-        <div class="wl-priority {{WL2_PRIORITY_CLASS}}">{{WL2_PRIORITY}}</div>
+        <div class="wl-ticker">MRVL</div>
+        <div class="wl-setup">BCS pre-earnings — IVR 100%, IV 97%, $190/$195 structure</div>
+        <div class="wl-action execute">Execute</div>
+        <div class="wl-timing">After 10:30 AM</div>
+        <div class="wl-priority p1">P1</div>
       </div>
       <div class="watchlist-row">
-        <div class="wl-ticker">{{WL3_TICKER}}</div>
-        <div class="wl-setup">{{WL3_SETUP}}</div>
-        <div class="wl-action {{WL3_ACTION_CLASS}}">{{WL3_ACTION}}</div>
-        <div class="wl-timing">{{WL3_TIMING}}</div>
-        <div class="wl-priority {{WL3_PRIORITY_CLASS}}">{{WL3_PRIORITY}}</div>
+        <div class="wl-ticker">MSFT</div>
+        <div class="wl-setup">Iron Condor post-earnings — IVR 49%, confirm fill quality</div>
+        <div class="wl-action watch">Watch</div>
+        <div class="wl-timing">Patient — any time</div>
+        <div class="wl-priority p2">P2</div>
       </div>
       <div class="watchlist-row">
-        <div class="wl-ticker">{{WL4_TICKER}}</div>
-        <div class="wl-setup">{{WL4_SETUP}}</div>
-        <div class="wl-action {{WL4_ACTION_CLASS}}">{{WL4_ACTION}}</div>
-        <div class="wl-timing">{{WL4_TIMING}}</div>
-        <div class="wl-priority {{WL4_PRIORITY_CLASS}}">{{WL4_PRIORITY}}</div>
+        <div class="wl-ticker">AMSC</div>
+        <div class="wl-setup">BPS monitor — IVR 100%, earnings May 20, wait for clearance</div>
+        <div class="wl-action patient">Patient</div>
+        <div class="wl-timing">Post-earnings (May 21+)</div>
+        <div class="wl-priority p3">P3</div>
       </div>
       <div class="watchlist-row">
-        <div class="wl-ticker">{{WL5_TICKER}}</div>
-        <div class="wl-setup">{{WL5_SETUP}}</div>
-        <div class="wl-action {{WL5_ACTION_CLASS}}">{{WL5_ACTION}}</div>
-        <div class="wl-timing">{{WL5_TIMING}}</div>
-        <div class="wl-priority {{WL5_PRIORITY_CLASS}}">{{WL5_PRIORITY}}</div>
+        <div class="wl-ticker">CSCO</div>
+        <div class="wl-setup">IV collapse watch — post-earnings vol crush setting up</div>
+        <div class="wl-action watch">Watch</div>
+        <div class="wl-timing">EOD / Next week</div>
+        <div class="wl-priority p2">P2</div>
       </div>
     </div>
 
@@ -2434,15 +2434,15 @@ html, body {
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet focus"></div>
-          <div class="gameplan-text">{{GP_FAVOR_1}}</div>
+          <div class="gameplan-text"><strong>Bull Put Spreads</strong> on high-IVR post-news names where the catalyst has resolved — POET is the template.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet focus"></div>
-          <div class="gameplan-text">{{GP_FAVOR_2}}</div>
+          <div class="gameplan-text"><strong>Bear Call Spreads</strong> on tech names at 100% IVR approaching earnings in 14-30 days — MRVL is the model.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet focus"></div>
-          <div class="gameplan-text">{{GP_FAVOR_3}}</div>
+          <div class="gameplan-text"><strong>Iron Condors</strong> on liquid mega-cap post-earnings names with IVR 40-60% — MSFT fits the profile.</div>
         </div>
       </div>
 
@@ -2452,15 +2452,15 @@ html, body {
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet avoid"></div>
-          <div class="gameplan-text">{{GP_AVOID_1}}</div>
+          <div class="gameplan-text"><strong>Healthcare</strong> names with binary event risk — DOCS -26%, PBH -13.7% today are reminders of unquantifiable gap risk in the sector.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet avoid"></div>
-          <div class="gameplan-text">{{GP_AVOID_2}}</div>
+          <div class="gameplan-text"><strong>Long premium / debit strategies</strong> — VIX declining, IV crush risk is elevated; CJ_LONG_PUT returning zero is the signal.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet avoid"></div>
-          <div class="gameplan-text">{{GP_AVOID_3}}</div>
+          <div class="gameplan-text"><strong>Naked or wide uncovered positions</strong> into the weekend — Hormuz/Iran situation remains fluid and headline-driven spikes are possible.</div>
         </div>
       </div>
 
@@ -2470,15 +2470,15 @@ html, body {
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet signals"></div>
-          <div class="gameplan-text">{{GP_SIGNAL_1}}</div>
+          <div class="gameplan-text">VIX holds below 18 on Friday open = constructive; maintain credit-selling posture for POET and MRVL entries.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet signals"></div>
-          <div class="gameplan-text">{{GP_SIGNAL_2}}</div>
+          <div class="gameplan-text">UMich Consumer Sentiment at 10 AM ET — prior prelim was record low 48.2; a deteriorating read could pressure consumer names and add near-term vol.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet signals"></div>
-          <div class="gameplan-text">{{GP_SIGNAL_3}}</div>
+          <div class="gameplan-text">Trump-Xi summit follow-up headlines — any tariff announcements or tech access rollbacks from Beijing would spike volatility and challenge the regime.</div>
         </div>
       </div>
 
@@ -2488,15 +2488,15 @@ html, body {
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet posture"></div>
-          <div class="gameplan-text">{{GP_POSTURE_1}}</div>
+          <div class="gameplan-text">Selective only — confirm liquidity, bid-ask spread, and open interest on all fills before executing.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet posture"></div>
-          <div class="gameplan-text">{{GP_POSTURE_2}}</div>
+          <div class="gameplan-text">Wait for 10:30 AM on entries — Friday opens often gap-and-trap; let price action confirm direction before initiating.</div>
         </div>
         <div class="gameplan-item">
           <div class="gameplan-bullet posture"></div>
-          <div class="gameplan-text">{{GP_POSTURE_3}}</div>
+          <div class="gameplan-text">Size at 50% of normal position — extended market at all-time highs with active geopolitical risk warrants calibrated sizing.</div>
         </div>
       </div>
 
@@ -2514,16 +2514,16 @@ html, body {
     <div class="desktake-wrap">
       <div class="desktake-head">
         <div class="desktake-head-left">
-          <div class="desktake-posture-dot {{DESKTAKE_POSTURE_CLASS}}"></div>
-          <div class="desktake-posture-label {{DESKTAKE_POSTURE_CLASS}}">{{DESKTAKE_POSTURE_LABEL}}</div>
+          <div class="desktake-posture-dot selective"></div>
+          <div class="desktake-posture-label selective">Selective</div>
         </div>
-        <div class="desktake-date">{{DAY_OF_WEEK}}, {{MONTH}} {{DAY}}, {{YEAR}}</div>
+        <div class="desktake-date">Thursday, May 14, 2026</div>
       </div>
       <div class="desktake-body">
-        {{DESKTAKE_BODY}}
+        Thursday, May 14, 2026 delivered a historic session — the S&amp;P 500 closed above 7,500 for the first time in history, the Dow retook 50,000, and the Nasdaq hit all-time highs, even as three consecutive hot inflation prints (CPI, PPI, Import Prices) piled up. The market chose to price in the Trump-Xi summit and the AI earnings wave instead. Cisco's blowout Q3 sent the stock up 17%, POET's $500M Lumilens supply agreement drove a 28% surge, and Nvidia's H200 chip approval for Chinese buyers confirmed the AI trade is very much intact. The screener output is clean and consistent with the environment: 11 screeners processed, 3 in-play cards selected, and CJ_LONG_PUT returned zero — the market is generating no bearish debit opportunities. Credit-selling conditions are favorable, IVR is elevated across news-event names, and the POET and MRVL plays represent the strongest premium-capture setups seen this week. The regime reads Normal (VIX 17.29, SPY at record highs) with a Selective posture — opportunities exist, but the extended market and active Iran/Hormuz risk demand disciplined sizing. Do not hero-size into Friday.
         <div class="desktake-focus">
           <div class="desktake-focus-label">Top Focus</div>
-          <div class="desktake-focus-text">{{DESKTAKE_TOP_FOCUS}}</div>
+          <div class="desktake-focus-text">Confirm POET BPS entry ($17.50/$15 put spread) after 10:30 AM — target $0.85+ credit. If MRVL IVR holds at 100%, execute $190/$195 BCS simultaneously. VIX above 18.00 at open = stand down on both and reassess after UMich (10 AM ET).</div>
         </div>
       </div>
     </div>
@@ -2538,7 +2538,7 @@ html, body {
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-brand"><strong>THE CJ BRIEF</strong> &nbsp;·&nbsp; CJ Capital Trading Desk &nbsp;·&nbsp; {{MONTH}} {{DAY}}, {{YEAR}}</div>
+    <div class="footer-brand"><strong>THE CJ BRIEF</strong> &nbsp;·&nbsp; CJ Capital Trading Desk &nbsp;·&nbsp; May 14, 2026</div>
     <div class="footer-note">FOR INFORMATIONAL AND EDUCATIONAL USE ONLY</div>
   </div>
 
