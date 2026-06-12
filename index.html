@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CJ Brief — 2026-06-11</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c0f;
+  --surface: #111318;
+  --surface2: #181c22;
+  --border: #1e2530;
+  --accent: #00d4a8;
+  --accent2: #f59e0b;
+  --accent3: #3b82f6;
+  --danger: #ef4444;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --dim: #94a3b8;
+  --green: #22c55e;
+  --red: #ef4444;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100%;
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ── TOP DISCLAIMER ── */
+.disclaimer {
+  background: rgba(100,116,139,0.06);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.disclaimer a {
+  color: var(--dim);
+  text-decoration: none;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  padding: 28px 0 22px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.masthead-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brand-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.brand-title {
+  font-family: var(--mono);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.brand-subtitle {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.masthead-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.masthead-date {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+}
+
+.masthead-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.badge-regime-normal   { background: rgba(34,197,94,0.12);  color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
+.badge-regime-caution  { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+.badge-regime-defense  { background: rgba(239,68,68,0.12);  color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+.badge-regime-neutral  { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+
+.badge-stance-selective  { background: rgba(59,130,246,0.1);  color: #3b82f6; border: 1px solid rgba(59,130,246,0.25); }
+.badge-stance-offensive  { background: rgba(0,212,168,0.1);   color: #00d4a8; border: 1px solid rgba(0,212,168,0.25); }
+.badge-stance-defensive  { background: rgba(245,158,11,0.1);  color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+.badge-stance-standdown  { background: rgba(239,68,68,0.1);   color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+
+/* ── SECTION STRUCTURE ── */
+.section {
+  margin-top: 32px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-number {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  min-width: 24px;
+}
+
+.section-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  flex: 1;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+/* ── PLACEHOLDER BLOCKS ── */
+.placeholder {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 28px 20px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.placeholder span {
+  display: block;
+  font-size: 9px;
+  color: #2d3748;
+  margin-top: 6px;
+  letter-spacing: 0.12em;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 32px 0;
+}
+
+/* ── BOTTOM DISCLAIMER ── */
+.disclaimer-bottom {
+  margin-top: 48px;
+  padding: 20px 0 24px;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--muted);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+.disclaimer-bottom .disclaimer-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ── SNAPSHOT GRID ── */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.snap-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.snap-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--border);
+}
+
+.snap-card.up::before   { background: #22c55e; }
+.snap-card.down::before { background: #ef4444; }
+.snap-card.flat::before { background: var(--muted); }
+
+.snap-ticker {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+}
+
+.snap-price {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.snap-change {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.snap-change.up   { color: #22c55e; }
+.snap-change.down { color: #ef4444; }
+.snap-change.flat { color: var(--muted); }
+
+.snap-pts {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.snap-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* VIX special card */
+.snap-card.vix-card .snap-price { color: var(--accent2); }
+.vix-zone {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-top: 2px;
+}
+.vix-low      { background: rgba(34,197,94,0.1);  color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.vix-moderate { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+.vix-elevated { background: rgba(239,68,68,0.1);  color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.vix-extreme  { background: rgba(239,68,68,0.2);  color: #ef4444; border: 1px solid rgba(239,68,68,0.4); }
+
+/* Market tone bar */
+.tone-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tone-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tone-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.tone-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+}
+
+.tone-note {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  flex: 1;
+}
+
+/* ── SECTOR SCORECARD ── */
+.sector-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.sector-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sector-table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+
+.sector-table-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.sector-table-period {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.sector-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 14px;
+  border-bottom: 1px solid rgba(30,37,48,0.6);
+  transition: background 0.1s;
+}
+
+.sector-row:last-child { border-bottom: none; }
+.sector-row:hover { background: rgba(255,255,255,0.02); }
+
+.sector-name {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  flex: 1;
+}
+
+.sector-bar-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 12px;
+}
+
+.sector-bar-bg {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sector-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  min-width: 2px;
+}
+
+.sector-bar-fill.up   { background: #22c55e; }
+.sector-bar-fill.down { background: #ef4444; }
+
+.sector-pct {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  min-width: 52px;
+  text-align: right;
+}
+
+.sector-pct.up   { color: #22c55e; }
+.sector-pct.down { color: #ef4444; }
+.sector-pct.flat { color: var(--muted); }
+
+/* Leaders / Laggards strip */
+.sector-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sector-hl-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+
+.sector-hl-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sector-hl-label.leaders  { color: #22c55e; }
+.sector-hl-label.laggards { color: #ef4444; }
+
+.sector-hl-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sector-hl-chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+.sector-hl-chip.up   { background: rgba(34,197,94,0.1);  color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.sector-hl-chip.down { background: rgba(239,68,68,0.1);  color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+
+/* ── MACRO & NEWS ── */
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.macro-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--border);
+}
+
+.macro-card.high   { border-left-color: #ef4444; }
+.macro-card.medium { border-left-color: #f59e0b; }
+.macro-card.low    { border-left-color: #3b82f6; }
+.macro-card.info   { border-left-color: #00d4a8; }
+
+.macro-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.macro-card-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.macro-impact {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.macro-impact.high   { background: rgba(239,68,68,0.1);  color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.macro-impact.medium { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+.macro-impact.low    { background: rgba(59,130,246,0.1);  color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+.macro-impact.info   { background: rgba(0,212,168,0.1);  color: #00d4a8; border: 1px solid rgba(0,212,168,0.2); }
+
+.macro-card-body {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* Full-width macro item */
+.macro-full {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.macro-full.high   { border-left-color: #ef4444; }
+.macro-full.medium { border-left-color: #f59e0b; }
+.macro-full.low    { border-left-color: #3b82f6; }
+.macro-full.info   { border-left-color: #00d4a8; }
+
+.macro-full-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.macro-full-body {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* ── ECONOMIC CALENDAR ── */
+.cal-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cal-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cal-panel-head {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cal-panel-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.cal-panel-date {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.cal-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(30,37,48,0.7);
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 10px;
+  align-items: start;
+}
+
+.cal-item:last-child { border-bottom: none; }
+
+.cal-time {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  padding-top: 1px;
+}
+
+.cal-event-name {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.cal-event-note {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.cal-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.cal-dot.high   { background: #ef4444; }
+.cal-dot.medium { background: #f59e0b; }
+.cal-dot.low    { background: #3b82f6; }
+.cal-dot.info   { background: #00d4a8; }
+
+/* ── EARNINGS RECAP ── */
+.earnings-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.earnings-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.earnings-panel-head {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.earnings-panel-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.earnings-panel-count {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.earnings-row {
+  display: grid;
+  grid-template-columns: 52px 1fr 70px 70px 60px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(30,37,48,0.6);
+}
+
+.earnings-row:last-child { border-bottom: none; }
+.earnings-row:hover { background: rgba(255,255,255,0.02); }
+
+.earnings-row-header {
+  display: grid;
+  grid-template-columns: 52px 1fr 70px 70px 60px;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.01);
+}
+
+.earnings-col-hdr {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.earnings-ticker {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent3);
+  letter-spacing: 0.06em;
+}
+
+.earnings-company {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--dim);
+  line-height: 1.3;
+}
+
+.earnings-company span {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+
+.earnings-exp {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.earnings-actual {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.earnings-actual.up   { color: #22c55e; }
+.earnings-actual.down { color: #ef4444; }
+.earnings-actual.flat { color: var(--muted); }
+
+.earnings-verdict {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.earnings-verdict.beat  { background: rgba(34,197,94,0.1);  color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.earnings-verdict.miss  { background: rgba(239,68,68,0.1);  color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.earnings-verdict.in-line { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+.earnings-verdict.watch { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+
+/* Tomorrow earnings strip */
+.earnings-tmw {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.earnings-tmw-head {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.earnings-tmw-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent2);
+}
+
+.earnings-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 14px;
+}
+
+.earnings-chip {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 90px;
+}
+
+.earnings-chip-ticker {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent3);
+  letter-spacing: 0.06em;
+}
+
+.earnings-chip-timing {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.earnings-chip-move {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent2);
+  letter-spacing: 0.04em;
+}
+
+/* ── OPTIONS DESK ── */
+.desk-intro {
+  background: rgba(0,212,168,0.04);
+  border: 1px solid rgba(0,212,168,0.12);
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.desk-intro-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Status label row */
+.desk-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+.desk-status-row:first-of-type { margin-top: 0; }
+
+.desk-status-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.desk-status-label.inplay     { background: rgba(0,212,168,0.1);  color: var(--accent);  border: 1px solid rgba(0,212,168,0.25); }
+.desk-status-label.monitoring { background: rgba(245,158,11,0.1); color: var(--accent2); border: 1px solid rgba(245,158,11,0.25); }
+
+.desk-status-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Trade card */
+.trade-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.trade-card.inplay     { border-top: 2px solid var(--accent); }
+.trade-card.monitoring { border-top: 2px solid var(--accent2); }
+
+.trade-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.trade-ticker-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trade-ticker {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.trade-company {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.trade-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.trade-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.trade-tag.strategy  { background: rgba(59,130,246,0.1);  color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+.trade-tag.sector    { background: rgba(148,163,184,0.08); color: var(--dim); border: 1px solid var(--border); }
+.trade-tag.bullish   { background: rgba(34,197,94,0.1);   color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.trade-tag.bearish   { background: rgba(239,68,68,0.1);   color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+.trade-tag.neutral   { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+
+.trade-price-block {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trade-price {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trade-price-change {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.trade-price-change.up   { color: #22c55e; }
+.trade-price-change.down { color: #ef4444; }
+
+/* Trade card stats grid */
+.trade-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.trade-stat {
+  padding: 10px 14px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trade-stat:last-child { border-right: none; }
+
+.trade-stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.trade-stat-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.trade-stat-value.highlight { color: var(--accent); }
+.trade-stat-value.warn      { color: var(--accent2); }
+.trade-stat-value.danger    { color: var(--danger); }
+
+/* Trade body — structure + thesis */
+.trade-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.trade-body-col {
+  padding: 14px 16px;
+}
+
+.trade-body-col:first-child {
+  border-right: 1px solid var(--border);
+}
+
+.trade-body-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.trade-body-text {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.65;
+}
+
+/* Monitoring card — compact, no full thesis */
+.monitoring-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent2);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.monitoring-ticker {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.monitoring-company {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--sans);
+  margin-top: 2px;
+}
+
+.monitoring-body {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+.monitoring-reason {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent2);
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+.monitoring-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.monitoring-stat {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.monitoring-stat span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Desk read summary */
+.desk-read {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-top: 20px;
+}
+
+.desk-read-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.desk-read-text {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.7;
+}
+
+/* ── GAME PLAN ── */
+.gameplan-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gameplan-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.gameplan-panel-head {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gameplan-panel-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.gameplan-panel-title.focus   { color: var(--accent); }
+.gameplan-panel-title.avoid   { color: var(--danger); }
+.gameplan-panel-title.signals { color: var(--accent3); }
+.gameplan-panel-title.posture { color: var(--accent2); }
+
+.gameplan-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(30,37,48,0.6);
+}
+
+.gameplan-item:last-child { border-bottom: none; }
+
+.gameplan-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.gameplan-bullet.focus   { background: var(--accent); }
+.gameplan-bullet.avoid   { background: var(--danger); }
+.gameplan-bullet.signals { background: var(--accent3); }
+.gameplan-bullet.posture { background: var(--accent2); }
+
+.gameplan-text {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.gameplan-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Priority watchlist table */
+.gameplan-watchlist {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.gameplan-watchlist-head {
+  padding: 10px 14px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gameplan-watchlist-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.watchlist-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 120px 80px;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(30,37,48,0.6);
+}
+
+.watchlist-row:last-child { border-bottom: none; }
+.watchlist-row:hover { background: rgba(255,255,255,0.02); }
+
+.watchlist-row-hdr {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 120px 80px;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.01);
+}
+
+.wl-hdr {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.wl-ticker {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent3);
+  letter-spacing: 0.06em;
+}
+
+.wl-setup {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.wl-action {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.wl-action.execute  { color: var(--accent); }
+.wl-action.watch    { color: var(--accent2); }
+.wl-action.avoid    { color: var(--danger); }
+.wl-action.patient  { color: var(--accent3); }
+
+.wl-timing {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.wl-priority {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.wl-priority.p1 { background: rgba(0,212,168,0.1);  color: var(--accent);  border: 1px solid rgba(0,212,168,0.2); }
+.wl-priority.p2 { background: rgba(59,130,246,0.1);  color: var(--accent3); border: 1px solid rgba(59,130,246,0.2); }
+.wl-priority.p3 { background: rgba(148,163,184,0.08); color: var(--dim);   border: 1px solid var(--border); }
+
+/* Opening backdrop bar */
+.gameplan-backdrop {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent3);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.gameplan-backdrop-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent3);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.gameplan-backdrop-text {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* ── DESK TAKE ── */
+.desktake-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.desktake-head {
+  padding: 12px 18px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.desktake-head-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desktake-posture-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.desktake-posture-dot.offensive { background: var(--accent); }
+.desktake-posture-dot.selective { background: var(--accent3); }
+.desktake-posture-dot.defensive { background: var(--accent2); }
+.desktake-posture-dot.standdown { background: var(--danger); }
+
+.desktake-posture-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.desktake-posture-label.offensive { color: var(--accent); }
+.desktake-posture-label.selective { color: var(--accent3); }
+.desktake-posture-label.defensive { color: var(--accent2); }
+.desktake-posture-label.standdown { color: var(--danger); }
+
+.desktake-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.desktake-body {
+  padding: 20px 18px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.8;
+}
+
+.desktake-focus {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(0,212,168,0.05);
+  border: 1px solid rgba(0,212,168,0.15);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.desktake-focus-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+
+.desktake-focus-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.footer-brand {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.footer-brand strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.footer-note {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #2d3748;
+  letter-spacing: 0.08em;
+}
+
+/* ── STRATEGY IN FOCUS (06B) ── */
+.sif-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sif-overview,
+.sif-regime,
+.sif-example,
+.sif-checklist,
+.sif-structure {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.sif-overview {
+  border-top: 2px solid var(--accent);
+}
+
+.sif-regime {
+  border-top: 2px solid var(--accent3);
+}
+
+.sif-example {
+  border-top: 2px solid var(--accent2);
+}
+
+.sif-checklist {
+  border-top: 2px solid var(--muted);
+}
+
+.sif-structure {
+  grid-column: 1 / -1;
+  border-top: 2px solid var(--accent);
+  border-left: 3px solid var(--accent);
+}
+
+.sif-overview h3,
+.sif-regime h4,
+.sif-example h4,
+.sif-checklist h4,
+.sif-structure h4 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.sif-overview h3    { color: var(--accent); }
+.sif-regime h4      { color: var(--accent3); }
+.sif-example h4     { color: var(--accent2); }
+.sif-checklist h4   { color: var(--muted); }
+.sif-structure h4   { color: var(--accent); }
+
+.sif-description {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.sif-when {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.sif-specs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sif-specs span {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 3px 10px;
+  letter-spacing: 0.06em;
+}
+
+.sif-regime p,
+.sif-structure p {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.sif-vix {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent2) !important;
+  letter-spacing: 0.04em;
+}
+
+.sif-trend {
+  color: var(--accent3) !important;
+}
+
+.sif-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.sif-metrics div {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.sif-metrics div span,
+.sif-metrics div strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.sif-metrics .warn  { color: var(--accent2); }
+.sif-metrics .danger { color: var(--danger); }
+
+.sif-checklist ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sif-checklist li {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.sif-checklist li::before {
+  content: '□';
+  position: absolute;
+  left: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.sif-structure .disclaimer {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-style: italic;
+}
+
+.sif-standdown {
+  grid-column: 1 / -1;
+  background: rgba(239,68,68,0.05);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 6px;
+  padding: 20px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.7;
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP DISCLAIMER -->
+<div class="disclaimer">
+  GENERAL ADVICE DISCLAIMER — This report contains general market commentary and options strategy analysis only. It does not constitute personal financial advice, a recommendation, or an offer to buy or sell any financial product. All trade ideas are illustrative and for informational and educational purposes only. Options trading involves substantial risk and is not suitable for all investors. You are solely responsible for all trading decisions, position sizing, and risk management. Past performance is not indicative of future results.
+</div>
+
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="brand-eyebrow">CJ Capital</div>
+      <div class="brand-title">The CJ Brief</div>
+      <div class="brand-subtitle">Daily Options &amp; Market Intelligence — EOD Edition</div>
+    </div>
+    <div class="masthead-right">
+      <div class="masthead-date">Thursday, June 11, 2026</div>
+      <div class="masthead-meta">
+        <div class="badge badge-regime-caution">Caution</div>
+        <div class="badge badge-stance-selective">Selective</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: MARKET CLOSE SNAPSHOT -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div class="section-title">Market Close Snapshot</div>
+      <div class="section-tag">EOD</div>
+    </div>
+
+    <div class="snapshot-grid">
+
+      <!-- SPY -->
+      <div class="snap-card down">
+        <div class="snap-ticker">SPY</div>
+        <div class="snap-price">$737.76</div>
+        <div class="snap-change down">-1.58%</div>
+        <div class="snap-pts">-11.62 pts</div>
+        <div class="snap-label">S&amp;P 500 ETF</div>
+      </div>
+
+      <!-- QQQ -->
+      <div class="snap-card down">
+        <div class="snap-ticker">QQQ</div>
+        <div class="snap-price">$717.12</div>
+        <div class="snap-change down">-2.00%</div>
+        <div class="snap-pts">-14.14 pts</div>
+        <div class="snap-label">Nasdaq-100 ETF</div>
+      </div>
+
+      <!-- IWM -->
+      <div class="snap-card down">
+        <div class="snap-ticker">IWM</div>
+        <div class="snap-price">$290.41</div>
+        <div class="snap-change down">-1.04%</div>
+        <div class="snap-pts">-2.97 pts</div>
+        <div class="snap-label">Russell 2000 ETF</div>
+      </div>
+
+      <!-- DIA -->
+      <div class="snap-card down">
+        <div class="snap-ticker">DIA</div>
+        <div class="snap-price">$503.80</div>
+        <div class="snap-change down">-0.60%</div>
+        <div class="snap-pts">-3.04 pts</div>
+        <div class="snap-label">Dow Jones ETF</div>
+      </div>
+
+      <!-- VIX -->
+      <div class="snap-card vix-card up">
+        <div class="snap-ticker">VIX</div>
+        <div class="snap-price">19.44</div>
+        <div class="snap-change up">+11.83%</div>
+        <div class="vix-zone vix-moderate">Moderate Zone</div>
+        <div class="snap-label">Volatility Index</div>
+      </div>
+
+    </div>
+
+    <!-- Market Tone Bar -->
+    <div class="tone-bar">
+      <div class="tone-label">Market Tone</div>
+      <div class="tone-value">Risk-Off Reversal</div>
+      <div class="tone-sep"></div>
+      <div class="tone-note">Semiconductors and megacap tech led a broad fade into the close while defensives (staples, energy, healthcare) caught the rotation. VIX jumped 11.8% to 19.4 as Iran headlines escalated, yet breadth stayed net-positive ($ADDN +766, 64% of the S&amp;P above its 20-day) &mdash; a controlled risk-off, not a flush.</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 2: SECTOR SCORECARD -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <div class="section-title">Sector Scorecard</div>
+      <div class="section-tag">1D · 1W</div>
+    </div>
+
+    <div class="sector-layout">
+
+      <!-- 1-DAY TABLE -->
+      <div class="sector-table-wrap">
+        <div class="sector-table-head">
+          <div class="sector-table-title">Today</div>
+          <div class="sector-table-period">1-Day Performance</div>
+        </div>
+
+        <div class="sector-row">
+          <div class="sector-name">Consumer Staples</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:50%"></div></div>
+          </div>
+          <div class="sector-pct up">+1.69%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Energy</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:43%"></div></div>
+          </div>
+          <div class="sector-pct up">+1.46%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Real Estate</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill flat" style="width:1%"></div></div>
+          </div>
+          <div class="sector-pct flat">+0.01%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Utilities</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill flat" style="width:1%"></div></div>
+          </div>
+          <div class="sector-pct flat">-0.01%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Financials</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:15%"></div></div>
+          </div>
+          <div class="sector-pct down">-0.50%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Health Care</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:34%"></div></div>
+          </div>
+          <div class="sector-pct down">-1.15%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Communication Svcs</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:48%"></div></div>
+          </div>
+          <div class="sector-pct down">-1.65%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Consumer Disc.</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:65%"></div></div>
+          </div>
+          <div class="sector-pct down">-2.23%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Information Tech</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:69%"></div></div>
+          </div>
+          <div class="sector-pct down">-2.34%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Materials</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:72%"></div></div>
+          </div>
+          <div class="sector-pct down">-2.45%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Industrials</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:100%"></div></div>
+          </div>
+          <div class="sector-pct down">-3.41%</div>
+        </div>
+
+      </div>
+
+      <!-- 1-WEEK TABLE -->
+      <div class="sector-table-wrap">
+        <div class="sector-table-head">
+          <div class="sector-table-title">This Week</div>
+          <div class="sector-table-period">1-Week Performance</div>
+        </div>
+
+        <div class="sector-row">
+          <div class="sector-name">Consumer Staples</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:63%"></div></div>
+          </div>
+          <div class="sector-pct up">+3.56%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Health Care</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:24%"></div></div>
+          </div>
+          <div class="sector-pct up">+1.34%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Real Estate</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:19%"></div></div>
+          </div>
+          <div class="sector-pct up">+1.05%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Financials</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill up" style="width:14%"></div></div>
+          </div>
+          <div class="sector-pct up">+0.79%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Utilities</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill flat" style="width:1%"></div></div>
+          </div>
+          <div class="sector-pct flat">+0.05%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Industrials</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:10%"></div></div>
+          </div>
+          <div class="sector-pct down">-0.56%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Materials</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:16%"></div></div>
+          </div>
+          <div class="sector-pct down">-0.92%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Consumer Disc.</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:31%"></div></div>
+          </div>
+          <div class="sector-pct down">-1.73%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Energy</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:51%"></div></div>
+          </div>
+          <div class="sector-pct down">-2.85%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Communication Svcs</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:68%"></div></div>
+          </div>
+          <div class="sector-pct down">-3.84%</div>
+        </div>
+        <div class="sector-row">
+          <div class="sector-name">Information Tech</div>
+          <div class="sector-bar-wrap">
+            <div class="sector-bar-bg"><div class="sector-bar-fill down" style="width:100%"></div></div>
+          </div>
+          <div class="sector-pct down">-5.64%</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Leaders / Laggards -->
+    <div class="sector-highlights">
+      <div class="sector-hl-card">
+        <div class="sector-hl-label leaders">Leaders Today</div>
+        <div class="sector-hl-items">
+          <div class="sector-hl-chip up">Consumer Staples +1.69%</div>
+          <div class="sector-hl-chip up">Energy +1.46%</div>
+          <div class="sector-hl-chip up">Real Estate +0.01%</div>
+        </div>
+      </div>
+      <div class="sector-hl-card">
+        <div class="sector-hl-label laggards">Laggards Today</div>
+        <div class="sector-hl-items">
+          <div class="sector-hl-chip down">Industrials -3.41%</div>
+          <div class="sector-hl-chip down">Materials -2.45%</div>
+          <div class="sector-hl-chip down">Information Tech -2.34%</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 3: MACRO & NEWS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">03</div>
+      <div class="section-title">Macro &amp; News</div>
+      <div class="section-tag">KEY DRIVERS</div>
+    </div>
+
+    <!-- Top 2-column drivers -->
+    <div class="macro-grid">
+      <div class="macro-card high">
+        <div class="macro-card-top">
+          <div class="macro-card-title">Iran Escalation Spikes Oil &amp; Vol</div>
+          <div class="macro-impact high">HIGH</div>
+        </div>
+        <div class="macro-card-body">President Trump warned the US would hit Iran &ldquo;very hard&rdquo; and floated seizing Kharg Island before signaling a possible walk-back and peace overture. WTI crude jumped ~3% toward $108 and VIX leapt 11.8% to 19.4 as the desk priced a fresh geopolitical risk premium into the close.</div>
+      </div>
+      <div class="macro-card high">
+        <div class="macro-card-top">
+          <div class="macro-card-title">Inflation Tops 4% &mdash; Rates Stay Sticky</div>
+          <div class="macro-impact high">HIGH</div>
+        </div>
+        <div class="macro-card-body">Wednesday&rsquo;s May CPI crossed the 4% mark (~4.2%), keeping inflation front-and-center. The new Fed chair has signaled inflation &ldquo;could use a trim,&rdquo; but a hot print limits near-term easing optimism and pressures long-duration tech multiples.</div>
+      </div>
+      <div class="macro-card medium">
+        <div class="macro-card-top">
+          <div class="macro-card-title">Semis &amp; Megacap Tech Roll Over</div>
+          <div class="macro-impact medium">MEDIUM</div>
+        </div>
+        <div class="macro-card-body">Chip-equipment names gapped up premarket (AMAT, KLAC, LRCX) but faded with the tape; NVDA, AVGO and AMD all fell 4-5% as Info Tech dropped 2.3% and led the S&amp;P lower. AI-trade leadership cracked for a second straight session.</div>
+      </div>
+      <div class="macro-card medium">
+        <div class="macro-card-top">
+          <div class="macro-card-title">Oracle Punished Despite AI Backlog</div>
+          <div class="macro-impact medium">MEDIUM</div>
+        </div>
+        <div class="macro-card-body">ORCL gapped down ~9.5% premarket and stayed heavy after its report, extending a ~22% five-day slide. Even a strong AI/cloud backlog wasn&rsquo;t enough for a stretched multiple &mdash; a cautionary read-through for premium-priced AI names into earnings.</div>
+      </div>
+    </div>
+
+    <!-- Full-width 5th driver (Fed / Rates / Regime context) -->
+    <div class="macro-full info">
+      <div class="macro-full-top">
+        <div class="macro-card-title">Regime: Caution, Defensives Bid</div>
+        <div class="macro-impact info">INFO</div>
+      </div>
+      <div class="macro-full-body">VIX at 19.4 sits in the moderate 18-22 band with SPY back below its 20-day. Money rotated to staples, energy and healthcare while breadth stayed net-positive &mdash; a controlled risk-off. The desk leans selective and favors elevated-IV, defined-risk credit.</div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 4: ECONOMIC CALENDAR -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">04</div>
+      <div class="section-title">Economic Calendar</div>
+      <div class="section-tag">TODAY · TOMORROW</div>
+    </div>
+
+    <div class="cal-layout">
+
+      <!-- TODAY -->
+      <div class="cal-panel">
+        <div class="cal-panel-head">
+          <div class="cal-panel-title">Today</div>
+          <div class="cal-panel-date">Thursday, June 11</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time">8:30 AM ET</div>
+          <div>
+            <div class="cal-event-name">PPI (May)</div>
+            <div class="cal-event-note">Producer inflation; follows hot CPI</div>
+          </div>
+          <div class="cal-dot medium"></div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time">8:30 AM ET</div>
+          <div>
+            <div class="cal-event-name">Initial Jobless Claims</div>
+            <div class="cal-event-note">Weekly labor-market gauge</div>
+          </div>
+          <div class="cal-dot low"></div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time"></div>
+          <div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
+          </div>
+          <div class="cal-dot info"></div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time"></div>
+          <div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
+          </div>
+          <div class="cal-dot info"></div>
+        </div>
+      </div>
+
+      <!-- TOMORROW -->
+      <div class="cal-panel">
+        <div class="cal-panel-head">
+          <div class="cal-panel-title">Tomorrow</div>
+          <div class="cal-panel-date">Friday, June 12</div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time">10:00 AM ET</div>
+          <div>
+            <div class="cal-event-name">U. Mich Sentiment (prelim)</div>
+            <div class="cal-event-note">Inflation expectations in focus</div>
+          </div>
+          <div class="cal-dot medium"></div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time">8:30 AM ET</div>
+          <div>
+            <div class="cal-event-name">Import Prices (May)</div>
+            <div class="cal-event-note">Secondary inflation read</div>
+          </div>
+          <div class="cal-dot low"></div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time"></div>
+          <div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
+          </div>
+          <div class="cal-dot info"></div>
+        </div>
+        <div class="cal-item">
+          <div class="cal-time"></div>
+          <div>
+            <div class="cal-event-name"></div>
+            <div class="cal-event-note"></div>
+          </div>
+          <div class="cal-dot info"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 5: EARNINGS RECAP -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">05</div>
+      <div class="section-title">Earnings Recap</div>
+      <div class="section-tag">BMO · AMC</div>
+    </div>
+
+    <div class="earnings-layout">
+
+      <!-- REPORTED BMO -->
+      <div class="earnings-panel">
+        <div class="earnings-panel-head">
+          <div class="earnings-panel-title">Reported — BMO</div>
+          <div class="earnings-panel-count">Before Market Open</div>
+        </div>
+        <div class="earnings-row-header">
+          <div class="earnings-col-hdr">Ticker</div>
+          <div class="earnings-col-hdr">Company</div>
+          <div class="earnings-col-hdr" style="text-align:right">Exp Move</div>
+          <div class="earnings-col-hdr" style="text-align:right">Actual</div>
+          <div class="earnings-col-hdr" style="text-align:center">Result</div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker">ORCL</div>
+          <div class="earnings-company">Oracle Corp.<span>Technology</span></div>
+          <div class="earnings-exp">±8.5%</div>
+          <div class="earnings-actual down">-9.5%</div>
+          <div class="earnings-verdict miss">Miss</div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker"></div>
+          <div class="earnings-company"><span></span></div>
+          <div class="earnings-exp"></div>
+          <div class="earnings-actual flat"></div>
+          <div class="earnings-verdict watch"></div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker"></div>
+          <div class="earnings-company"><span></span></div>
+          <div class="earnings-exp"></div>
+          <div class="earnings-actual flat"></div>
+          <div class="earnings-verdict watch"></div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker"></div>
+          <div class="earnings-company"><span></span></div>
+          <div class="earnings-exp"></div>
+          <div class="earnings-actual flat"></div>
+          <div class="earnings-verdict watch"></div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker"></div>
+          <div class="earnings-company"><span></span></div>
+          <div class="earnings-exp"></div>
+          <div class="earnings-actual flat"></div>
+          <div class="earnings-verdict watch"></div>
+        </div>
+      </div>
+
+      <!-- REPORTED AMC -->
+      <div class="earnings-panel">
+        <div class="earnings-panel-head">
+          <div class="earnings-panel-title">Reported — AMC</div>
+          <div class="earnings-panel-count">After Market Close</div>
+        </div>
+        <div class="earnings-row-header">
+          <div class="earnings-col-hdr">Ticker</div>
+          <div class="earnings-col-hdr">Company</div>
+          <div class="earnings-col-hdr" style="text-align:right">Exp Move</div>
+          <div class="earnings-col-hdr" style="text-align:right">Actual</div>
+          <div class="earnings-col-hdr" style="text-align:center">Result</div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker">ADBE</div>
+          <div class="earnings-company">Adobe Inc.<span>Technology</span></div>
+          <div class="earnings-exp">±8.9%</div>
+          <div class="earnings-actual flat">Pending</div>
+          <div class="earnings-verdict watch">Watch</div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker">RH</div>
+          <div class="earnings-company">RH<span>Consumer Disc.</span></div>
+          <div class="earnings-exp">±12.7%</div>
+          <div class="earnings-actual flat">Pending</div>
+          <div class="earnings-verdict watch">Watch</div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker">LEN</div>
+          <div class="earnings-company">Lennar Corp.<span>Homebuilders</span></div>
+          <div class="earnings-exp">±6.4%</div>
+          <div class="earnings-actual flat">Pending</div>
+          <div class="earnings-verdict watch">Watch</div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker"></div>
+          <div class="earnings-company"><span></span></div>
+          <div class="earnings-exp"></div>
+          <div class="earnings-actual flat"></div>
+          <div class="earnings-verdict watch"></div>
+        </div>
+        <div class="earnings-row">
+          <div class="earnings-ticker"></div>
+          <div class="earnings-company"><span></span></div>
+          <div class="earnings-exp"></div>
+          <div class="earnings-actual flat"></div>
+          <div class="earnings-verdict watch"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tomorrow's Earnings on Watch -->
+    <div class="earnings-tmw">
+      <div class="earnings-tmw-head">
+        <div class="earnings-tmw-title">Tomorrow on Watch</div>
+        <div class="earnings-panel-count">Friday, June 12</div>
+      </div>
+      <div class="earnings-chips">
+        <div class="earnings-chip">
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
+        </div>
+        <div class="earnings-chip">
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
+        </div>
+        <div class="earnings-chip">
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
+        </div>
+        <div class="earnings-chip">
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
+        </div>
+        <div class="earnings-chip">
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
+        </div>
+        <div class="earnings-chip">
+          <div class="earnings-chip-ticker"></div>
+          <div class="earnings-chip-timing"></div>
+          <div class="earnings-chip-move">±</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 6: OPTIONS DESK -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">06</div>
+      <div class="section-title">Options Desk</div>
+      <div class="section-tag">IN-PLAY · MONITORING</div>
+    </div>
+
+    <div class="desk-intro">
+      <div class="desk-intro-dot"></div>
+      19 screeners processed &middot; 120+ candidates reviewed &middot; 3 in-play &middot; environment: selective credit-selling into elevated IV
+    </div>
+
+    <!-- ── IN-PLAY ── -->
+    <div class="desk-status-row">
+      <div class="desk-status-label inplay">In-Play</div>
+      <div class="desk-status-line"></div>
+    </div>
+
+    <!-- IN-PLAY CARD 1 -->
+    <div class="trade-card inplay">
+      <div class="trade-card-header">
+        <div class="trade-ticker-block">
+          <div class="trade-ticker">MRVL</div>
+          <div class="trade-company">Marvell Technology</div>
+        </div>
+        <div class="trade-tags">
+          <div class="trade-tag strategy">Bear Call Spread</div>
+          <div class="trade-tag bearish">Bearish</div>
+          <div class="trade-tag sector">Semiconductors</div>
+        </div>
+        <div class="trade-price-block">
+          <div class="trade-price">$280.71</div>
+          <div class="trade-price-change down">-4.2%</div>
+        </div>
+      </div>
+      <div class="trade-stats">
+        <div class="trade-stat">
+          <div class="trade-stat-label">IV Rank</div>
+          <div class="trade-stat-value highlight">87.1%</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Imp Vol</div>
+          <div class="trade-stat-value">103.6%</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Exp Move</div>
+          <div class="trade-stat-value">$13.28</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Delta</div>
+          <div class="trade-stat-value">~0.30</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">RSI</div>
+          <div class="trade-stat-value ">42</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Earnings</div>
+          <div class="trade-stat-value">Cleared (Aug)</div>
+        </div>
+      </div>
+      <div class="trade-body">
+        <div class="trade-body-col">
+          <div class="trade-body-label">Structure</div>
+          <div class="trade-body-text">Sell $300 call / Buy $310 call &middot; 30&ndash;35 DTE &middot; Credit target &ge; $3.30 (short strike above the 20-day and outside the &plusmn;$13.28 expected move)</div>
+        </div>
+        <div class="trade-body-col">
+          <div class="trade-body-label">Thesis</div>
+          <div class="trade-body-text">Marvell sits in the eye of the semiconductor unwind, with IV Rank pinned at 87% and implied vol north of 100% &mdash; some of the richest premium on the screen. With AI-semis breaking their 20-day in a risk-off tape, a call spread above the ~$294 expected-move ceiling lets the desk fade the next bounce with defined risk. Earnings clear into late summer.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-PLAY CARD 2 -->
+    <div class="trade-card inplay">
+      <div class="trade-card-header">
+        <div class="trade-ticker-block">
+          <div class="trade-ticker">ALAB</div>
+          <div class="trade-company">Astera Labs</div>
+        </div>
+        <div class="trade-tags">
+          <div class="trade-tag strategy">Bear Call Spread</div>
+          <div class="trade-tag bearish">Bearish</div>
+          <div class="trade-tag sector">Semiconductors</div>
+        </div>
+        <div class="trade-price-block">
+          <div class="trade-price">$367.47</div>
+          <div class="trade-price-change down">-4.8%</div>
+        </div>
+      </div>
+      <div class="trade-stats">
+        <div class="trade-stat">
+          <div class="trade-stat-label">IV Rank</div>
+          <div class="trade-stat-value highlight">86.7%</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Imp Vol</div>
+          <div class="trade-stat-value">109.9%</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Exp Move</div>
+          <div class="trade-stat-value">$8.45</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Delta</div>
+          <div class="trade-stat-value">~0.30</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">RSI</div>
+          <div class="trade-stat-value ">44</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Earnings</div>
+          <div class="trade-stat-value">Cleared (Aug)</div>
+        </div>
+      </div>
+      <div class="trade-body">
+        <div class="trade-body-col">
+          <div class="trade-body-label">Structure</div>
+          <div class="trade-body-text">Sell $400 call / Buy $415 call &middot; 30 DTE &middot; Credit target &ge; $4.50 (short strike ~9% above spot, beyond near-term resistance)</div>
+        </div>
+        <div class="trade-body-col">
+          <div class="trade-body-label">Thesis</div>
+          <div class="trade-body-text">Astera Labs is a high-beta AI-connectivity name caught in the chip de-rating, with IV Rank at 87% offering fat call premium. A bear call spread well above spot monetizes elevated vol while keeping risk defined if the AI trade stabilizes. Liquidity is ample (~25k contracts) and earnings clear into late summer.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-PLAY CARD 3 -->
+    <div class="trade-card inplay">
+      <div class="trade-card-header">
+        <div class="trade-ticker-block">
+          <div class="trade-ticker">XLY</div>
+          <div class="trade-company">Consumer Discretionary SPDR</div>
+        </div>
+        <div class="trade-tags">
+          <div class="trade-tag strategy">Iron Condor</div>
+          <div class="trade-tag neutral">Neutral</div>
+          <div class="trade-tag sector">Cons. Disc. ETF</div>
+        </div>
+        <div class="trade-price-block">
+          <div class="trade-price">$116.30</div>
+          <div class="trade-price-change down">-2.23%</div>
+        </div>
+      </div>
+      <div class="trade-stats">
+        <div class="trade-stat">
+          <div class="trade-stat-label">IV Rank</div>
+          <div class="trade-stat-value highlight">48.2%</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Imp Vol</div>
+          <div class="trade-stat-value">25.9%</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Exp Move</div>
+          <div class="trade-stat-value">$2.17</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Delta</div>
+          <div class="trade-stat-value">~0.20</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">RSI</div>
+          <div class="trade-stat-value ">44</div>
+        </div>
+        <div class="trade-stat">
+          <div class="trade-stat-label">Earnings</div>
+          <div class="trade-stat-value">N/A (ETF)</div>
+        </div>
+      </div>
+      <div class="trade-body">
+        <div class="trade-body-col">
+          <div class="trade-body-label">Structure</div>
+          <div class="trade-body-text">Sell $112 put / Buy $109 put + Sell $120 call / Buy $123 call &middot; 30&ndash;40 DTE &middot; Credit target &ge; $1.00 (shorts outside the &plusmn;$2.17 expected move)</div>
+        </div>
+        <div class="trade-body-col">
+          <div class="trade-body-label">Thesis</div>
+          <div class="trade-body-text">With single-stock earnings risk diversified away, XLY lets the desk sell elevated index-level IV (Rank 48%) through a defined-risk condor. Discretionary is mid-range between its 20- and 50-day after a 2.2% drop; the condor profits if the ETF chops while vol mean-reverts from today&rsquo;s spike. Mirrors tonight&rsquo;s featured strategy.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MONITORING ── -->
+    <div class="desk-status-row">
+      <div class="desk-status-label monitoring">Monitoring</div>
+      <div class="desk-status-line"></div>
+    </div>
+
+    <div class="monitoring-card">
+      <div>
+        <div class="monitoring-ticker">INTC</div>
+        <div class="monitoring-company">Intel Corp.</div>
+      </div>
+      <div>
+        <div class="monitoring-body">Screens as a high-IV bear-call candidate, but Intel is the rare semi in a clean uptrend &mdash; above all key moving averages and up 24% over its 50-day.</div>
+        <div class="monitoring-reason">Uptrend conflicts with bearish setup</div>
+      </div>
+      <div class="monitoring-stats">
+        <div class="monitoring-stat">IVR <span>82.8%</span></div>
+        <div class="monitoring-stat">Price <span>$116.96</span></div>
+        <div class="monitoring-stat">RSI <span>57.8</span></div>
+      </div>
+    </div>
+
+    <div class="monitoring-card">
+      <div>
+        <div class="monitoring-ticker">PGR</div>
+        <div class="monitoring-company">Progressive Corp.</div>
+      </div>
+      <div>
+        <div class="monitoring-body">Highest IV Rank in the Iron Condor screen and a low-beta insurer ideal for a neutral structure &mdash; worth watching if activity picks up.</div>
+        <div class="monitoring-reason">3M RelVol below 1.0 threshold</div>
+      </div>
+      <div class="monitoring-stats">
+        <div class="monitoring-stat">IVR <span>49.6%</span></div>
+        <div class="monitoring-stat">Price <span>$202.26</span></div>
+        <div class="monitoring-stat">RSI <span>55</span></div>
+      </div>
+    </div>
+
+    <div class="monitoring-card">
+      <div>
+        <div class="monitoring-ticker">KMX</div>
+        <div class="monitoring-company">CarMax Inc.</div>
+      </div>
+      <div>
+        <div class="monitoring-body">Bear-call candidate with IVR 83% and consumer-cyclical exposure that fits the risk-off lean.</div>
+        <div class="monitoring-reason">Earnings inside 14-day window</div>
+      </div>
+      <div class="monitoring-stats">
+        <div class="monitoring-stat">IVR <span>83.2%</span></div>
+        <div class="monitoring-stat">Price <span>$51.57</span></div>
+        <div class="monitoring-stat">RSI <span>45</span></div>
+      </div>
+    </div>
+
+    <!-- Desk Read -->
+    <div class="desk-read">
+      <div class="desk-read-label">Desk Read</div>
+      <div class="desk-read-text">Tonight&rsquo;s read favors selling elevated implied vol with defined risk and a neutral-to-bearish lean. The cleanest premium sits in the semiconductor complex (MRVL, ALAB), where IV Ranks above 85% pay to fade the broken AI trade with bear call spreads. Traders who want to stay direction-neutral can harvest index-level vol through an iron condor on XLY without single-name earnings risk. The desk is steering clear of bullish put-selling into falling semis despite tempting 100% IV Ranks (TER, LRCX) &mdash; counter-trend premium is a trap in a risk-off tape. Keep size modest until the Iran headlines and tonight&rsquo;s ADBE/RH/LEN prints clear.</div>
+    </div>
+
+  </div>
+
+
+  <!-- SECTION 06B: STRATEGY IN FOCUS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">06B</div>
+      <div class="section-title">Strategy in Focus</div>
+      <div class="section-tag">Neutral · Defined Risk Credit</div>
+    </div>
+
+    <div class="sif-grid">
+
+      <!-- Strategy Overview -->
+      <div class="sif-overview">
+        <h3>Iron Condor</h3>
+        <p class="sif-description">A four-leg, market-neutral credit strategy that simultaneously sells an out-of-the-money put spread and call spread, profiting when the underlying stays range-bound and implied volatility contracts.</p>
+        <p class="sif-when">Best deployed on liquid, range-bound names with elevated IV Rank and no binary event risk before expiration.</p>
+        <div class="sif-specs">
+          <span>DTE: 30&ndash;45 DTE</span>
+          <span>IV Rank: IV Rank &gt; 40% preferred</span>
+          <span>IC</span>
+        </div>
+      </div>
+
+      <!-- Regime Fit -->
+      <div class="sif-regime">
+        <h4>Why Tonight</h4>
+        <p>Tonight&rsquo;s caution regime &mdash; VIX at 19.4 in the moderate 18-22 band with SPY back under its 20-day &mdash; is tailor-made for a defined-risk neutral structure. Today&rsquo;s 12% VIX pop richened premium across the board, and with the tape rotating rather than trending cleanly, selling both wings collects that inflated vol while capping risk on each side.</p>
+        <p class="sif-vix">VIX 19.4 (+11.8%) &mdash; elevated enough to fatten condor credits, not so high that a directional break is the base case.</p>
+        <p class="sif-trend">SPY &minus;1.6% and QQQ &minus;2.0% with defensives bid signals rotation, not a one-way trend &mdash; favorable for range-bound premium selling.</p>
+      </div>
+
+      <!-- Live Example -->
+      <div class="sif-example">
+        <h4>Tonight's Example — AFL · Aflac Inc.</h4>
+        <div class="sif-metrics">
+          <div>Price: <strong>$116.45</strong></div>
+          <div>IV Rank: <strong>46.5%</strong></div>
+          <div>IV %ile: <strong>59%</strong></div>
+          <div>Imp Vol: <strong>21.7%</strong></div>
+          <div>Exp Move: <strong>&plusmn;$1.81 (&plusmn;1.6%)</strong></div>
+          <div class="">RSI(14): <strong>50</strong></div>
+          <div>Sector: <strong>Financials (Insurance)</strong></div>
+          <div>Earnings: <strong>Cleared (late Jul)</strong></div>
+        </div>
+      </div>
+
+      <!-- Research Checklist -->
+      <div class="sif-checklist">
+        <h4>Tonight's Research Checklist</h4>
+        <ul>
+          <li>Confirm AFL has no earnings before expiration &mdash; last report was late April, next is expected late July (cleared for a 30&ndash;45 DTE condor).</li>
+          <li>Map the &plusmn;$1.81 (&plusmn;1.6%) expected move and set short strikes outside it &mdash; roughly $113 put / $120 call as a starting frame.</li>
+          <li>Verify IV Rank (46.5%) is still above 40% at entry; if today&rsquo;s vol spike fades fast, the credit shrinks.</li>
+          <li>Locate support near the 50-day (~$114) and resistance below the recent high to define the range.</li>
+          <li>Check option liquidity &mdash; AFL traded ~1,600 contracts today; use limit orders and watch bid/ask width on all four legs.</li>
+          <li>Size so max loss on either spread is a small, fixed fraction of the book.</li>
+          <li>Pre-define management: take profit near ~50% of max credit, or roll the tested side if price nears a short strike.</li>
+        </ul>
+      </div>
+
+      <!-- Generic Structure -->
+      <div class="sif-structure">
+        <h4>Generic Structure Example</h4>
+        <p>Sell a put ~20&ndash;25 delta and a call ~20&ndash;25 delta, buy protective wings ~10 delta on each side &middot; 30&ndash;45 DTE &middot; target net credit &ge; one-third of the wing width.</p>
+        <p class="disclaimer">Educational example only — not a trade recommendation. Always conduct your own analysis before placing any trade.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 7: TOMORROW'S GAME PLAN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">07</div>
+      <div class="section-title">Tomorrow's Game Plan</div>
+      <div class="section-tag">NEXT SESSION</div>
+    </div>
+
+    <!-- Opening backdrop -->
+    <div class="gameplan-backdrop">
+      <div class="gameplan-backdrop-label">Opening Backdrop</div>
+      <div class="gameplan-backdrop-text">Futures steadied after Thursday&rsquo;s red close, but the tone hinges on overnight Iran headlines and how tonight&rsquo;s ADBE/RH/LEN prints land. Expect a vol-sensitive, headline-driven open with the 4%+ inflation backdrop keeping a lid on duration-sensitive tech.</div>
+    </div>
+
+    <!-- Priority watchlist -->
+    <div class="gameplan-watchlist">
+      <div class="gameplan-watchlist-head">
+        <div class="gameplan-watchlist-title">Priority Watchlist</div>
+        <div class="earnings-panel-count">Friday, June 12</div>
+      </div>
+      <div class="watchlist-row-hdr">
+        <div class="wl-hdr">Ticker</div>
+        <div class="wl-hdr">Setup</div>
+        <div class="wl-hdr">Action</div>
+        <div class="wl-hdr">Timing</div>
+        <div class="wl-hdr">Priority</div>
+      </div>
+      <div class="watchlist-row">
+        <div class="wl-ticker">MRVL</div>
+        <div class="wl-setup">Bear Call Spread &mdash; IVR 87%, semi de-rating</div>
+        <div class="wl-action execute">Execute</div>
+        <div class="wl-timing">After 10:30 AM</div>
+        <div class="wl-priority p1">P1</div>
+      </div>
+      <div class="watchlist-row">
+        <div class="wl-ticker">ALAB</div>
+        <div class="wl-setup">Bear Call Spread &mdash; IVR 87%, AI-semi fade</div>
+        <div class="wl-action watch">Watch</div>
+        <div class="wl-timing">After 10:30 AM</div>
+        <div class="wl-priority p2">P2</div>
+      </div>
+      <div class="watchlist-row">
+        <div class="wl-ticker">XLY</div>
+        <div class="wl-setup">Iron Condor &mdash; IVR 48%, sell index vol</div>
+        <div class="wl-action watch">Watch</div>
+        <div class="wl-timing">At open</div>
+        <div class="wl-priority p2">P2</div>
+      </div>
+      <div class="watchlist-row">
+        <div class="wl-ticker">AFL</div>
+        <div class="wl-setup">Iron Condor &mdash; featured, IVR 47%, range-bound</div>
+        <div class="wl-action patient">Patient</div>
+        <div class="wl-timing">Midday</div>
+        <div class="wl-priority p2">P2</div>
+      </div>
+      <div class="watchlist-row">
+        <div class="wl-ticker">ORCL</div>
+        <div class="wl-setup">Post-earnings drift &mdash; fade a dead-cat bounce</div>
+        <div class="wl-action watch">Watch</div>
+        <div class="wl-timing">After 10:30 AM</div>
+        <div class="wl-priority p3">P3</div>
+      </div>
+    </div>
+
+    <!-- Focus / Avoid / Signals / Posture grid -->
+    <div class="gameplan-layout">
+
+      <div class="gameplan-panel">
+        <div class="gameplan-panel-head">
+          <div class="gameplan-panel-title focus">Favor Tomorrow</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet focus"></div>
+          <div class="gameplan-text">Defined-risk credit on elevated IV &mdash; bear call spreads on broken semis, iron condors on liquid ETFs.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet focus"></div>
+          <div class="gameplan-text">Neutral structures that profit from vol mean-reversion if the tape keeps chopping.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet focus"></div>
+          <div class="gameplan-text">Relative strength in defensives (staples, energy, healthcare) for any long-side expression.</div>
+        </div>
+      </div>
+
+      <div class="gameplan-panel">
+        <div class="gameplan-panel-head">
+          <div class="gameplan-panel-title avoid">Avoid Tomorrow</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet avoid"></div>
+          <div class="gameplan-text">Bullish put-selling into falling semiconductors &mdash; 100% IV Ranks (TER, LRCX) are tempting but counter-trend.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet avoid"></div>
+          <div class="gameplan-text">Oversized positions ahead of unresolved Iran headlines and tonight&rsquo;s tech earnings.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet avoid"></div>
+          <div class="gameplan-text">Chasing the chip-equipment premarket pops &mdash; they faded hard into today&rsquo;s close.</div>
+        </div>
+      </div>
+
+      <div class="gameplan-panel">
+        <div class="gameplan-panel-head">
+          <div class="gameplan-panel-title signals">Session Tone Signals</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet signals"></div>
+          <div class="gameplan-text">VIX &mdash; holding above 18 keeps the desk defensive; back below 18 reopens offensive credit.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet signals"></div>
+          <div class="gameplan-text">Oil (WTI ~$108) &mdash; further spikes signal escalating Iran risk and more equity downside.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet signals"></div>
+          <div class="gameplan-text">Semis (NVDA/AVGO/MRVL) &mdash; failure to reclaim the 20-day confirms the leadership crack.</div>
+        </div>
+      </div>
+
+      <div class="gameplan-panel">
+        <div class="gameplan-panel-head">
+          <div class="gameplan-panel-title posture">Execution Posture</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet posture"></div>
+          <div class="gameplan-text">Patient on entries &mdash; let the open&rsquo;s headline volatility settle before selling premium.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet posture"></div>
+          <div class="gameplan-text">Favor defined-risk over naked structures while vol is elevated.</div>
+        </div>
+        <div class="gameplan-item">
+          <div class="gameplan-bullet posture"></div>
+          <div class="gameplan-text">Keep dry powder for a vol spike &mdash; richer credits reward waiting.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 8: DESK TAKE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">08</div>
+      <div class="section-title">Desk Take</div>
+      <div class="section-tag">CLOSING NOTE</div>
+    </div>
+
+    <div class="desktake-wrap">
+      <div class="desktake-head">
+        <div class="desktake-head-left">
+          <div class="desktake-posture-dot selective"></div>
+          <div class="desktake-posture-label selective">Selective</div>
+        </div>
+        <div class="desktake-date">Thursday, June 11, 2026</div>
+      </div>
+      <div class="desktake-body">
+        <p>Thursday closed risk-off: the S&amp;P gave back 1.6% and the Nasdaq-100 2.0% as the AI-semi trade cracked for a second straight session and VIX jumped nearly 12% to 19.4. The selling was orderly rather than panicked &mdash; breadth stayed net-positive and defensives (staples, energy, healthcare) absorbed the rotation &mdash; but a 4%+ CPI and a fresh Iran risk premium argue for caution into the weekend.</p><p>With implied vol richening across the board, the edge is in selling premium with defined risk and a neutral-to-bearish tilt. Bear call spreads on broken semis (MRVL, ALAB) and an iron condor on XLY headline the book; bullish put-selling into falling knives stays off the table despite eye-watering IV Ranks. Size stays modest until tonight&rsquo;s ADBE/RH/LEN prints and the next round of Iran headlines clear.</p>
+        <div class="desktake-focus">
+          <div class="desktake-focus-label">Top Focus</div>
+          <div class="desktake-focus-text">Whether VIX holds the 18-22 band: a push higher on Iran or hot PPI flips the desk fully defensive, while a fade back under 18 reopens offensive credit-selling.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM DISCLAIMER -->
+  <div class="disclaimer-bottom">
+    <div class="disclaimer-label">Full Disclaimer</div>
+    This report is published by CJ Capital for general market commentary, education, and discussion purposes only. It is not personal financial advice, investment advice, a recommendation, or an offer to buy or sell any financial product or security. Any market views, trade examples, or strategy references are general in nature and do not take into account any person's individual objectives, financial situation, or needs. All trade ideas and options structures referenced are illustrative model-based scenarios only — they are not instructions to trade and should not be relied upon as such. Before acting on any information in this report, you should consider whether it is appropriate for your individual circumstances and independently verify all relevant data, including option chain details, current pricing, liquidity, bid-ask spreads, open interest, and risk parameters. Options trading involves significant risk of loss and is not suitable for all investors. Losses can exceed the premium paid and, in some strategies, can exceed the initial investment. Past performance is not a reliable indicator of future results. You are solely responsible for all trading decisions, position sizing, and risk management. CJ Capital accepts no liability for any loss or damage arising from reliance on this report.
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand"><strong>THE CJ BRIEF</strong> &nbsp;·&nbsp; CJ Capital Trading Desk &nbsp;·&nbsp; June 11, 2026</div>
+    <div class="footer-note">FOR INFORMATIONAL AND EDUCATIONAL USE ONLY</div>
+  </div>
+
+</div>
+</body>
+</html>
