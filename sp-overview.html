@@ -297,15 +297,15 @@ leading / neutral / lagging classification, not a recomputation.</div>
 <div class="grid g2" style="margin-top:13px">
   <div class="card">
     <div class="lab" style="font-size:11px;color:#8b98a5;text-transform:uppercase;letter-spacing:.055em">Regime model</div>
-    <div style="font-size:22px;font-weight:640;margin-top:7px">Cautiously Bullish
-      <span class="pill num">score 3</span></div>
+    <div style="font-size:22px;font-weight:640;margin-top:7px">Neutral
+      <span class="pill num">score 0</span></div>
     <div class="note" style="margin-top:6px">Prior week: <b>Neutral</b>
-      (score 1). Dated 2026-07-24.</div>
+      (score 0). Model v1_3component. Dated 2026-07-24.</div>
     <div style="margin-top:13px;font-size:12.5px">
       <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #161d25">
-        <span style="color:#8b98a5">Trend</span><b>Range</b></div>
+        <span style="color:#8b98a5">Trend</span><b>Below MAs</b></div>
       <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #161d25">
-        <span style="color:#8b98a5">Breadth band</span><b>Confirming</b></div>
+        <span style="color:#8b98a5">Breadth band</span><b>Neutral</b></div>
       <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #161d25">
         <span style="color:#8b98a5">VIX band</span><b>Normal</b></div>
       <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #161d25">
@@ -329,9 +329,9 @@ leading / neutral / lagging classification, not a recomputation.</div>
       neutral <b class="num">1.15%</b> ·
       bull <b class="num">98.85%</b>.</div>
     <table style="margin-top:11px"><thead><tr><th>Component</th><th class="r">Vote</th></tr></thead>
-      <tbody><tr><td>T6 · XLU/XLY leadership</td><td class="r num" style="color:#f87171">-1</td><td style="color:#6f7d8a;font-size:11px"></td></tr><tr><td>T8 · VRP proxy</td><td class="r num" style="color:#fbbf24">pending</td><td style="color:#6f7d8a;font-size:11px">awaiting option-chain data</td></tr><tr><td>T9b · transition model</td><td class="r num" style="color:#8b98a5">0</td><td style="color:#6f7d8a;font-size:11px">pinned — shadow, not voting</td></tr></tbody></table>
-    <div class="note">Week over week the inputs that moved were <b>T6 vote</b> 0 → -1. Unchanged: trend, breadth band, VIX band, term band, VVIX band, T9b vote. T8 vote is not yet available for this session and so cannot be compared — a gap in the data, not a move in the model.</div>
-    <div class="note">Separately, the E90 sub-model does <b>not resolve for this session</b>. Its T8 leg is a variance-risk-premium z-score built from option-chain data that the vendor publishes the following morning, so on the newest bar that leg is still pending and the ensemble cannot total. This is a data-timing gap, not a change in what the model thinks. Its last complete reading was <b>Neutral</b> at score <b class="num">-1</b> on Jul 23.</div>
+      <tbody><tr><td>T6 · XLU/XLY leadership</td><td class="r num" style="color:#f87171">-1</td><td style="color:#6f7d8a;font-size:11px"></td></tr><tr><td>T8 · VRP proxy</td><td class="r num" style="color:#8b98a5">0</td><td style="color:#6f7d8a;font-size:11px"></td></tr><tr><td>T9b · transition model</td><td class="r num" style="color:#8b98a5">0</td><td style="color:#6f7d8a;font-size:11px">pinned — shadow, not voting</td></tr></tbody></table>
+    <div class="note">Week over week the inputs that moved were <b>breadth band</b> Confirming → Neutral; <b>T6 vote</b> 0 → -1; <b>T8 vote</b> -1 → 0. Unchanged: trend, VIX band, term band, VVIX band, T9b vote.</div>
+    <div class="note">Separately, the E90 sub-model reads <b>Neutral</b> at score <b class="num">-1</b> — its own scale, not the headline regime score above.</div>
     <div class="note warn"><b>The transition model is running in shadow.</b> Its vote is pinned to zero in the model configuration and contributes nothing to the E90 score, so the state probabilities above are an unwired forward test rather than a live input. A high bull reading beside a more cautious headline tag is therefore not two signals disagreeing — one of them is not voting yet.</div>
   </div>
   
@@ -390,17 +390,17 @@ leading / neutral / lagging classification, not a recomputation.</div>
     <table><thead><tr><th>Fund</th><th class="r">Week</th><th class="r">YTD</th><th></th></tr></thead><tbody>
       <tr><td><b>SPY</b> cap-weighted</td>
         <td class="r num" style="color:#f87171">-0.59%</td>
-        <td class="r num" style="color:#34d399">+8.36%</td>
+        <td class="r num" style="color:#34d399">+8.66%</td>
         <td style="color:#6f7d8a;font-size:11px">S&amp;P 500 ETF</td></tr>
       <tr><td><b>RSP</b> equal-weighted</td>
         <td class="r num" style="color:#34d399">+0.09%</td>
-        <td class="r num" style="color:#34d399">+11.49%</td>
+        <td class="r num" style="color:#34d399">+12.40%</td>
         <td style="color:#6f7d8a;font-size:11px">Invesco equal-weight S&amp;P 500</td></tr>
     </tbody></table>
     <div class="note">The cap- vs equal-weight figures above are constituent aggregates built from index weights;
       these two exchange-traded funds are the tradeable equivalents, priced on the same week.
       RSP leads SPY by
-      <b class="num">3.1 pp</b> year to date —
+      <b class="num">3.7 pp</b> year to date —
       participation is broadening beyond the mega-caps.
       Fund returns carry fees and rebalancing, so they will not match the aggregates exactly.</div>
   </div>
@@ -583,7 +583,7 @@ market-data API, which publishes a session behind; their as-of date is stated in
 <footer>
   Report period: trading week of July 20 – July 24, 2026, measured from the
   2026-07-17 close.<br>
-  Generated Saturday, July 25, 2026 at 2:24 PM.<br>
+  Generated Saturday, July 25, 2026 at 4:24 PM.<br>
   Sources: local research store (constituent prices, breadth, sector rotation, regime model, options flow);
   Alpha Vantage (index membership and weights, Treasury yields, crude, metals, ETF prices).
   Constituent aggregates are computed from index weights and will not tie exactly to official index returns.
