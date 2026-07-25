@@ -47,6 +47,9 @@ td.r,th.r{text-align:right}
 footer{margin-top:26px;padding-top:16px;border-top:1px solid #1f2933;font-size:11.5px;color:#6f7d8a;line-height:1.75}
 .pill{font-size:10px;background:#232c37;color:#9fb3c8;border-radius:4px;padding:1.5px 6px;margin-left:6px;letter-spacing:.02em}
 .warn{color:#c2a25a}
+.stale{border:1.5px solid #b45309;background:#241505;border-radius:10px;padding:14px 17px;
+  margin:18px 0 4px;font-size:13.5px;color:#f0c88a;line-height:1.6}
+.stale b{color:#fbbf24}
 .sub{color:#7c8996;font-size:11px;margin-left:4px}
 .toggle{display:inline-flex;gap:2px;background:#161d25;border:1px solid #232c37;border-radius:8px;
   padding:3px;margin:2px 0 12px}
@@ -64,6 +67,7 @@ footer{margin-top:26px;padding-top:16px;border-top:1px solid #1f2933;font-size:1
     <span class="badge">499 constituents</span></div>
   <div class="hdis">Educational use only — not investment advice. Full disclaimer at the foot of this page.</div>
 </header>
+
 
 <section><h2><span class="n">01</span> Index Snapshot</h2>
 <div class="grid g4">
@@ -424,34 +428,42 @@ leading / neutral / lagging classification, not a recomputation.</div>
       <tr><td>US 30-year</td><td class="r num">5.17%</td><td class="r num"><span style="color:#34d399">+11 bp</span></td><td style="color:#6f7d8a;font-size:11px"></td></tr>
       <tr><td>2s10s spread</td><td class="r num">0.34 pp</td><td class="r num"><span style="color:#f87171">-3 bp</span></td><td style="color:#6f7d8a;font-size:11px"></td></tr>
     </tbody></table>
-  </div>
-  <div class="card">
-    <div class="lab" style="font-size:11px;color:#8b98a5;text-transform:uppercase;letter-spacing:.055em;margin-bottom:9px">Commodities</div>
-    <table><thead><tr><th>Series</th><th class="r">Level</th><th class="r">Change</th><th></th></tr></thead><tbody>
-      <tr><td>WTI crude</td><td class="r num">84.38</td><td class="r num"><span style="color:#34d399">+0.95</span></td><td style="color:#6f7d8a;font-size:11px">as of 2026-07-20 — series ends before the week close</td></tr>
-      <tr><td>Brent crude</td><td class="r num">86.99</td><td class="r num"><span style="color:#34d399">+1.98</span></td><td style="color:#6f7d8a;font-size:11px">as of 2026-07-20 — series ends before the week close</td></tr>
-      <tr><td>Gold</td><td class="r num">4,052.71</td><td class="r num"><span class="fl">n/a</span></td><td style="color:#6f7d8a;font-size:11px">live spot at 2026-07-25, after the week close — no weekly change available</td></tr>
-      <tr><td>Silver</td><td class="r num">58.18</td><td class="r num"><span class="fl">n/a</span></td><td style="color:#6f7d8a;font-size:11px">live spot at 2026-07-25, after the week close — no weekly change available</td></tr>
-    </tbody></table>
+    <div class="note">yields as of 2026-07-23 — one session before the week close. Yields are the one series here with no local equivalent.</div>
   </div>
   <div class="card">
     <div class="lab" style="font-size:11px;color:#8b98a5;text-transform:uppercase;letter-spacing:.055em;margin-bottom:9px">
-      Dollar <span class="pill">proxy</span></div>
-    <table><thead><tr><th>Series</th><th class="r">Level</th><th class="r">Week</th><th></th></tr></thead><tbody>
-      <tr><td>UUP (dollar-index ETF)</td><td class="r num">28.58</td><td class="r num"><span style="color:#34d399">+0.25</span></td><td style="color:#6f7d8a;font-size:11px">proxy — no index endpoint available</td></tr>
+      Commodities <span class="pill">exchange-traded proxies</span></div>
+    <table><thead><tr><th>Series</th><th class="r">Level</th><th class="r">Week</th><th class="r">YTD</th><th></th></tr></thead><tbody>
+      <tr><td>Crude oil — WTI</td><td class="r num">136.69</td><td class="r num" style="color:#34d399">+10.27%</td><td class="r num" style="color:#34d399">+97.6%</td><td style="color:#6f7d8a;font-size:11px">WTI crude proxy</td></tr>
+      <tr><td>Crude oil — Brent</td><td class="r num">52.58</td><td class="r num" style="color:#34d399">+7.97%</td><td class="r num" style="color:#34d399">+85.7%</td><td style="color:#6f7d8a;font-size:11px">Brent crude proxy</td></tr>
+      <tr><td>Broad commodities</td><td class="r num">30.10</td><td class="r num" style="color:#34d399">+3.86%</td><td class="r num" style="color:#34d399">+34.6%</td><td style="color:#6f7d8a;font-size:11px">broad commodity proxy</td></tr>
+      <tr><td>Gold</td><td class="r num">371.90</td><td class="r num" style="color:#34d399">+0.95%</td><td class="r num" style="color:#f87171">-6.2%</td><td style="color:#6f7d8a;font-size:11px">gold proxy</td></tr>
+      <tr><td>Silver</td><td class="r num">52.59</td><td class="r num" style="color:#34d399">+3.56%</td><td class="r num" style="color:#f87171">-18.4%</td><td style="color:#6f7d8a;font-size:11px">silver proxy</td></tr>
     </tbody></table>
-    <div class="note">There is no dollar-index endpoint on any connected source, so a dollar-index ETF stands
-      in for it. It tracks the same underlying but is an ETF price, not the index.</div>
+    <div class="note">These are fund prices, not spot or front-month futures. A commodity fund holds and rolls
+      futures, so its level carries roll cost and will drift from spot over time — read the weekly direction and
+      magnitude, not the absolute level as a barrel or ounce price.</div>
+  </div>
+  <div class="card">
+    <div class="lab" style="font-size:11px;color:#8b98a5;text-transform:uppercase;letter-spacing:.055em;margin-bottom:9px">
+      Dollar &amp; duration <span class="pill">proxies</span></div>
+    <table><thead><tr><th>Series</th><th class="r">Level</th><th class="r">Week</th><th class="r">YTD</th><th></th></tr></thead><tbody>
+      <tr><td>US dollar</td><td class="r num">28.58</td><td class="r num" style="color:#34d399">+0.88%</td><td class="r num" style="color:#34d399">+5.7%</td><td style="color:#6f7d8a;font-size:11px">dollar proxy</td></tr>
+      <tr><td>Treasuries 7-10yr</td><td class="r num">93.03</td><td class="r num" style="color:#f87171">-0.86%</td><td class="r num" style="color:#f87171">-1.4%</td><td style="color:#6f7d8a;font-size:11px">intermediate duration</td></tr>
+      <tr><td>Treasuries 20yr+</td><td class="r num">83.25</td><td class="r num" style="color:#f87171">-1.50%</td><td class="r num" style="color:#f87171">-2.3%</td><td style="color:#6f7d8a;font-size:11px">long duration</td></tr>
+    </tbody></table>
+    <div class="note">No dollar-index series is reachable from the connected sources, so a dollar-index fund
+      stands in. The two Treasury funds show the same rate move as the yields on the left, expressed as price —
+      the longer fund moves more for a given shift because it carries more duration.</div>
   </div>
   <div class="card">
     <div class="lab" style="font-size:11px;color:#8b98a5;text-transform:uppercase;letter-spacing:.055em;margin-bottom:9px">
       Credit <span class="pill">proxy — ratios, not spreads</span></div>
-    <table><thead><tr><th>Series</th><th class="r">Level</th><th class="r">Week</th><th></th></tr></thead><tbody>
-      <tr><td>HYG</td><td class="r num">79.23</td><td class="r num"><span style="color:#f87171">-0.42</span></td><td style="color:#6f7d8a;font-size:11px"></td></tr>
-      <tr><td>LQD</td><td class="r num">106.23</td><td class="r num"><span style="color:#f87171">-1.33</span></td><td style="color:#6f7d8a;font-size:11px"></td></tr>
-      <tr><td>IEF</td><td class="r num">93.03</td><td class="r num"><span style="color:#f87171">-0.81</span></td><td style="color:#6f7d8a;font-size:11px"></td></tr>
-      <tr><td>HYG / LQD</td><td class="r num">0.7458</td><td class="r num"><span style="color:#34d399">+0.0053</span></td><td style="color:#6f7d8a;font-size:11px">high yield vs investment grade</td></tr>
-      <tr><td>HYG / IEF</td><td class="r num">0.8517</td><td class="r num"><span style="color:#34d399">+0.0029</span></td><td style="color:#6f7d8a;font-size:11px">high yield vs Treasuries</td></tr>
+    <table><thead><tr><th>Series</th><th class="r">Level</th><th class="r">Week</th><th class="r">YTD</th><th></th></tr></thead><tbody>
+      <tr><td>High yield</td><td class="r num">79.23</td><td class="r num" style="color:#f87171">-0.53%</td><td class="r num" style="color:#34d399">+1.2%</td><td style="color:#6f7d8a;font-size:11px">high-yield credit proxy</td></tr>
+      <tr><td>Investment grade</td><td class="r num">106.23</td><td class="r num" style="color:#f87171">-1.24%</td><td class="r num" style="color:#f87171">-1.8%</td><td style="color:#6f7d8a;font-size:11px">investment-grade credit proxy</td></tr>
+      <tr><td>High yield / investment grade</td><td class="r num">0.7458</td><td class="r num" style="color:#34d399">+0.72%</td><td class="r fl">—</td><td style="color:#6f7d8a;font-size:11px">credit appetite within corporates</td></tr>
+      <tr><td>High yield / Treasuries</td><td class="r num">0.8517</td><td class="r num" style="color:#34d399">+0.34%</td><td class="r fl">—</td><td style="color:#6f7d8a;font-size:11px">credit appetite vs government duration</td></tr>
     </tbody></table>
     <div class="note warn"><b>These ratios are not credit spreads.</b> They are relative price ratios between
       exchange-traded funds and will move with duration, fund flows and premium/discount as well as with credit
@@ -459,7 +471,11 @@ leading / neutral / lagging classification, not a recomputation.</div>
       spread data would require adding an economic-data feed to the research store. Read the direction, not the level.</div>
   </div>
 </div>
-<div class="card" style="margin-top:13px"><div class="lede" style="margin:0">Cross-asset markets broadly <b>confirm</b> the equity tape: credit proxies softened and yields eased alongside the drawdown.</div></div>
+<div class="note">Every series in this section except the yields on the left is priced from the same local
+store, and on the same trading days, as the equity data above — measured Jul 17 → Jul 24, the identical window
+used for every constituent return in this report. Treasury yields have no local equivalent and come from the
+market-data API, which publishes a session behind; their as-of date is stated in that panel.</div>
+<div class="card" style="margin-top:13px"><div class="lede" style="margin:0">On the week equities fell <b class="num">-0.66%</b> cap-weighted, the 10-year yield rose <b class="num">16bp</b>, high yield gained on investment grade (<b class="num">+0.72%</b>), the dollar proxy firmed <b class="num">+0.88%</b>. Credit appetite firmed and yields rose while equities fell, which is <b>not</b> a flight to quality. Read together these point to a rates-driven rotation — concentrated in Communication Services — rather than a broad withdrawal from risk. The largest cross-asset move by far is crude: the WTI fund <b class="num">+10.3%</b> on the week and the Brent fund <b class="num">+8.0%</b>. That is corroborated inside the index rather than asserted: Energy was the strongest sector at <b class="num">+2.52%</b> equal-weight, so the move shows up in the equity tape and the commodity tape at the same time.</div></div>
 </section>
 <section><h2><span class="n">09</span> Weekly Movers</h2>
 <div class="grid g2">
@@ -526,7 +542,7 @@ leading / neutral / lagging classification, not a recomputation.</div>
 <footer>
   Report period: trading week of July 20 – July 24, 2026, measured from the
   2026-07-17 close.<br>
-  Generated Saturday, July 25, 2026 at 9:05 AM.<br>
+  Generated Saturday, July 25, 2026 at 10:19 AM.<br>
   Sources: local research store (constituent prices, breadth, sector rotation, regime model, options flow);
   Alpha Vantage (index membership and weights, Treasury yields, crude, metals, ETF prices).
   Constituent aggregates are computed from index weights and will not tie exactly to official index returns.
