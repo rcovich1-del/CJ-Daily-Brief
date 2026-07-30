@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S&amp;P 500 Sector Performance Review, First Half 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#0a0c10; --surface:#12151c; --surface2:#171b24; --line:#232936;
+  --tx:#e7ebf2; --tx2:#9aa5b8; --tx3:#6b7688;
+  --pos:#3fbf72; --posdim:#1d4d33; --neg:#e5544b; --negdim:#5a2320;
+  --warn:#e2953c; --info:#4a90d9; --accent:#c9b47a;
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-text-size-adjust:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 80px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.2;margin:0 0 12px}
+h1{font-size:34px;letter-spacing:-.01em}
+h2{font-size:26px;margin-top:8px}
+h3{font-size:20px}
+h4{font-size:17px}
+p{margin:0 0 14px;color:var(--tx)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .warnc{color:var(--warn)} .infoc{color:var(--info)}
+.muted{color:var(--tx2)} .tiny{font-size:13px;color:var(--tx2);line-height:1.55}
+.src{font-size:12px;color:var(--tx3);line-height:1.5;margin-top:10px;font-family:var(--sans)}
+section{margin:44px 0;scroll-margin-top:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px;font-family:var(--sans)}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+a{color:var(--info)}
+
+/* header */
+header.top{padding:44px 0 10px;border-bottom:1px solid var(--line);margin-bottom:8px}
+header.top h1{margin-bottom:14px}
+.subtitle{font-size:17px;color:var(--tx2);max-width:70ch}
+.stamp{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.stamp span{background:var(--surface2);border:1px solid var(--line);border-radius:100px;padding:6px 13px;font-size:12.5px;color:var(--tx2)}
+
+/* pulse */
+.pulse{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.pcard .lbl{font-size:12.5px;color:var(--tx2);margin-bottom:6px}
+.pcard .val{font-size:29px;font-weight:700}
+.pcard .sub{font-size:12px;color:var(--tx3);margin-top:4px}
+.pe-strip{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.pe-strip .pe-item{display:flex;align-items:baseline;gap:8px}
+
+/* explainer */
+.explain{background:linear-gradient(180deg,#141924,#12151c);border:1px solid #2b3446;border-radius:14px;padding:22px}
+.def{border-left:2px solid var(--line);padding-left:14px;margin:0 0 16px}
+.def:last-child{margin-bottom:0}
+.def b{color:var(--tx);font-weight:600}
+
+/* guess */
+.guess{background:var(--surface);border:1px solid #33405a;border-radius:14px;padding:22px;text-align:center}
+.gopts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 6px}
+button{font-family:var(--sans);font-size:15px;cursor:pointer}
+.gbtn{min-height:46px;padding:11px 18px;background:var(--surface2);color:var(--tx);border:1px solid var(--line);border-radius:9px;font-weight:500}
+.gbtn:hover{border-color:var(--accent);background:#1d222d}
+.skip{background:none;border:0;color:var(--tx2);text-decoration:underline;min-height:44px;padding:10px;font-size:14px}
+.result{margin-top:14px;padding:14px;border-radius:10px;font-size:15px;display:none}
+.result.ok{background:var(--posdim);border:1px solid var(--pos)}
+.result.no{background:#2a2438;border:1px solid #5a4b7a}
+
+/* chart holders */
+.chartbox{position:relative;width:100%}
+.toggle{display:inline-flex;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:4px;gap:4px;margin-bottom:6px}
+.toggle button{min-height:44px;padding:9px 16px;border:0;border-radius:7px;background:transparent;color:var(--tx2);font-weight:500}
+.toggle button[aria-pressed="true"]{background:var(--accent);color:#15120a;font-weight:700}
+
+/* controls */
+.sortbar{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 16px;align-items:center}
+.sortbar .lab{font-size:13px;color:var(--tx2);margin-right:2px}
+.sbtn{min-height:44px;padding:9px 14px;background:var(--surface2);border:1px solid var(--line);border-radius:9px;color:var(--tx2);font-size:14px}
+.sbtn[aria-pressed="true"]{border-color:var(--accent);color:var(--tx);background:#1e232e}
+
+/* heatmap */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(292px,1fr));gap:12px}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s,transform .15s;position:relative}
+.scard:hover{border-color:#3d4759}
+.scard[aria-pressed="true"]{border-color:var(--accent);background:#171a20}
+.scard .tick{position:absolute;top:14px;right:14px;font-size:11px;font-family:var(--mono);color:var(--tx3);border:1px solid var(--line);padding:2px 7px;border-radius:5px}
+.scard h4{margin:0 6px 10px 0;padding-right:52px;font-size:17px}
+.rows{display:grid;grid-template-columns:1fr auto;gap:5px 10px;font-size:13.5px;margin-bottom:12px}
+.rows .k{color:var(--tx2)}
+.rows .v{text-align:right}
+.badge{display:inline-block;font-size:11.5px;padding:4px 10px;border-radius:100px;font-weight:600;letter-spacing:.02em}
+.b-more{background:#173a27;color:#6ede9c;border:1px solid #2a6343}
+.b-neu{background:#152a40;color:#7db4e8;border:1px solid #2b4d6e}
+.b-less{background:#3a2a12;color:#e8b26a;border:1px solid #6b4a1c}
+.b-least{background:#3a1a18;color:#f08c85;border:1px solid #6e2f2a}
+.hold{font-size:12px;color:var(--tx2);margin-top:11px;padding-top:11px;border-top:1px solid var(--line);line-height:1.7}
+.hold b{color:var(--tx2);font-weight:600;display:block;margin-bottom:3px;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--tx3)}
+
+/* compare */
+.cmp{background:var(--surface2);border:1px solid var(--accent);border-radius:12px;padding:16px;margin-bottom:16px;display:none}
+.cmp.on{display:block}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:min(100%,340px)}
+th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface2)}
+thead th{color:var(--tx2);font-weight:600;font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+.clearb{min-height:44px;margin-top:12px;padding:9px 16px;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--tx2)}
+
+/* calculator */
+.calcgrid{display:grid;grid-template-columns:1fr;gap:14px}
+label{display:block;font-size:13px;color:var(--tx2);margin-bottom:7px;font-weight:500}
+input[type=number],select{width:100%;min-height:48px;padding:12px 13px;background:var(--surface2);border:1px solid var(--line);border-radius:9px;color:var(--tx);font-family:var(--mono);font-size:16px}
+select{font-family:var(--sans)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.pbtn{min-height:44px;padding:9px 15px;background:var(--surface2);border:1px solid var(--line);border-radius:8px;color:var(--tx2);font-family:var(--mono);font-size:14px}
+.pbtn:hover{border-color:var(--accent);color:var(--tx)}
+.outsent{font-size:17px;line-height:1.6;margin:18px 0 14px}
+.barcmp{display:grid;gap:11px;margin-top:6px}
+.brow .bl{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px;gap:12px}
+.btrack{height:30px;background:var(--surface2);border-radius:7px;overflow:hidden;border:1px solid var(--line)}
+.bfill{height:100%;border-radius:6px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+
+/* scatter legend */
+.quad{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.qcard{background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:15px;cursor:pointer;min-height:44px}
+.qcard[aria-pressed="true"]{border-color:var(--accent);background:#1e232e}
+.qcard .qt{font-size:13px;font-weight:700;margin-bottom:7px}
+.qcard .qn{font-size:13.5px;color:var(--tx2);line-height:1.6}
+
+/* rotation */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.chip{min-height:44px;padding:9px 14px;border-radius:100px;background:var(--surface2);border:1px solid var(--line);color:var(--tx2);font-size:13.5px}
+.chip[aria-pressed="true"]{background:var(--accent);color:#15120a;border-color:var(--accent);font-weight:600}
+.path{background:var(--surface2);border:1px solid var(--accent);border-radius:10px;padding:14px;margin-bottom:16px;display:none;font-size:14px}
+.path.on{display:block}
+.pathrow{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:9px}
+.rot3{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:12px}
+.rcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.rcard h4{margin-bottom:4px}
+.rlist{list-style:none;padding:0;margin:10px 0 0}
+.rlist li{display:flex;justify-content:space-between;gap:12px;padding:7px 8px;border-radius:7px;font-size:13.5px;transition:opacity .2s}
+.rlist li.hl{background:#2a2718;outline:1px solid var(--accent)}
+.rlist li.dim{opacity:.28}
+.rsub{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tx3);margin:13px 0 5px;font-weight:700}
+
+/* spotlight */
+.stats4{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:11px;margin:16px 0 20px}
+.stat{background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:15px}
+.stat .sv{font-size:26px;font-weight:700}
+.stat .sl{font-size:12px;color:var(--tx2);margin-top:5px;line-height:1.45}
+.twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px}
+.col{background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:16px}
+.col ul{margin:0;padding-left:18px}
+.col li{margin-bottom:11px;font-size:14px;line-height:1.6}
+.note{background:#1a1710;border:1px solid #4a3d1c;border-radius:11px;padding:16px;margin-top:14px}
+
+/* scenarios */
+.scen{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.scard2{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.scard2 .who{font-size:12px;color:var(--tx3);margin-top:12px;padding-top:12px;border-top:1px solid var(--line);line-height:1.6}
+.caution{background:#1e1412;border:2px solid var(--neg);border-radius:12px;padding:20px;margin-top:18px}
+.caution h4{color:var(--neg)}
+.caution ul{margin:0;padding-left:19px}
+.caution li{margin-bottom:9px;font-size:14.5px}
+
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:26px}
+.srclist{columns:2;column-gap:26px;font-size:12.5px;color:var(--tx2);line-height:1.75}
+.srclist div{break-inside:avoid;margin-bottom:6px}
+.disc{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:17px;margin-top:22px;font-size:13px;color:var(--tx2);line-height:1.7}
+
+noscript .ns{background:var(--surface);border:1px solid var(--warn);border-radius:12px;padding:18px;margin:18px 0}
+
+@media (max-width:700px){
+  h1{font-size:27px} h2{font-size:22px}
+  .wrap{padding:0 13px 60px}
+  .grid,.rot3,.scen,.twocol,.quad{grid-template-columns:1fr}
+  .srclist{columns:1}
+  .pulse{grid-template-columns:1fr}
+  .pcard .val{font-size:26px}
+  body{font-size:15px}
+  .tiny,.src{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- 1. HEADER -->
+<header class="top">
+  <div class="eyebrow">Educational Market Data Review</div>
+  <h1>S&amp;P 500 Sector Performance Review</h1>
+  <p class="subtitle">What the eleven sectors of the US stock market did in the first half of 2026, how they are valued now, and what published commentators are watching next. Written for readers who have never invested.</p>
+  <div class="stamp">
+    <span>Period covered: <span class="num">1 Jan to 30 Jun 2026</span></span>
+    <span>Snapshot compiled: <span class="num">28 Jul 2026</span></span>
+    <span>Returns: total return, official S&amp;P GICS sector indices</span>
+  </div>
+  <p class="src">Return data: RBC Wealth Management citing FactSet and Bloomberg, published 1 Jul 2026. Cross checked against MarketWatch citing LSEG, 30 Jun 2026. Valuation: computed from FinViz Elite constituent data, 28 Jul 2026, and FactSet Earnings Insight, 24 Jul 2026. Index weights and holdings: State Street SPDR fund data, 24 to 27 Jul 2026. Full source list in the footer.</p>
+</header>
+
+<noscript>
+<div class="ns">
+<h3>Static data table</h3>
+<p class="tiny">Interactive features need JavaScript. Every figure used in this report is listed below so nothing is hidden from you.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>Sector</th><th>ETF</th><th>Weight</th><th>H1 2026</th><th>1 Year</th><th>Fwd P/E</th><th>Top 10</th><th>Schwab view</th></tr></thead>
+<tbody>
+<tr><td>Information Technology</td><td class="num">XLK</td><td class="num">36.83%</td><td class="num pos">+19.76%</td><td class="num pos">+30.62%</td><td class="num">18.79</td><td class="num">61.14%</td><td>Neutral</td></tr>
+<tr><td>Financials</td><td class="num">XLF</td><td class="num">12.60%</td><td class="num neg">-1.18%</td><td class="num pos">+8.87%</td><td class="num">15.28</td><td class="num">56.77%</td><td>Neutral</td></tr>
+<tr><td>Communication Services</td><td class="num">XLC</td><td class="num">9.48%</td><td class="num pos">+0.80%</td><td class="num">not available</td><td class="num">18.07</td><td class="num">68.73%</td><td>More Favored</td></tr>
+<tr><td>Health Care</td><td class="num">XLV</td><td class="num">9.24%</td><td class="num pos">+3.45%</td><td class="num pos">+24.69%</td><td class="num">17.40</td><td class="num">61.81%</td><td>More Favored</td></tr>
+<tr><td>Industrials</td><td class="num">XLI</td><td class="num">8.93%</td><td class="num pos">+20.20%</td><td class="num pos">+18.76%</td><td class="num">24.54</td><td class="num">39.84%</td><td>More Favored</td></tr>
+<tr><td>Consumer Discretionary</td><td class="num">XLY</td><td class="num">8.83%</td><td class="num neg">-0.77%</td><td class="num pos">+0.33%</td><td class="num">23.97</td><td class="num">67.07%</td><td>Least Favored</td></tr>
+<tr><td>Consumer Staples</td><td class="num">XLP</td><td class="num">4.73%</td><td class="num pos">+8.03%</td><td class="num pos">+7.64%</td><td class="num">22.86</td><td class="num">62.27%</td><td>Neutral</td></tr>
+<tr><td>Energy</td><td class="num">XLE</td><td class="num">3.33%</td><td class="num pos">+19.69%</td><td class="num pos">+36.34%</td><td class="num">13.92</td><td class="num">73.47%</td><td>Neutral</td></tr>
+<tr><td>Utilities</td><td class="num">XLU</td><td class="num">2.24%</td><td class="num pos">+7.69%</td><td class="num pos">+12.03%</td><td class="num">17.35</td><td class="num">58.04%</td><td>Less Favored</td></tr>
+<tr><td>Real Estate</td><td class="num">XLRE</td><td class="num">1.94%</td><td class="num pos">+11.52%</td><td class="num pos">+10.63%</td><td class="num">37.17</td><td class="num">60.95%</td><td>Least Favored</td></tr>
+<tr><td>Materials</td><td class="num">XLB</td><td class="num">1.86%</td><td class="num pos">+11.97%</td><td class="num pos">+15.75%</td><td class="num">17.37</td><td class="num">56.96%</td><td>More Favored</td></tr>
+</tbody></table></div>
+<p class="tiny">Index context: S&amp;P 500 +10.21%, Nasdaq Composite +13.10%, Russell 2000 +22.57%, all total return, 1 Jan to 30 Jun 2026. S&amp;P 500 forward P/E 22.0 at the start of the year and 20.1 on 22 Jul 2026 per FactSet.</p>
+</div>
+</noscript>
+
+<!-- 2. INDEX PULSE -->
+<section id="pulse">
+  <div class="eyebrow">Section 1</div>
+  <h2>Index pulse</h2>
+  <p class="muted" style="margin-bottom:16px">How the three most quoted US stock market gauges did over the same six months. All three figures are total returns, meaning dividends paid out by companies are counted as if reinvested.</p>
+  <div class="pulse">
+    <div class="pcard"><div class="lbl">S&amp;P 500</div><div class="val num pos">+10.21%</div><div class="sub">Total return, 1 Jan to 30 Jun 2026. The 500 largest US listed companies.</div></div>
+    <div class="pcard"><div class="lbl">Nasdaq Composite</div><div class="val num pos">+13.10%</div><div class="sub">Total return, same period. Technology heavy, over 3,000 companies.</div></div>
+    <div class="pcard"><div class="lbl">Russell 2000</div><div class="val num pos">+22.57%</div><div class="sub">Total return, same period. 2,000 smaller US companies.</div></div>
+  </div>
+  <div class="pe-strip">
+    <div class="pe-item"><span class="muted" style="font-size:13px">S&amp;P 500 forward P/E at start of 2026</span> <b class="num" style="font-size:22px">22.0</b></div>
+    <div class="pe-item"><span class="muted" style="font-size:13px">now</span> <b class="num pos" style="font-size:22px">20.1</b></div>
+    <div class="pe-item"><span class="num warnc" style="font-size:14px">-1.9</span> <span class="muted" style="font-size:13px">points cheaper, even though the index rose</span></div>
+  </div>
+  <p class="src">S&amp;P 500 and Nasdaq Composite: RBC Wealth Management citing FactSet and Bloomberg, 1 Jul 2026. Russell 2000: Clark Capital Management citing Morningstar, 7 Jul 2026, independently confirmed at +22.56% by computing the total return of the iShares Russell 2000 ETF from Alpha Vantage dividend adjusted prices, which also establishes that this figure is a total return. Forward P/E: FactSet Earnings Insight, start of year value as of 31 Dec 2025 and current value as of 22 Jul 2026.</p>
+</section>
+
+<!-- 3. EXPLAINER -->
+<section id="explain">
+  <div class="eyebrow">Section 2</div>
+  <h2>Start here if these words are new</h2>
+  <div class="explain">
+    <div class="def"><b>A sector</b> is a group of companies that do broadly similar things. Every company in the S&amp;P 500 is sorted into exactly one of eleven sectors under a classification system called GICS. Banks and insurers sit in Financials. Chipmakers and software firms sit in Information Technology. Oil producers sit in Energy. Sorting companies this way lets you see which parts of the economy investors rewarded and which they did not.</div>
+    <div class="def"><b>A sector ETF</b> is a single fund you can buy that holds all the companies in one sector at once. The tickers in this report, such as XLK for technology or XLE for energy, are the best known family of these funds. They are mentioned here only so you can recognise the shorthand when you see it elsewhere.</div>
+    <div class="def"><b>Price return versus total return.</b> Price return counts only the change in share price. Total return also counts dividends, the cash payments many companies send shareholders, and assumes you used that cash to buy more shares. Total return is always the higher of the two, and the gap is widest in sectors that pay large dividends such as Utilities and Real Estate. Every return in this report is a total return unless a label says otherwise, and mixing the two without saying so is one of the most common ways market figures mislead people.</div>
+    <div class="def"><b>Forward P/E</b> stands for forward price to earnings ratio. Take what a company costs to buy and divide it by the profit analysts expect it to make over the coming year. A forward P/E of 20 means investors are paying twenty dollars for every one dollar of expected annual profit. A higher number means investors are paying more for each dollar of expected profit, which usually signals they expect fast growth. It does not by itself mean something is good value or poor value.</div>
+    <div class="def"><b>Why a rising market can get cheaper.</b> The forward P/E is a fraction. Share prices sit on top, expected profits sit underneath. If expected profits grow faster than prices rise, the fraction shrinks even as the market goes up. That is exactly what happened in the first half of 2026, and it is why the S&amp;P 500 gained more than ten percent while its forward P/E fell from 22.0 to 20.1.</div>
+    <div class="def"><b>Concentration</b> measures how much of a sector sits in just a few companies. When the ten largest holdings are 73 percent of a sector, as they are in Energy, that sector's performance is mostly the story of ten businesses rather than the whole industry.</div>
+  </div>
+</section>
+
+<!-- 4. RANKED BAR -->
+<section id="ranked">
+  <div class="eyebrow">Section 3</div>
+  <h2>Every sector, ranked</h2>
+
+  <div class="guess card" id="guessPanel">
+    <h3 style="margin-bottom:6px">Before you look, take a guess</h3>
+    <p class="muted" style="margin-bottom:0;font-size:15px">Which sector delivered the highest total return in the first half of 2026?</p>
+    <div class="gopts">
+      <button class="gbtn" data-g="Information Technology">Information Technology</button>
+      <button class="gbtn" data-g="Industrials">Industrials</button>
+      <button class="gbtn" data-g="Energy">Energy</button>
+      <button class="gbtn" data-g="Utilities">Utilities</button>
+    </div>
+    <button class="skip" id="skipGuess">Skip this and show me the chart</button>
+    <div class="result" id="guessResult"></div>
+  </div>
+
+  <div id="chartArea" style="display:none">
+    <div class="toggle" role="group" aria-label="Choose period">
+      <button id="tgH1" aria-pressed="true">First half 2026</button>
+      <button id="tgCY" aria-pressed="false">Full year 2025</button>
+    </div>
+    <div class="card" style="padding:16px 12px 12px">
+      <div class="chartbox"><canvas id="barChart" height="420"></canvas></div>
+    </div>
+    <p class="src" id="barSrc"></p>
+  </div>
+</section>
+
+<!-- 5. HEATMAP -->
+<section id="heatmap">
+  <div class="eyebrow">Section 4</div>
+  <h2>The full picture, sector by sector</h2>
+  <p class="muted">Tap any card to select it. Choose up to three and a side by side comparison opens above the grid. Selections stay put when you re sort.</p>
+
+  <div class="sortbar" role="group" aria-label="Sort sectors">
+    <span class="lab">Sort by</span>
+    <button class="sbtn" data-sort="h1" aria-pressed="true">Return</button>
+    <button class="sbtn" data-sort="weight" aria-pressed="false">Index weight</button>
+    <button class="sbtn" data-sort="fpe" aria-pressed="false">Forward P/E</button>
+    <button class="sbtn" data-sort="top10" aria-pressed="false">Concentration</button>
+  </div>
+
+  <div class="cmp" id="cmpBox">
+    <h4 style="margin-bottom:12px">Side by side</h4>
+    <div class="tblwrap"><table id="cmpTable"></table></div>
+    <button class="clearb" id="clearSel">Clear selection</button>
+  </div>
+
+  <div class="grid" id="sectorGrid"></div>
+  <p class="src">Returns: RBC Wealth Management citing FactSet and Bloomberg, 1 Jul 2026, total return basis. Trailing one year returns are sector ETF total returns from stockanalysis.com using S&amp;P Global Market Intelligence data, as of 28 Jul 2026, and are therefore on a slightly different basis to the period return. Forward P/E: computed for this report from FinViz Elite constituent level data for all 500 index members, 28 Jul 2026, aggregated as total market value divided by total expected earnings. Index weights, concentration and largest holdings: State Street SPDR index holdings, 24 to 27 Jul 2026. Ratings: Charles Schwab Sector Views as of 26 Jun 2026, reported as Schwab's published view.</p>
+</section>
+
+<!-- 6. CALCULATOR -->
+<section id="calc">
+  <div class="eyebrow">Section 5</div>
+  <h2>What already happened to a given amount</h2>
+  <p class="muted">This is a look backwards at history, not a projection. It shows what a sum placed at the start of January 2026 had become by the end of June 2026, using the same total return figures as the table above.</p>
+  <div class="card">
+    <div class="calcgrid">
+      <div>
+        <label for="amt">Amount at the start of the period, US dollars</label>
+        <input type="number" id="amt" value="10000" min="1" step="100">
+        <div class="presets">
+          <button class="pbtn" data-amt="1000">$1,000</button>
+          <button class="pbtn" data-amt="10000">$10,000</button>
+          <button class="pbtn" data-amt="50000">$50,000</button>
+        </div>
+      </div>
+      <div>
+        <label for="secSel">Sector</label>
+        <select id="secSel"></select>
+      </div>
+    </div>
+    <p class="outsent" id="calcOut"></p>
+    <div class="barcmp">
+      <div class="brow">
+        <div class="bl"><span id="lblSec">Sector</span><b class="num" id="valSec"></b></div>
+        <div class="btrack"><div class="bfill" id="finSec" style="width:0;background:var(--pos)"></div></div>
+      </div>
+      <div class="brow">
+        <div class="bl"><span>S&amp;P 500 index</span><b class="num" id="valIdx"></b></div>
+        <div class="btrack"><div class="bfill" id="finIdx" style="width:0;background:var(--info)"></div></div>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:16px">Past performance does not indicate future results. This calculation ignores fees, taxes and trading costs, and no real investor can buy a sector index directly. It is included to make the size of the reported percentage changes easier to picture, nothing more.</p>
+  </div>
+  <p class="src">Calculated from the period total returns shown in section 4. Index comparison uses the S&amp;P 500 total return of +10.21%, RBC Wealth Management citing FactSet and Bloomberg, 1 Jul 2026.</p>
+</section>
+
+<!-- 7. SCATTER -->
+<section id="scatter">
+  <div class="eyebrow">Section 6</div>
+  <h2>Valuation against performance</h2>
+  <p class="muted">Each dot is a sector. Left to right shows how expensive it is on forward P/E. Bottom to top shows its return over the period. The dashed lines mark the S&amp;P 500 itself, so every quadrant is defined relative to the index rather than to an arbitrary line.</p>
+  <div class="card" style="padding:16px 12px 12px">
+    <div class="chartbox"><canvas id="scatterChart" height="400"></canvas></div>
+  </div>
+  <div class="quad">
+    <div class="qcard" id="qCheap" role="button" tabindex="0" aria-pressed="false">
+      <div class="qt pos">Cheaper than the index and ahead of it</div>
+      <div class="qn">Below <span class="num">18.84</span> forward P/E and above <span class="num">+10.21%</span> return: <b>Energy</b>, <b>Information Technology</b>, <b>Materials</b>. Tap to highlight.</div>
+    </div>
+    <div class="qcard" id="qExp" role="button" tabindex="0" aria-pressed="false">
+      <div class="qt neg">Pricier than the index and behind it</div>
+      <div class="qn">Above <span class="num">18.84</span> forward P/E and below <span class="num">+10.21%</span> return: <b>Consumer Discretionary</b>, <b>Consumer Staples</b>. Tap to highlight.</div>
+    </div>
+  </div>
+  <p class="src">Forward P/E computed for this report from FinViz Elite constituent data, 28 Jul 2026. The index crosshair uses the same calculation applied to all 500 members, giving 18.84, so the sectors and the index line are on an identical basis. Returns as in section 4. Note that the index forward P/E of 18.84 on this basis is not the same as FactSet's 20.1, because the two use different estimate horizons. See the note under section 7.</p>
+</section>
+
+<!-- 8. VALUATION SHIFT -->
+<section id="valshift">
+  <div class="eyebrow">Section 7</div>
+  <h2>Which sectors re rated and which de rated</h2>
+  <p class="muted">Comparing what investors paid for a dollar of expected profit at the start of the year against what they pay now. A bar pointing left means the sector became cheaper on this measure.</p>
+  <div class="card" style="padding:16px 12px 12px">
+    <div class="chartbox"><canvas id="shiftChart" height="290"></canvas></div>
+  </div>
+  <div class="note">
+    <h4 style="margin-bottom:9px">Two things worth understanding about this chart</h4>
+    <p style="font-size:14.5px;margin-bottom:12px"><b>Why only four series.</b> A before and after comparison is only honest when both numbers are measured the same way. FactSet publishes start of year and current forward P/E on a consistent basis, but its weekly report names only the most and least expensive sectors in text, and its full eleven sector chart is published as an image rather than as figures. That leaves verified matched pairs for three sectors and the index. The all eleven forward P/E figures used elsewhere in this report were computed from constituent data on a different estimate horizon, so placing them on this chart would produce a change that is partly a measurement artefact rather than a real move. They have been left off rather than presented as if comparable.</p>
+    <p style="font-size:14.5px;margin-bottom:0"><b>How a sector can rise in price and still get cheaper.</b> The S&amp;P 500 line is the clearest example in the data. The index returned <span class="num pos">+10.21%</span> over the period, yet its forward P/E fell from <span class="num">22.0</span> to <span class="num">20.1</span>. Prices went up, but the profits analysts expect over the coming year went up faster, so each dollar of expected profit costs less than it did in January. Consensus expectations for S&amp;P 500 earnings growth in 2026 were revised from roughly 15% at the start of the year to 27.3% by late July. Part of that jump reflects a single one off item, a $98 billion gain recorded by Alphabet, which FactSet notes lifted the quarterly figure substantially.</p>
+  </div>
+  <p class="src">FactSet Earnings Insight, John Butters. Start of year values as of 31 Dec 2025, published in the report of 9 Jan 2026 and restated in the report of 30 Jan 2026. Current values as of 22 Jul 2026, published 24 Jul 2026. Earnings growth estimates from the same 24 Jul 2026 report.</p>
+</section>
+
+<!-- 9. ROTATION -->
+<section id="rotation">
+  <div class="eyebrow">Section 8</div>
+  <h2>Leadership keeps changing hands</h2>
+  <p class="muted">The top three and bottom three sectors in each of the last two full calendar years and in the current period. Tap a sector chip to follow it across all three, including when it sits outside the visible top and bottom three.</p>
+
+  <div class="chips" id="rotChips"></div>
+  <div class="path" id="pathStrip"></div>
+
+  <div class="rot3">
+    <div class="rcard">
+      <h4>Calendar year 2024</h4>
+      <div class="tiny">Total return, S&amp;P Select Sector indices</div>
+      <div class="rsub pos">Top three</div><ul class="rlist" id="l2024t"></ul>
+      <div class="rsub neg">Bottom three</div><ul class="rlist" id="l2024b"></ul>
+    </div>
+    <div class="rcard">
+      <h4>Calendar year 2025</h4>
+      <div class="tiny">Total return, S&amp;P Select Sector indices</div>
+      <div class="rsub pos">Top three</div><ul class="rlist" id="l2025t"></ul>
+      <div class="rsub neg">Bottom three</div><ul class="rlist" id="l2025b"></ul>
+    </div>
+    <div class="rcard">
+      <h4>First half 2026</h4>
+      <div class="tiny">Total return, S&amp;P GICS sector indices</div>
+      <div class="rsub pos">Top three</div><ul class="rlist" id="l2026t"></ul>
+      <div class="rsub neg">Bottom three</div><ul class="rlist" id="l2026b"></ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h4>What the pattern shows</h4>
+    <p style="margin-bottom:0;font-size:15px">No sector held a top three place across all three periods. Communication Services led in 2024 and stayed in the top three in 2025, then fell to the bottom three in the current period. Consumer Discretionary was third in 2024 and has been in the bottom three in both periods since. Real Estate and Consumer Staples appear in the bottom three in consecutive years. Energy is the sharpest turnaround in the set, sitting near the back of the field in both 2024 and 2025 and finishing in the top three in the first half of 2026. Three observations is a very small sample and this section describes what happened, not what tends to happen.</p>
+  </div>
+  <p class="src">2024 and 2025: S&amp;P Dow Jones Indices US Sector Dashboard, data as of 31 Dec 2024 and 31 Dec 2025, total return on the S&amp;P Select Sector indices, cross checked against Novel Investor. First half 2026: RBC Wealth Management citing FactSet and Bloomberg, 1 Jul 2026, total return on the uncapped S&amp;P GICS sector indices. Note that the two calendar years and the current period use closely related but not identical index families. The Select Sector indices apply diversification caps limiting how large any one company can become within a sector, while the GICS sector indices do not. For most sectors the two produce very similar returns, but in the most concentrated sectors the gap can be large.</p>
+</section>
+
+<!-- 10. SPOTLIGHT -->
+<section id="spotlight">
+  <div class="eyebrow">Section 9</div>
+  <h2>Spotlight: Information Technology</h2>
+  <p class="muted">The largest sector in the index, one of the strongest performers over the period, and the source of the most counter intuitive numbers in this dataset.</p>
+
+  <div class="stats4">
+    <div class="stat"><div class="sv num pos">+19.76%</div><div class="sl">Total return, 1 Jan to 30 Jun 2026</div></div>
+    <div class="stat"><div class="sv num infoc">36.83%</div><div class="sl">Share of the whole S&amp;P 500 by weight</div></div>
+    <div class="stat"><div class="sv num neg">64.0%</div><div class="sl">Of its 86 companies sat 20% or more below their own 52 week high on 28 Jul 2026</div></div>
+    <div class="stat"><div class="sv num neg">-29.4%</div><div class="sl">Median company distance below its 52 week high on 28 Jul 2026</div></div>
+  </div>
+
+  <div class="twocol">
+    <div class="col">
+      <h4 class="pos">What has been working</h4>
+      <ul>
+        <li>The sector reported the highest revenue growth of all eleven sectors in the second quarter of 2026 at <span class="num">+34.7%</span> year over year, and blended earnings growth of <span class="num">+64.6%</span>, third highest of the eleven.</li>
+        <li>Semiconductors and semiconductor equipment drove most of it, with earnings up <span class="num">134%</span> and revenue up <span class="num">76%</span> year over year. Strip semiconductors out and the sector's earnings growth falls to <span class="num">26.1%</span>.</li>
+        <li>Net profit margin reached <span class="num">30.8%</span> against a five year average of <span class="num">25.6%</span>.</li>
+        <li>All six industries inside the sector grew earnings, from software at <span class="num">+17%</span> to hardware and storage at <span class="num">+45%</span>.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4 class="neg">What commentators say could derail it</h4>
+      <ul>
+        <li>FactSet reported on 23 Jul 2026 that combined capital spending by the five largest cloud companies is set to exceed <span class="num">$690bn</span> this financial year, and that free cash flow is expected to move close to zero or turn negative for all of them except Alphabet and Microsoft.</li>
+        <li>Debt has moved from <span class="num">9%</span> of that spending in FY24 to <span class="num">32%</span> over the year to mid 2026, per the same FactSet analysis.</li>
+        <li>Investor Michael Burry argues those companies write down their chips too slowly, understating costs by roughly <span class="num">$176bn</span> across 2026 to 2028. FactSet notes the market evidence currently points the other way, with second hand chip prices holding up.</li>
+        <li>Axios reported on 27 Jul 2026 that Nvidia is weighing guarantees of <span class="num">$250bn</span> for an OpenAI data centre project, reviving concerns about circular financing between chip sellers and buyers. Nvidia shares fell <span class="num">4.5%</span> and the cost of insuring its debt posted its largest intraday rise since that market became active.</li>
+        <li>Interest rate futures moved to price meaningful odds of a rate rise rather than a cut, which historically matters more for companies valued on distant future profits.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <h4 style="margin-bottom:9px">The number that surprises people most</h4>
+    <p style="margin-bottom:0;font-size:14.5px">This sector returned nearly twenty percent over the six month period, yet on 28 July the median company inside it was <span class="num neg">29.4%</span> below its own 52 week high and exactly half of them were down <span class="num">30%</span> or more. Both facts are true at once because the sector is weighted by company size. A small number of very large companies carried the return while a great many smaller ones fell a long way. For comparison, across the whole S&amp;P 500 the median company was <span class="num">11.9%</span> below its high. A second oddity sits alongside it: the sector's trailing P/E of <span class="num">33.41</span> falls to a forward P/E of <span class="num">18.79</span>, which is simply another way of saying analysts expect profits here to grow very sharply. If those profits arrive, today's price looks different than if they do not.</p>
+  </div>
+  <p class="src">Return and weight as elsewhere in this report. Distance from 52 week high and the count of companies below it computed for this report from FinViz Elite constituent data covering all 86 S&amp;P 500 Information Technology members, 28 Jul 2026. Earnings, revenue and margin figures: FactSet Earnings Insight, 24 Jul 2026. Capital spending, free cash flow and debt figures: FactSet Insight, Kama and Rajput, 23 Jul 2026. Burry position as reported by TheStreet, with FactSet's counterpoint from its 23 Jul 2026 note. Nvidia financing report: Axios, Nathan Bomey, 27 Jul 2026. An earlier observation that close to 60% of the sector sat 20% below its highs was published by Anthony Saglimbene of Ameriprise on 13 Jul 2026.</p>
+</section>
+
+<!-- 11. FORWARD LOOKING -->
+<section id="forward">
+  <div class="eyebrow">Section 10</div>
+  <h2>How the next half could play out</h2>
+  <p class="muted">Three frameworks that named, dated commentators are actually using. These are their published views, reported here with attribution. They are not this report's views and no probabilities are attached to any of them.</p>
+
+  <div class="scen">
+    <div class="scard2">
+      <h4>Framework one: the earnings path</h4>
+      <p style="font-size:14.5px">This framing holds that company profits, rather than investor enthusiasm, are doing the work. Ed Yardeni raised his year end 2026 S&amp;P 500 projection to <span class="num">8,250</span> on 10 May 2026 and repeated it on 7 July, describing the move as earnings led and saying of artificial intelligence that it is "the real deal." His arithmetic applies a multiple of about <span class="num">20</span> to expected 2027 earnings of roughly <span class="num">$400</span> per share. Ben Snider of Goldman Sachs raised his own figure to <span class="num">8,000</span> on 28 May 2026, projecting 2026 earnings of <span class="num">$340</span> and 2027 earnings of <span class="num">$385</span>, and attributing about half of the earnings expansion to spending on artificial intelligence infrastructure. Snider also noted that excluding that infrastructure and energy, 2027 estimates are flat so far this year.</p>
+      <p style="font-size:14.5px;margin-bottom:0">Sectors this framing usually involves: Information Technology, Communication Services and Industrials.</p>
+      <div class="who">Ed Yardeni, Yardeni Research, 10 May and 7 Jul 2026. Ben Snider, Goldman Sachs, 28 May and 29 Jun 2026.</div>
+    </div>
+
+    <div class="scard2">
+      <h4>Framework two: the interest rate path</h4>
+      <p style="font-size:14.5px">This framing puts the cost of borrowing at the centre. Through July 2026 futures markets moved sharply, and by 27 July were pricing roughly a <span class="num">64%</span> chance that the Federal Reserve holds rates at <span class="num">3.50% to 3.75%</span> at its 29 July meeting and a <span class="num">36%</span> chance of an increase. CNBC reported on 23 July that the odds of an increase had roughly tripled inside two weeks following a jump in oil prices. FactSet records the average oil price in the second quarter of 2026 at <span class="num">$92.55</span>, some <span class="num">45%</span> above the same quarter a year earlier. Ben Snider had already flagged in May that higher energy prices implied less rate relief than his team assumed entering the year, and Yardeni has stated his own projection assumes bond yields steady rather than rising.</p>
+      <p style="font-size:14.5px;margin-bottom:0">Sectors this framing usually involves: Energy, Utilities, Real Estate and Financials, alongside any sector valued on profits expected far in the future.</p>
+      <div class="who">CME FedWatch derived probabilities as reported by The Motley Fool, 27 Jul 2026, 6:30pm ET, and CNBC, 23 Jul 2026. These probabilities change continuously and this is a snapshot. Oil price data: FactSet Earnings Insight, 24 Jul 2026.</div>
+    </div>
+
+    <div class="scard2">
+      <h4>Framework three: the capital spending path</h4>
+      <p style="font-size:14.5px">This framing asks whether the enormous sums being spent on artificial intelligence infrastructure will earn a return, and it is genuinely contested. Torsten Slok of Apollo wrote on 9 July 2026 that a slower payoff would mean disappointing cash flows as "committed capex and heavy depreciation hit on schedule," and that the effect would not stay contained within technology. Jim Chanos compared the buildout to the telecom expansion of 1999 and 2000 in comments reported on 17 June 2026. On the other side, strategists at BCA Research argued in a debate reported on 20 July 2026 that computing capacity remains scarce rather than oversupplied, that cloud order backlogs grew by roughly <span class="num">$750bn</span> in two quarters, and that returns on this spending are being underestimated. JPMorgan's mid year outlook, summarised on 25 June 2026, put total global spending at <span class="num">$5.5tn</span> through 2030 while noting the cycle is concentrated in a small group of companies.</p>
+      <p style="font-size:14.5px;margin-bottom:0">Sectors this framing usually involves: Information Technology, Utilities and Industrials.</p>
+      <div class="who">Torsten Slok, Apollo Global Management, 9 Jul 2026. Jim Chanos, reported 17 Jun 2026. BCA Research, reported by MarketWatch, 20 Jul 2026. JPMorgan Global Research mid year outlook, reported 25 Jun 2026.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h4>What one broker's published ratings imply</h4>
+    <p style="font-size:15px">Charles Schwab publishes a monthly view on all eleven sectors. As of <b>26 June 2026</b>, using Schwab's own five level scale, the sectors it placed in its more favourable band were <b>Communication Services, Health Care, Industrials and Materials</b>. It placed <b>Consumer Staples, Energy, Financials and Information Technology</b> in the neutral band. It placed <b>Utilities</b> in its less favoured band and <b>Consumer Discretionary and Real Estate</b> in its least favoured band. Schwab changed its rating scale in March 2026, so these labels differ from those it published in earlier years. No July update had been posted when this report was compiled.</p>
+    <p style="font-size:15px;margin-bottom:0">This is reported as Schwab's published view on that date. It is not this report's view, and other firms disagree with parts of it.</p>
+  </div>
+
+  <div class="caution">
+    <h4>Read this before you use anything above</h4>
+    <ul>
+      <li>These are frameworks, not forecasts. They describe how named people are organising their thinking, which is a different thing from knowing what will happen.</li>
+      <li>The views quoted here change monthly, and the people holding them have been wrong before. Several of the figures cited were revised more than once during the six months this report covers.</li>
+      <li>Where sources conflict they have been left in conflict. The capital spending debate in framework three has credible, well resourced people on both sides reaching opposite conclusions from overlapping data.</li>
+      <li>Any historical pattern in this report rests on a very small sample. Three periods of sector leadership is not enough to establish that anything tends to happen.</li>
+      <li>Past performance does not indicate future results.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 12. CLOSING -->
+<section id="closing">
+  <div class="eyebrow">Section 11</div>
+  <h2>What this data tells us</h2>
+  <p>The clearest pattern in the first half of 2026 is that the headline index number hid an unusually wide spread beneath it. The S&amp;P 500 returned <span class="num pos">+10.21%</span>, but the eleven sectors ranged from <span class="num pos">+20.20%</span> for Industrials to <span class="num neg">-1.18%</span> for Financials, a spread of more than twenty one percentage points. Smaller companies did considerably better than large ones, with the Russell 2000 up <span class="num pos">+22.57%</span> against the S&amp;P 500's ten. Three sectors finished within a whisker of each other at the top, Industrials, Information Technology and Energy, and they got there for entirely unrelated reasons.</p>
+  <p>The second pattern is that the market as a whole became cheaper on the most commonly quoted valuation measure while going up. The S&amp;P 500's forward P/E fell from <span class="num">22.0</span> to <span class="num">20.1</span> because expected profits were revised up faster than prices rose. Whether that is reassuring depends entirely on whether those revised profit expectations are met, and a meaningful part of the upward revision traces to one accounting item at one company rather than to broad based improvement.</p>
+  <p>The third pattern is concentration, and it cuts in more than one direction. Information Technology alone is <span class="num">36.83%</span> of the index, so anyone holding a broad US index fund holds far more technology than they may realise. Yet within that sector the median company sat <span class="num neg">29.4%</span> below its 52 week high in late July even after a strong six months, and equal weighting the index would have produced a better return than market weighting it over the period. Concentration meant something different at the sector level than it did at the company level.</p>
+  <p>Different readers will notice different things in the same table. Someone drawn to companies that look inexpensive relative to expected profits will note that Energy sits at the bottom of the forward P/E range while having delivered one of the strongest returns, and will want to know whether that reflects a durable change or an oil price that has already moved a great deal. Someone focused on income will look at the gap between price and total returns and see that dividends did more of the work in some sectors than others: Real Estate returned <span class="num">+9.70%</span> on price alone against <span class="num pos">+11.52%</span> including dividends, and Utilities <span class="num">+6.20%</span> against <span class="num pos">+7.69%</span>, while in Information Technology the two figures sat far closer together at <span class="num">+19.40%</span> and <span class="num pos">+19.76%</span>. Someone attentive to risk will note that the three sectors with the highest internal concentration, Energy at <span class="num">73.47%</span> in its largest ten holdings, Communication Services at <span class="num">68.73%</span> and Consumer Discretionary at <span class="num">67.07%</span>, are ones where a handful of company specific outcomes will determine the result. Someone watching the interest rate debate will note that the sectors most sensitive to borrowing costs sit on both sides of the performance table, which suggests rates were not the only thing driving returns over this period. None of these observations points to an action, and this report does not suggest one.</p>
+  <p class="src">Sector and index total returns as cited throughout. Price return figures in the fourth paragraph: MarketWatch citing LSEG, 30 Jun 2026, which states that its figures exclude dividends. The comparison of equal weighting against market weighting uses the total returns of two exchange traded funds over the same period, the Invesco S&amp;P 500 Equal Weight ETF at <span class="num">+11.97%</span> and the SPDR S&amp;P 500 ETF at <span class="num">+10.09%</span>, both computed for this report from Alpha Vantage dividend adjusted prices, 28 Jul 2026. Fund returns are used here because no equal weighted index figure was obtained from a primary source, and both funds carry small fees that the underlying indices do not.</p>
+</section>
+
+<!-- 13. FOOTER -->
+<footer>
+  <h3>Sources</h3>
+  <div class="srclist">
+    <div>RBC Wealth Management, "First half 2026 equity recap," 1 Jul 2026, citing FactSet and Bloomberg. Sector and index total returns.</div>
+    <div>MarketWatch citing LSEG, 30 Jun 2026. Cross check of sector returns on a price return basis.</div>
+    <div>Clark Capital Management Group, "Benchmark Review, June 2026," 7 Jul 2026, citing Morningstar. Index returns.</div>
+    <div>S&amp;P Dow Jones Indices, US Sector Dashboard, data as of 31 Dec 2024 and 31 Dec 2025. Calendar year sector returns.</div>
+    <div>Novel Investor, Annual S&amp;P Sector Returns, updated 1 Jul 2026. Cross check of calendar year returns.</div>
+    <div>FactSet Earnings Insight, John Butters, 24 Jul 2026. Index and sector forward P/E, earnings and revenue growth, margins, oil price.</div>
+    <div>FactSet Earnings Insight, 9 Jan 2026 and 30 Jan 2026. Start of year forward P/E values as of 31 Dec 2025.</div>
+    <div>FactSet Insight, Guniz Kama and Bina Rajput, 23 Jul 2026. Cloud capital spending, free cash flow and debt.</div>
+    <div>State Street Global Advisors SPDR fund pages for SPY and the eleven Select Sector funds, holdings as of 24 to 27 Jul 2026. Index weights, concentration, largest holdings.</div>
+    <div>iShares Core S&amp;P 500 ETF, BlackRock, 21 Jul 2026. Independent cross check of sector weights.</div>
+    <div>FinViz Elite constituent screener, 28 Jul 2026. Forward and trailing P/E computed across all 500 index members, and distance from 52 week highs.</div>
+    <div>Alpha Vantage, dividend adjusted price series, accessed 28 Jul 2026. Independent verification of index and sector ETF total returns.</div>
+    <div>stockanalysis.com, using S&amp;P Global Market Intelligence data, 28 Jul 2026. Trailing one year sector ETF returns.</div>
+    <div>Charles Schwab, "Sector Views: Monthly Stock Sector Outlook," as of 26 Jun 2026. Sector ratings.</div>
+    <div>Yardeni Research QuickTakes, 10 May 2026, and comments reported by 24/7 Wall St, 7 Jul 2026.</div>
+    <div>Goldman Sachs Insights, 28 May 2026, and Bloomberg, 29 Jun 2026. Ben Snider.</div>
+    <div>Apollo Global Management, The Daily Spark, Torsten Slok, 9 Jul 2026.</div>
+    <div>MarketWatch, Isabel Wang, 20 Jul 2026. BCA Research debate.</div>
+    <div>Fortune, 25 Jun 2026. JPMorgan mid year outlook.</div>
+    <div>Axios, Nathan Bomey, 27 Jul 2026. Nvidia and OpenAI financing report.</div>
+    <div>Ameriprise Financial, Anthony Saglimbene, Weekly Market Perspectives, 13 Jul 2026.</div>
+    <div>The Motley Fool, 27 Jul 2026, and CNBC, 23 Jul 2026. CME FedWatch derived rate probabilities.</div>
+    <div>Reported comments of Jim Chanos, 17 Jun 2026, and of Michael Burry via TheStreet.</div>
+  </div>
+
+  <div class="disc">
+    <b>Educational disclaimer.</b> This document is an educational summary of published market data. It is not investment advice, it is not a recommendation to buy, sell or hold any security, and it does not take account of any individual's circumstances, objectives or financial situation. The author is not a licensed financial adviser. Broker ratings and strategist views are reported as the published views of those firms and individuals on the dates stated, and are not endorsed here. All figures are drawn from the sources listed above on the dates stated and may have changed since. Market data is frequently revised, and different providers legitimately produce different figures for the same sector depending on index construction and whether dividends are included. Past performance does not indicate future results. Any decision about money should be discussed with a qualified professional who knows your situation.
+  </div>
+  <p class="src" style="margin-top:18px">Compiled 28 July 2026. Period covered 1 January to 30 June 2026. All returns total return on the uncapped S&amp;P GICS sector indices unless individually labelled otherwise.</p>
+</footer>
+
+</div>
+
+<script>
+"use strict";
+/* ============ DATA, baked in so the file works offline ============ */
+var IDX = { h1: 10.21, fpe: 18.84, fpeFS: 20.1, fpeSoyFS: 22.0 };
+
+var SECTORS = [
+ {name:"Information Technology", short:"Info Tech", etf:"XLK", weight:36.83, h1:19.76, ttm:30.62, cy2025:24.72, cy2024:21.74, fpe:18.79, tpe:33.41, top10:61.14, rating:"Neutral",
+  top3:[["Apple",14.14],["NVIDIA",13.60],["Microsoft",8.26]]},
+ {name:"Financials", short:"Financials", etf:"XLF", weight:12.60, h1:-1.18, ttm:8.87, cy2025:15.02, cy2024:30.56, fpe:15.28, tpe:17.58, top10:56.77, rating:"Neutral",
+  top3:[["JPMorgan Chase",11.89],["Berkshire Hathaway B",11.35],["Visa",7.50]]},
+ {name:"Communication Services", short:"Comm Svcs", etf:"XLC", weight:9.48, h1:0.80, ttm:null, cy2025:23.08, cy2024:34.79, fpe:18.07, tpe:17.23, top10:68.73, rating:"More Favored",
+  top3:[["Meta Platforms",18.06],["Alphabet Class A",10.05],["Alphabet Class C",8.09]]},
+ {name:"Health Care", short:"Health Care", etf:"XLV", weight:9.24, h1:3.45, ttm:24.69, cy2025:14.60, cy2024:2.58, fpe:17.40, tpe:30.61, top10:61.81, rating:"More Favored",
+  top3:[["Eli Lilly",16.09],["Johnson & Johnson",10.87],["AbbVie",7.71]]},
+ {name:"Industrials", short:"Industrials", etf:"XLI", weight:8.93, h1:20.20, ttm:18.76, cy2025:19.42, cy2024:17.47, fpe:24.54, tpe:31.16, top10:39.84, rating:"More Favored",
+  top3:[["Caterpillar",7.22],["GE Aerospace",6.51],["RTX",5.05]]},
+ {name:"Consumer Discretionary", short:"Cons Disc", etf:"XLY", weight:8.83, h1:-0.77, ttm:0.33, cy2025:7.45, cy2024:26.62, fpe:23.97, tpe:32.55, top10:67.07, rating:"Least Favored",
+  top3:[["Amazon.com",22.86],["Tesla",15.30],["Home Depot",5.88]]},
+ {name:"Consumer Staples", short:"Cons Staples", etf:"XLP", weight:4.73, h1:8.03, ttm:7.64, cy2025:1.61, cy2024:12.34, fpe:22.86, tpe:28.69, top10:62.27, rating:"Neutral",
+  top3:[["Walmart",10.43],["Costco",8.99],["Procter & Gamble",7.37]]},
+ {name:"Energy", short:"Energy", etf:"XLE", weight:3.33, h1:19.69, ttm:36.34, cy2025:8.03, cy2024:5.65, fpe:13.92, tpe:22.94, top10:73.47, rating:"Neutral",
+  top3:[["ExxonMobil",20.97],["Chevron",15.07],["ConocoPhillips",5.96]]},
+ {name:"Utilities", short:"Utilities", etf:"XLU", weight:2.24, h1:7.69, ttm:12.03, cy2025:16.04, cy2024:23.43, fpe:17.35, tpe:20.73, top10:58.04, rating:"Less Favored",
+  top3:[["NextEra Energy",13.00],["Southern Company",7.63],["Duke Energy",7.05]]},
+ {name:"Real Estate", short:"Real Estate", etf:"XLRE", weight:1.94, h1:11.52, ttm:10.63, cy2025:2.70, cy2024:5.23, fpe:37.17, tpe:35.42, top10:60.95, rating:"Least Favored",
+  top3:[["Welltower",11.59],["Prologis",9.08],["Equinix",6.83]]},
+ {name:"Materials", short:"Materials", etf:"XLB", weight:1.86, h1:11.97, ttm:15.75, cy2025:10.02, cy2024:0.21, fpe:17.37, tpe:24.47, top10:56.96, rating:"More Favored",
+  top3:[["Linde",13.81],["Newmont",5.80],["Freeport-McMoRan",5.25]]}
+];
+
+/* FactSet matched pairs only, consistent basis */
+var VALSHIFT = [
+ {name:"Consumer Discretionary", soy:29.7, now:25.1},
+ {name:"Energy",                 soy:16.6, now:13.9},
+ {name:"S&P 500 index",          soy:22.0, now:20.1},
+ {name:"Financials",             soy:16.7, now:15.1}
+];
+
+var C = {pos:"#3fbf72", neg:"#e5544b", info:"#4a90d9", warn:"#e2953c", grid:"#232936", tx2:"#9aa5b8", tx3:"#6b7688", acc:"#c9b47a"};
+var fmtPct = function(v,d){ if(v===null||v===undefined) return "n/a"; d=(d===undefined)?2:d; return (v>0?"+":"")+v.toFixed(d)+"%"; };
+var fmtUsd = function(v){ return "$"+Math.round(v).toLocaleString("en-US"); };
+var cls = function(v){ return v>=0 ? "pos":"neg"; };
+
+if (window.Chart && Chart.defaults){
+  Chart.defaults.font.family = "'JetBrains Mono', ui-monospace, monospace";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = C.tx2;
+}
+
+/* ============ 3. GUESS + RANKED BAR ============ */
+var barChart=null, curPeriod="h1";
+var PERIODS = {
+  h1: {key:"h1", label:"First half 2026",
+       src:"Total return on the uncapped S&P GICS sector indices, 1 Jan to 30 Jun 2026. RBC Wealth Management citing FactSet and Bloomberg, published 1 Jul 2026. Cross checked against MarketWatch citing LSEG, 30 Jun 2026, which reports the same ranking on a price return basis."},
+  cy2025:{key:"cy2025", label:"Full year 2025",
+       src:"Total return on the S&P Select Sector indices, 1 Jan to 31 Dec 2025. S&P Dow Jones Indices US Sector Dashboard, data as of 31 Dec 2025, cross checked against Novel Investor. Note this is a different index family to the 2026 figures. The Select Sector indices cap how large any single company can become inside a sector, which for most sectors changes the return very little but can matter in highly concentrated sectors."}
+};
+
+function buildBar(){
+  var p = PERIODS[curPeriod];
+  var rows = SECTORS.slice().sort(function(a,b){ return b[p.key]-a[p.key]; });
+  var labels = rows.map(function(s){return s.short;});
+  var vals = rows.map(function(s){return s[p.key];});
+  var colors = vals.map(function(v){ return v>=0 ? C.pos : C.neg; });
+  document.getElementById("barSrc").textContent = p.src;
+  var ctx = document.getElementById("barChart");
+  if(barChart){
+    barChart.data.labels = labels;
+    barChart.data.datasets[0].data = vals;
+    barChart.data.datasets[0].backgroundColor = colors;
+    barChart.options.plugins.title.text = p.label + "  total return by sector";
+    barChart.update();
+    return;
+  }
+  barChart = new Chart(ctx, {
+    type:"bar",
+    data:{ labels:labels, datasets:[{ data:vals, backgroundColor:colors, borderRadius:4, borderSkipped:false }]},
+    options:{
+      indexAxis:"y", responsive:true, maintainAspectRatio:false,
+      animation:{duration:850, easing:"easeOutQuart"},
+      plugins:{
+        legend:{display:false},
+        title:{display:true, text:p.label+"  total return by sector", color:"#e7ebf2", font:{family:"'Fraunces',serif", size:15, weight:"600"}, padding:{bottom:14}},
+        tooltip:{callbacks:{label:function(c){ return fmtPct(c.parsed.x); }}}
+      },
+      scales:{
+        x:{ grid:{color:C.grid}, border:{display:false}, ticks:{callback:function(v){return v+"%";}} },
+        y:{ grid:{display:false}, border:{display:false}, ticks:{color:"#e7ebf2", font:{size:11.5}} }
+      }
+    }
+  });
+}
+function revealChart(){
+  var a=document.getElementById("chartArea");
+  if(a.style.display!=="none") return;
+  a.style.display="block";
+  buildBar();
+}
+(function(){
+  var best = SECTORS.slice().sort(function(a,b){return b.h1-a.h1;})[0];
+  var box = document.getElementById("guessResult");
+  Array.prototype.forEach.call(document.querySelectorAll(".gbtn"), function(b){
+    b.addEventListener("click", function(){
+      var g=b.getAttribute("data-g");
+      var picked = SECTORS.filter(function(s){return s.name===g;})[0];
+      var right = (g===best.name);
+      box.className = "result " + (right?"ok":"no");
+      box.style.display="block";
+      var rank = SECTORS.slice().sort(function(x,y){return y.h1-x.h1;}).map(function(s){return s.name;}).indexOf(g)+1;
+      box.innerHTML = right
+        ? "Correct. <b>"+best.name+"</b> led with a total return of <span class='num'>"+fmtPct(best.h1)+"</span>. It was close though: Information Technology and Energy both finished within <span class='num'>0.51</span> of a percentage point of it."
+        : "Not this time. <b>"+g+"</b> finished "+rank+" of 11 with <span class='num "+cls(picked.h1)+"'>"+fmtPct(picked.h1)+"</span>. The leader was <b>"+best.name+"</b> at <span class='num pos'>"+fmtPct(best.h1)+"</span>.";
+      revealChart();
+      setTimeout(function(){ document.getElementById("chartArea").scrollIntoView({behavior:"smooth",block:"nearest"}); }, 120);
+    });
+  });
+  document.getElementById("skipGuess").addEventListener("click", revealChart);
+  var tH=document.getElementById("tgH1"), tC=document.getElementById("tgCY");
+  tH.addEventListener("click", function(){ curPeriod="h1"; tH.setAttribute("aria-pressed","true"); tC.setAttribute("aria-pressed","false"); buildBar(); });
+  tC.addEventListener("click", function(){ curPeriod="cy2025"; tC.setAttribute("aria-pressed","true"); tH.setAttribute("aria-pressed","false"); buildBar(); });
+})();
+
+/* ============ 4. HEATMAP ============ */
+var selected = [];
+var curSort = "h1";
+var badgeCls = {"More Favored":"b-more","Neutral":"b-neu","Less Favored":"b-less","Least Favored":"b-least"};
+
+function renderGrid(){
+  var rows = SECTORS.slice().sort(function(a,b){
+    if(curSort==="h1") return b.h1-a.h1;
+    if(curSort==="weight") return b.weight-a.weight;
+    if(curSort==="fpe") return a.fpe-b.fpe;
+    if(curSort==="top10") return b.top10-a.top10;
+    return 0;
+  });
+  var g = document.getElementById("sectorGrid");
+  g.innerHTML = "";
+  rows.forEach(function(s){
+    var on = selected.indexOf(s.name)>-1;
+    var d = document.createElement("div");
+    d.className="scard"; d.setAttribute("role","button"); d.setAttribute("tabindex","0");
+    d.setAttribute("aria-pressed", on?"true":"false");
+    d.innerHTML =
+      '<span class="tick">'+s.etf+'</span>'+
+      '<h4>'+s.name+'</h4>'+
+      '<div class="rows">'+
+        '<span class="k">Weight in S&P 500</span><span class="v num">'+s.weight.toFixed(2)+'%</span>'+
+        '<span class="k">Return, H1 2026</span><span class="v num '+cls(s.h1)+'">'+fmtPct(s.h1)+'</span>'+
+        '<span class="k">Return, past 1 year</span><span class="v num '+(s.ttm===null?"muted":cls(s.ttm))+'">'+fmtPct(s.ttm)+'</span>'+
+        '<span class="k">Forward P/E</span><span class="v num">'+s.fpe.toFixed(2)+'</span>'+
+        '<span class="k">Trailing P/E</span><span class="v num muted">'+s.tpe.toFixed(2)+'</span>'+
+        '<span class="k">Largest 10 holdings</span><span class="v num">'+s.top10.toFixed(2)+'%</span>'+
+      '</div>'+
+      '<span class="badge '+badgeCls[s.rating]+'">Schwab: '+s.rating+'</span>'+
+      '<div class="hold"><b>Three largest holdings</b>'+
+        s.top3.map(function(h){ return h[0]+' <span class="num">'+h[1].toFixed(2)+'%</span>'; }).join(" &middot; ")+
+      '</div>';
+    var toggle = function(){
+      var i = selected.indexOf(s.name);
+      if(i>-1) selected.splice(i,1);
+      else { if(selected.length>=3) selected.shift(); selected.push(s.name); }
+      renderGrid(); renderCmp();
+    };
+    d.addEventListener("click", toggle);
+    d.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); }});
+    g.appendChild(d);
+  });
+}
+function renderCmp(){
+  var box=document.getElementById("cmpBox"), t=document.getElementById("cmpTable");
+  if(selected.length===0){ box.className="cmp"; t.innerHTML=""; return; }
+  box.className="cmp on";
+  var picks = selected.map(function(n){ return SECTORS.filter(function(s){return s.name===n;})[0]; });
+  var metrics = [
+    ["Sector ETF", function(s){return s.etf;}, false],
+    ["Weight in S&P 500", function(s){return s.weight.toFixed(2)+"%";}, false],
+    ["Return, H1 2026", function(s){return fmtPct(s.h1);}, true],
+    ["Return, past 1 year", function(s){return fmtPct(s.ttm);}, true],
+    ["Return, 2025", function(s){return fmtPct(s.cy2025);}, true],
+    ["Return, 2024", function(s){return fmtPct(s.cy2024);}, true],
+    ["Forward P/E", function(s){return s.fpe.toFixed(2);}, false],
+    ["Trailing P/E", function(s){return s.tpe.toFixed(2);}, false],
+    ["Largest 10 holdings", function(s){return s.top10.toFixed(2)+"%";}, false],
+    ["Schwab view, 26 Jun 2026", function(s){return s.rating;}, false]
+  ];
+  var h = "<thead><tr><th>Measure</th>"+picks.map(function(s){return "<th>"+s.short+"</th>";}).join("")+"</tr></thead><tbody>";
+  metrics.forEach(function(m){
+    h += "<tr><td>"+m[0]+"</td>"+picks.map(function(s){
+      var v = m[1](s);
+      var c = "";
+      if(m[2] && v!=="n/a"){ c = v.indexOf("-")===0 ? "neg":"pos"; }
+      return '<td class="num '+c+'">'+v+"</td>";
+    }).join("")+"</tr>";
+  });
+  t.innerHTML = h+"</tbody>";
+}
+Array.prototype.forEach.call(document.querySelectorAll(".sbtn"), function(b){
+  b.addEventListener("click", function(){
+    curSort=b.getAttribute("data-sort");
+    Array.prototype.forEach.call(document.querySelectorAll(".sbtn"), function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); });
+    renderGrid();
+  });
+});
+document.getElementById("clearSel").addEventListener("click", function(){ selected=[]; renderGrid(); renderCmp(); });
+renderGrid();
+
+/* ============ 5. CALCULATOR ============ */
+(function(){
+  var sel=document.getElementById("secSel"), amt=document.getElementById("amt");
+  SECTORS.slice().sort(function(a,b){return b.h1-a.h1;}).forEach(function(s){
+    var o=document.createElement("option"); o.value=s.name; o.textContent=s.name+"  ("+fmtPct(s.h1)+")"; sel.appendChild(o);
+  });
+  function run(){
+    var a=parseFloat(amt.value); if(isNaN(a)||a<=0) a=0;
+    var s=SECTORS.filter(function(x){return x.name===sel.value;})[0];
+    if(!s) s=SECTORS.slice().sort(function(x,y){return y.h1-x.h1;})[0];
+    var endS=a*(1+s.h1/100), endI=a*(1+IDX.h1/100);
+    var mx=Math.max(endS,endI,1);
+    document.getElementById("lblSec").textContent=s.name;
+    document.getElementById("valSec").textContent=fmtUsd(endS);
+    document.getElementById("valSec").className="num "+cls(s.h1);
+    document.getElementById("valIdx").textContent=fmtUsd(endI);
+    document.getElementById("finSec").style.width=(endS/mx*100)+"%";
+    document.getElementById("finSec").style.background=(s.h1>=0?C.pos:C.neg);
+    document.getElementById("finIdx").style.width=(endI/mx*100)+"%";
+    var diff=endS-endI;
+    document.getElementById("calcOut").innerHTML =
+      "<b>"+fmtUsd(a)+"</b> placed in <b>"+s.name+"</b> on 1 January 2026 had become <b class='num "+cls(s.h1)+"'>"+fmtUsd(endS)+"</b> by 30 June 2026, a total return of <span class='num "+cls(s.h1)+"'>"+fmtPct(s.h1)+"</span>. The same amount tracking the whole S&P 500 had become <b class='num'>"+fmtUsd(endI)+"</b>, a difference of <span class='num "+(diff>=0?"pos":"neg")+"'>"+(diff>=0?"+":"-")+fmtUsd(Math.abs(diff))+"</span>. This is what already happened over a period that has ended.";
+  }
+  sel.addEventListener("change",run); amt.addEventListener("input",run);
+  Array.prototype.forEach.call(document.querySelectorAll(".pbtn"), function(b){
+    b.addEventListener("click", function(){ amt.value=b.getAttribute("data-amt"); run(); });
+  });
+  run();
+})();
+
+/* ============ 6. SCATTER ============ */
+var scChart=null, scMode=null;
+(function(){
+  var cheap = SECTORS.filter(function(s){ return s.fpe<IDX.fpe && s.h1>IDX.h1; }).map(function(s){return s.name;});
+  var exp   = SECTORS.filter(function(s){ return s.fpe>IDX.fpe && s.h1<IDX.h1; }).map(function(s){return s.name;});
+  var crosshair = {
+    id:"crosshair",
+    beforeDatasetsDraw: function(chart){
+      var ctx=chart.ctx, xs=chart.scales.x, ys=chart.scales.y;
+      ctx.save(); ctx.setLineDash([5,5]); ctx.lineWidth=1.2; ctx.strokeStyle="#5a6478";
+      var px=xs.getPixelForValue(IDX.fpe), py=ys.getPixelForValue(IDX.h1);
+      ctx.beginPath(); ctx.moveTo(px,ys.top); ctx.lineTo(px,ys.bottom); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(xs.left,py); ctx.lineTo(xs.right,py); ctx.stroke();
+      ctx.setLineDash([]); ctx.fillStyle="#8b94a6"; ctx.font="10px 'JetBrains Mono', monospace";
+      ctx.fillText("index P/E 18.84", px+5, ys.top+12);
+      ctx.fillText("index return +10.21%", xs.left+5, py-6);
+      ctx.restore();
+    }
+  };
+  function pts(){
+    return SECTORS.map(function(s){
+      var hi = !scMode || (scMode==="cheap"?cheap:exp).indexOf(s.name)>-1;
+      return {x:s.fpe, y:s.h1, label:s.short, full:s.name,
+        r: hi?(scMode?11:7):5,
+        bg: hi ? (s.h1>=0?C.pos:C.neg) : "rgba(120,130,150,.22)",
+        bd: hi ? "#e7ebf2" : "rgba(120,130,150,.3)"};
+    });
+  }
+  function build(){
+    var p=pts();
+    var cfg={
+      type:"scatter",
+      data:{datasets:[{ data:p,
+        pointRadius:p.map(function(d){return d.r;}),
+        pointHoverRadius:p.map(function(d){return d.r+3;}),
+        backgroundColor:p.map(function(d){return d.bg;}),
+        borderColor:p.map(function(d){return d.bd;}), borderWidth:1.5 }]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        animation:{duration:600},
+        layout:{padding:{top:8,right:14}},
+        plugins:{ legend:{display:false},
+          tooltip:{callbacks:{label:function(c){ var d=c.raw; return d.full+": P/E "+d.x.toFixed(2)+", return "+fmtPct(d.y); }}}
+        },
+        scales:{
+          x:{ title:{display:true,text:"Forward P/E  (lower means cheaper per dollar of expected profit)",color:C.tx2,font:{size:11}},
+              grid:{color:C.grid}, border:{display:false}, min:11, max:40 },
+          y:{ title:{display:true,text:"Total return, H1 2026",color:C.tx2,font:{size:11}},
+              grid:{color:C.grid}, border:{display:false}, ticks:{callback:function(v){return v+"%";}} }
+        }
+      },
+      plugins:[crosshair, {
+        id:"labels",
+        afterDatasetsDraw:function(chart){
+          var ctx=chart.ctx, meta=chart.getDatasetMeta(0);
+          ctx.save(); ctx.font="10px 'JetBrains Mono', monospace"; ctx.textAlign="center";
+          meta.data.forEach(function(el,i){
+            var d=chart.data.datasets[0].data[i];
+            var dim = scMode && ((scMode==="cheap"?cheap:exp).indexOf(d.full)===-1);
+            ctx.fillStyle = dim ? "rgba(150,160,175,.3)" : "#c3ccd9";
+            ctx.fillText(d.label, el.x, el.y-(d.r+6));
+          });
+          ctx.restore();
+        }
+      }]
+    };
+    scChart = new Chart(document.getElementById("scatterChart"), cfg);
+  }
+  function refresh(){
+    var p=pts(), ds=scChart.data.datasets[0];
+    ds.data=p;
+    ds.pointRadius=p.map(function(d){return d.r;});
+    ds.pointHoverRadius=p.map(function(d){return d.r+3;});
+    ds.backgroundColor=p.map(function(d){return d.bg;});
+    ds.borderColor=p.map(function(d){return d.bd;});
+    scChart.update();
+  }
+  build();
+  function wire(el,mode){
+    var f=function(){
+      scMode = (scMode===mode)?null:mode;
+      document.getElementById("qCheap").setAttribute("aria-pressed", scMode==="cheap"?"true":"false");
+      document.getElementById("qExp").setAttribute("aria-pressed", scMode==="exp"?"true":"false");
+      refresh();
+    };
+    el.addEventListener("click",f);
+    el.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){e.preventDefault();f();} });
+  }
+  wire(document.getElementById("qCheap"),"cheap");
+  wire(document.getElementById("qExp"),"exp");
+})();
+
+/* ============ 7. VALUATION SHIFT ============ */
+(function(){
+  var rows = VALSHIFT.slice().sort(function(a,b){ return (a.now-a.soy)-(b.now-b.soy); });
+  new Chart(document.getElementById("shiftChart"), {
+    type:"bar",
+    data:{ labels:rows.map(function(r){return r.name;}),
+      datasets:[
+        {label:"Start of 2026", data:rows.map(function(r){return r.soy;}), backgroundColor:"rgba(74,144,217,.55)", borderColor:C.info, borderWidth:1, borderRadius:3},
+        {label:"Now (22 Jul 2026)", data:rows.map(function(r){return r.now;}), backgroundColor:"rgba(226,149,60,.65)", borderColor:C.warn, borderWidth:1, borderRadius:3}
+      ]},
+    options:{ indexAxis:"y", responsive:true, maintainAspectRatio:false,
+      animation:{duration:750},
+      plugins:{ legend:{position:"top", labels:{color:C.tx2, boxWidth:11, font:{size:11}}},
+        title:{display:true,text:"Forward P/E, start of year against now",color:"#e7ebf2",font:{family:"'Fraunces',serif",size:14,weight:"600"},padding:{bottom:12}},
+        tooltip:{callbacks:{
+          label:function(c){return c.dataset.label+": "+c.parsed.x.toFixed(1);},
+          afterBody:function(items){ var r=rows[items[0].dataIndex]; var d=r.now-r.soy;
+            return "Change: "+(d>0?"+":"")+d.toFixed(1)+" points "+(d<0?"cheaper":"pricier"); }
+        }}
+      },
+      scales:{ x:{grid:{color:C.grid},border:{display:false},title:{display:true,text:"Forward P/E",color:C.tx2,font:{size:11}}},
+               y:{grid:{display:false},border:{display:false},ticks:{color:"#e7ebf2",font:{size:11}}} }
+    }
+  });
+})();
+
+/* ============ 8. ROTATION ============ */
+(function(){
+  var periods = [
+    {key:"cy2024", t:"l2024t", b:"l2024b"},
+    {key:"cy2025", t:"l2025t", b:"l2025b"},
+    {key:"h1",     t:"l2026t", b:"l2026b"}
+  ];
+  function fill(){
+    periods.forEach(function(p){
+      var sorted = SECTORS.slice().sort(function(a,b){return b[p.key]-a[p.key];});
+      var top=sorted.slice(0,3), bot=sorted.slice(-3).reverse();
+      [[p.t,top],[p.b,bot]].forEach(function(pair){
+        var ul=document.getElementById(pair[0]); ul.innerHTML="";
+        pair[1].forEach(function(s){
+          var li=document.createElement("li");
+          li.setAttribute("data-s", s.name);
+          li.innerHTML = "<span>"+s.short+"</span><b class='num "+cls(s[p.key])+"'>"+fmtPct(s[p.key],1)+"</b>";
+          ul.appendChild(li);
+        });
+      });
+    });
+  }
+  fill();
+  var chips=document.getElementById("rotChips"), strip=document.getElementById("pathStrip"), active=null;
+  SECTORS.slice().sort(function(a,b){return a.name.localeCompare(b.name);}).forEach(function(s){
+    var b=document.createElement("button");
+    b.className="chip"; b.textContent=s.short; b.setAttribute("aria-pressed","false"); b.setAttribute("data-s",s.name);
+    b.addEventListener("click", function(){ setActive(active===s.name?null:s.name); });
+    chips.appendChild(b);
+  });
+  function rankIn(key,name){
+    var sorted=SECTORS.slice().sort(function(a,b){return b[key]-a[key];});
+    return sorted.map(function(s){return s.name;}).indexOf(name)+1;
+  }
+  function setActive(name){
+    active=name;
+    Array.prototype.forEach.call(chips.querySelectorAll(".chip"), function(c){
+      c.setAttribute("aria-pressed", c.getAttribute("data-s")===name?"true":"false");
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".rlist li"), function(li){
+      li.className="";
+      if(!name) return;
+      if(li.getAttribute("data-s")===name) li.className="hl"; else li.className="dim";
+    });
+    if(!name){ strip.className="path"; strip.innerHTML=""; return; }
+    var s=SECTORS.filter(function(x){return x.name===name;})[0];
+    strip.className="path on";
+    strip.innerHTML = "<b>"+s.name+"</b> across all three periods, including where it does not appear in the cards above:"+
+      "<div class='pathrow'>"+
+      "<span>2024: rank <span class='num'>"+rankIn("cy2024",name)+"/11</span>, <span class='num "+cls(s.cy2024)+"'>"+fmtPct(s.cy2024,1)+"</span></span>"+
+      "<span>2025: rank <span class='num'>"+rankIn("cy2025",name)+"/11</span>, <span class='num "+cls(s.cy2025)+"'>"+fmtPct(s.cy2025,1)+"</span></span>"+
+      "<span>H1 2026: rank <span class='num'>"+rankIn("h1",name)+"/11</span>, <span class='num "+cls(s.h1)+"'>"+fmtPct(s.h1,1)+"</span></span>"+
+      "</div>";
+  }
+})();
+</script>
+</body>
+</html>
