@@ -1,102 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Daily Brief — Mon, August 3, 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daily Brief — Tue, August 4, 2026</title>
 <style>
   :root{
-    --bg:#0a0c10; --panel:#12161d; --panel2:#161b24; --edge:#232a35;
-    --txt:#e6eaf0; --mut:#93a0b2; --dim:#6b7686;
-    --grn:#33d17a; --grnbg:rgba(51,209,122,.12);
-    --red:#ff5d5d; --redbg:rgba(255,93,93,.12);
-    --amb:#ffb020; --ambbg:rgba(255,176,32,.12);
-    --blu:#4aa8ff; --accent:#7aa2ff;
+    --bg:#0a0c10; --panel:#12161d; --panel2:#161b23; --line:#232a34;
+    --txt:#e6eaf0; --muted:#8b95a5; --dim:#5f6b7c;
+    --green:#2fbf71; --greenbg:rgba(47,191,113,.12);
+    --red:#ef5350; --redbg:rgba(239,83,80,.12);
+    --amber:#f5b544; --amberbg:rgba(245,181,68,.12);
+    --blue:#4aa3ff; --accent:#6c8cff;
   }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{background:var(--bg);color:var(--txt);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:22px 18px 60px}
-  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-  a{color:var(--accent);text-decoration:none}
-  header.top{border:1px solid var(--edge);border-radius:14px;padding:20px 22px;
-    background:linear-gradient(180deg,#141a24,#10141b)}
-  header.top h1{margin:0;font-size:26px;letter-spacing:.3px}
-  header.top .date{color:var(--mut);margin-top:4px;font-size:14px}
-  .regime{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
-    padding:7px 14px;border-radius:999px;font-weight:700;font-size:14px;
-    background:var(--grnbg);color:var(--grn);border:1px solid rgba(51,209,122,.35)}
-  .regime .dot{width:9px;height:9px;border-radius:50%;background:var(--grn)}
-  .subdisc{margin-top:12px;font-size:12.5px;color:var(--amb);
-    border-left:3px solid var(--amb);padding-left:10px}
-  .datanote{margin-top:14px;font-size:12.5px;color:var(--mut);background:var(--panel2);
-    border:1px dashed var(--edge);border-radius:10px;padding:10px 12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;font-size:15px;-webkit-font-smoothing:antialiased}
+  .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+  .wrap{max-width:1120px;margin:0 auto;padding:22px 18px 60px}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:8px}
+  h1{font-size:26px;letter-spacing:-.5px;font-weight:700}
+  .sub{color:var(--muted);font-size:13.5px;margin-top:3px}
+  .disc-line{margin-top:10px;font-size:11.5px;color:var(--amber);background:var(--amberbg);border-left:3px solid var(--amber);padding:6px 10px;border-radius:4px}
+  .regime{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid var(--line)}
+  .regime .dot{width:10px;height:10px;border-radius:50%}
+  .rg-normal{background:var(--greenbg);border-color:rgba(47,191,113,.4)}
+  .rg-normal .dot{background:var(--green)}
   section{margin-top:26px}
-  h2.sec{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--dim);
-    margin:0 0 12px;font-weight:700;display:flex;align-items:center;gap:10px}
-  h2.sec .n{display:inline-flex;align-items:center;justify-content:center;
-    width:22px;height:22px;border-radius:6px;background:var(--panel2);color:var(--accent);
-    border:1px solid var(--edge);font-size:12px}
-  .card{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:16px}
+  h2.sec{font-size:18px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
+  h2.sec .num{color:var(--accent);font-size:14px;font-weight:700;border:1px solid var(--line);border-radius:6px;padding:2px 8px;background:var(--panel)}
+  h2.sec .note{font-size:12.5px;color:var(--muted);font-weight:400;margin-left:auto}
   .grid{display:grid;gap:12px}
-  .g5{grid-template-columns:repeat(5,1fr)}
-  .g2{grid-template-columns:1fr 1fr}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:860px){.g5{grid-template-columns:repeat(2,1fr)}.g2,.g3{grid-template-columns:1fr}}
-  .quote{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:14px}
-  .quote .sym{font-weight:700;font-size:15px;letter-spacing:.3px}
-  .quote .px{font-size:22px;font-weight:700;margin-top:6px}
-  .quote .chg{font-size:13.5px;font-weight:600;margin-top:2px}
-  .quote .meta{font-size:11.5px;color:var(--mut);margin-top:8px;line-height:1.45}
-  .up{color:var(--grn)} .dn{color:var(--red)} .fl{color:var(--amb)}
+  .cards5{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .snap{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .card .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .card .big{font-size:23px;font-weight:700;margin-top:4px}
+  .card .chg{font-size:13.5px;font-weight:600;margin-top:2px}
+  .card .meta{font-size:11.5px;color:var(--dim);margin-top:7px;line-height:1.45}
+  .up{color:var(--green)} .down{color:var(--red)} .flat{color:var(--muted)}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px}
+  .p-on{background:var(--greenbg);color:var(--green)} .p-off{background:var(--redbg);color:var(--red)} .p-cau{background:var(--amberbg);color:var(--amber)}
   table{width:100%;border-collapse:collapse;font-size:13.5px}
-  th,td{text-align:right;padding:8px 9px;border-bottom:1px solid var(--edge)}
+  th,td{text-align:right;padding:8px 10px;border-bottom:1px solid var(--line)}
   th:first-child,td:first-child{text-align:left}
-  thead th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
+  thead th{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
   tbody tr:hover{background:var(--panel2)}
-  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700}
-  .t-on{background:var(--grnbg);color:var(--grn)}
-  .t-off{background:var(--redbg);color:var(--red)}
-  .t-cau{background:var(--ambbg);color:var(--amb)}
-  .bar{height:9px;border-radius:5px;background:var(--panel2);overflow:hidden;position:relative;min-width:80px}
-  .bar>span{position:absolute;top:0;bottom:0;border-radius:5px}
-  .bar .pos{background:var(--grn);left:50%} .bar .neg{background:var(--red);right:50%}
-  .barcell{display:flex;align-items:center;gap:10px;justify-content:flex-end}
-  .pill{font-size:11px;color:var(--mut);border:1px solid var(--edge);border-radius:6px;padding:2px 7px}
-  .driver h3{margin:0 0 6px;font-size:15px}
-  .driver p{margin:0;font-size:13px;color:var(--mut)}
-  .impact{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
-  .setup{border:1px solid var(--edge);border-radius:12px;padding:14px;background:var(--panel)}
-  .setup .h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-  .setup .h .s{font-weight:700;font-size:16px}
-  .setup .h .p{color:var(--mut);font-size:12.5px}
-  .setup .struct{margin-top:8px;font-size:13px;background:var(--panel2);border-radius:8px;padding:8px 10px}
-  .setup .th{margin-top:8px;font-size:12.5px;color:var(--mut)}
-  .setup .mx{margin-top:8px;font-size:12px;color:var(--amb)}
-  ul.clean{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--mut)}
-  ul.clean li{margin:4px 0}
-  .kv{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--edge)}
-  .kv:last-child{border-bottom:none}
-  .kv .k{color:var(--mut)}
-  .tally{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-  .feat{background:linear-gradient(180deg,#161d2a,#12161d);border:1px solid var(--edge);border-radius:12px;padding:18px}
-  .feat .badge{display:inline-block;background:var(--ambbg);color:var(--amb);font-weight:700;
-    font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:6px}
-  .gp{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  @media(max-width:860px){.gp{grid-template-columns:1fr}}
-  .gp .col h4{margin:0 0 8px;font-size:13px;letter-spacing:.5px}
-  .gp .favor h4{color:var(--grn)} .gp .avoid h4{color:var(--red)} .gp .watch h4{color:var(--amb)}
-  .bottom{background:linear-gradient(180deg,#141a24,#10141b);border:1px solid var(--edge);
-    border-radius:14px;padding:20px 22px}
-  .bottom .focus{margin-top:12px;padding:12px 14px;background:var(--ambbg);border:1px solid rgba(255,176,32,.35);
-    border-radius:10px;font-size:14px}
-  .disc{margin-top:30px;border:2px solid var(--amb);background:rgba(255,176,32,.06);
-    border-radius:12px;padding:16px 18px;font-size:13.5px;color:#f0d9a8;line-height:1.6}
-  .disc strong{color:var(--amb)}
-  footer{margin-top:24px;text-align:center;color:var(--dim);font-size:12px}
-  .muted{color:var(--dim)}
+  .bar{height:8px;border-radius:4px;background:var(--panel2);position:relative;overflow:hidden;min-width:70px;flex:1}
+  .bar span{position:absolute;top:0;bottom:0;border-radius:4px}
+  .barcell{display:flex;align-items:center;gap:9px;justify-content:flex-end}
+  .tbl-wrap{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .tbl-wrap table td,.tbl-wrap table th{padding:9px 12px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:760px){.two{grid-template-columns:1fr}h2.sec .note{display:none}}
+  .drv{border-left:3px solid var(--line)}
+  .drv.bull{border-left-color:var(--green)} .drv.bear{border-left-color:var(--red)} .drv.neu{border-left-color:var(--amber)}
+  .drv h4{font-size:14.5px;margin-bottom:5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .drv p{font-size:13px;color:var(--muted)}
+  .tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;text-transform:uppercase}
+  .tag.b{background:var(--greenbg);color:var(--green)} .tag.r{background:var(--redbg);color:var(--red)} .tag.n{background:var(--amberbg);color:var(--amber)}
+  .setup{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:10px}
+  .setup .hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+  .setup .tk{font-size:17px;font-weight:700}
+  .setup .strat{font-size:12px;font-weight:700;color:var(--blue);background:rgba(74,163,255,.1);padding:2px 8px;border-radius:5px}
+  .setup .stats{font-size:11.5px;color:var(--dim);margin-left:auto;font-variant-numeric:tabular-nums}
+  .setup .body{font-size:13px;color:var(--muted)}
+  .setup .body b{color:var(--txt);font-weight:600}
+  .mon td:first-child{font-weight:600}
+  .focusbox{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:18px}
+  .focusbox h3{font-size:16px;margin-bottom:8px}
+  .focusbox p{font-size:13.5px;color:var(--muted);margin-bottom:10px}
+  .risk{background:var(--redbg);border:1px solid rgba(239,83,80,.3);border-radius:8px;padding:11px 13px;font-size:13px}
+  .risk b{color:var(--red)}
+  .plan{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  @media(max-width:760px){.plan{grid-template-columns:1fr}}
+  .plan .col{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px}
+  .plan .col h4{font-size:13px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+  .plan ul{list-style:none} .plan li{font-size:13px;color:var(--muted);padding:4px 0;border-bottom:1px dashed var(--line)}
+  .plan li:last-child{border-bottom:none}
+  .bottom{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;font-size:14px;color:var(--txt)}
+  .bottom .focus{margin-top:12px;padding:11px 13px;background:var(--greenbg);border-radius:8px;border:1px solid rgba(47,191,113,.3);font-size:13.5px}
+  .discBand{margin-top:34px;border:2px solid var(--amber);background:var(--amberbg);border-radius:12px;padding:18px 20px}
+  .discBand h4{color:var(--amber);font-size:15px;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px}
+  .discBand p{font-size:13px;color:var(--txt);line-height:1.6}
+  footer{margin-top:22px;text-align:center;color:var(--dim);font-size:11.5px}
+  .src{margin-top:10px;font-size:11px;color:var(--dim)}
 </style>
 </head>
 <body>
@@ -104,324 +91,269 @@
 
 <header class="top">
   <h1>The Daily Brief</h1>
-  <div class="date">Market &amp; Options Overview — Monday, August 3, 2026 · U.S. close</div>
-  <div class="regime"><span class="dot"></span>Regime: NORMAL · VIX zone: Moderate (15–20)</div>
-  <div class="subdisc"><strong>Disclaimer:</strong> Educational use only — not investment advice. Options involve substantial risk. See full disclaimer below.</div>
-  <div class="datanote"><strong>Data note.</strong> The Alpha Vantage market-data feed was unavailable for this run, and the watchlist email's day-change columns were stale (a documented issue). Closing <em>prices</em>, moving averages, RSI, 52-week range and volumes are taken from the Barchart watchlist feed; daily <em>percentage changes</em> for the index ETFs have been reconciled to the official index closes (S&amp;P 500 +1.5%, Nasdaq +2.1%, Dow +1.32% to a record 53,178, Russell 2000 +1.73%). DIA and per-sector 1-day figures are flagged where a clean quote was not obtainable.</div>
+  <div class="sub">Daily Market &amp; Options Overview &nbsp;·&nbsp; Tuesday, August 4, 2026 &nbsp;·&nbsp; U.S. cash close</div>
+  <div class="disc-line">Disclaimer — Educational use only. Not investment advice. Options trading involves substantial risk. Data may be delayed or inaccurate.</div>
+  <div class="regime rg-normal"><span class="dot"></span>Regime: NORMAL &nbsp;·&nbsp; VIX 16.50 (moderate zone) · SPY above its 20- &amp; 50-day · bullish structures permitted</div>
 </header>
 
 <!-- 1. MARKET SNAPSHOT -->
 <section>
-  <h2 class="sec"><span class="n">1</span>Market Snapshot</h2>
-  <div class="grid g5">
-    <div class="quote">
-      <div class="sym">SPY</div>
-      <div class="px num">757.67</div>
-      <div class="chg up num">+11.2 (+1.5%)</div>
-      <div class="meta num">Vol 59.8M vs 48.5M avg (1.23×)<br>Above-average, up day</div>
+  <h2 class="sec"><span class="num">01</span> Market Snapshot <span class="note">Price, change &amp; volume from Alpha Vantage · VIX &amp; term structure from macro dashboard</span></h2>
+  <div class="grid snap">
+    <div class="card">
+      <div class="lbl">S&amp;P 500 · SPY</div>
+      <div class="big tnum">771.33</div>
+      <div class="chg up tnum">+13.66 (+1.80%)</div>
+      <div class="meta">Vol 66.98M vs 49.68M avg · <b class="up">1.35×</b><br>Record close · 52-wk range 98.6%</div>
     </div>
-    <div class="quote">
-      <div class="sym">QQQ</div>
-      <div class="px num">700.07</div>
-      <div class="chg up num">+14.4 (+2.1%)</div>
-      <div class="meta num">Vol 44.7M vs 40.9M avg (1.09×)<br>Big-tech led</div>
+    <div class="card">
+      <div class="lbl">Nasdaq 100 · QQQ</div>
+      <div class="big tnum">723.85</div>
+      <div class="chg up tnum">+23.78 (+3.40%)</div>
+      <div class="meta">Vol 58.11M vs 41.69M avg · <b class="up">1.40×</b><br>Tech-led melt-up</div>
     </div>
-    <div class="quote">
-      <div class="sym">DIA</div>
-      <div class="px num">≈531.8</div>
-      <div class="chg up num">+6.9 (+1.32%)</div>
-      <div class="meta num">Dow 53,178 — record high<br>Vol — (DIA not in feed)</div>
+    <div class="card">
+      <div class="lbl">Russell 2000 · IWM</div>
+      <div class="big tnum">301.71</div>
+      <div class="chg up tnum">+5.49 (+1.85%)</div>
+      <div class="meta">Vol 20.24M vs 21.92M avg · <b class="flat">0.92×</b><br>Small-caps confirming</div>
     </div>
-    <div class="quote">
-      <div class="sym">IWM</div>
-      <div class="px num">296.22</div>
-      <div class="chg up num">+5.0 (+1.7%)</div>
-      <div class="meta num">Vol 23.1M vs 21.8M avg (1.06×)<br>R2000 2,981.9 +1.73%</div>
+    <div class="card">
+      <div class="lbl">Dow 30 · DIA</div>
+      <div class="big tnum">540.43</div>
+      <div class="chg up tnum">+9.21 (+1.73%)</div>
+      <div class="meta">Dow &gt; 54,000 first time ever<br>Broad participation</div>
     </div>
-    <div class="quote">
-      <div class="sym">VIX</div>
-      <div class="px num">15.86</div>
-      <div class="chg dn num">−0.13 (−0.8%)</div>
-      <div class="meta num">Zone: Moderate (15–20)<br>Near cycle lows</div>
+    <div class="card">
+      <div class="lbl">Volatility · VIX</div>
+      <div class="big tnum">16.50</div>
+      <div class="chg down tnum">−0.13 (−0.81%)</div>
+      <div class="meta">Zone: <b class="up">Moderate (15–20)</b><br>Prior close 16.63</div>
     </div>
   </div>
   <div class="card" style="margin-top:12px">
-    <div class="grid g2">
-      <div>
-        <div style="font-weight:700;margin-bottom:6px">VIX Term Structure — upward-sloping (contango)</div>
-        <div class="kv"><span class="k">VXST (9-day)</span><span class="num">13.28</span></div>
-        <div class="kv"><span class="k">VIX (30-day)</span><span class="num">15.86</span></div>
-        <div class="kv"><span class="k">VXV (3-month)</span><span class="num">18.93</span></div>
-        <div class="kv"><span class="k">VXMT (6-month)</span><span class="num">21.20</span></div>
-        <div class="meta" style="font-size:12px;color:var(--mut);margin-top:8px">Classic calm-market shape — near-dated vol below longer-dated. Consistent with complacency, not stress.</div>
-      </div>
-      <div>
-        <div style="font-weight:700;margin-bottom:6px">Breadth &amp; Positioning</div>
-        <div class="kv"><span class="k">NYSE new 1-mo highs / lows</span><span class="num">259 / 103</span></div>
-        <div class="kv"><span class="k">Nasdaq new 1-mo highs</span><span class="num">346</span></div>
-        <div class="kv"><span class="k">Total put/call ratio</span><span class="num">0.61</span></div>
-        <div class="kv"><span class="k">U.S. Dollar Index (DXY)</span><span class="num">99.96 (−0.16%)</span></div>
-        <div class="meta" style="font-size:12px;color:var(--mut);margin-top:8px">Breadth net-positive but the tape was mega-cap-led. A 0.61 put/call is low — call-heavy, complacent.</div>
-      </div>
+    <div class="lbl">VIX Term Structure &amp; Breadth</div>
+    <div style="font-size:13px;color:var(--txt);margin-top:6px;line-height:1.55">
+      <b>Term structure (contango / calm):</b> VXST 9-day <span class="tnum">15.04</span> &lt; VIX <span class="tnum">16.50</span> &lt; VXV 3-mo <span class="tnum">19.34</span> &lt; VXMT 6-mo <span class="tnum">21.35</span> — upward-sloping curve, no near-term stress priced.<br>
+      <b>Breadth (strongly positive):</b> NYSE net advancers <span class="up tnum">+603</span>, Nasdaq net advancers <span class="up tnum">+1,392</span>; new highs swamp new lows (NYSE 338 vs 137, Nasdaq 411 vs 144). Total put/call <span class="tnum">0.58</span> — bullish, bordering on complacent.
     </div>
   </div>
+  <div style="font-size:11.5px;color:var(--dim);margin-top:7px">Note: watchlist "Latest" ties to the Alpha Vantage close for all four ETFs; the email's stale "Prev Chg" column was disregarded in favor of Alpha Vantage change/percent, per known data quirk.</div>
 </section>
 
 <!-- 2. KEY INDICATORS -->
 <section>
-  <h2 class="sec"><span class="n">2</span>Key Indicators</h2>
-  <div class="grid g2">
-    <div class="card">
-      <div style="font-weight:700;margin-bottom:8px">SPY 757.67 <span class="pill">Tally: 6 Risk-On · 0 Caution · 0 Risk-Off</span></div>
+  <h2 class="sec"><span class="num">02</span> Key Indicators <span class="note">Moving averages, RSI, range &amp; volume from watchlist · tagged per gauge</span></h2>
+  <div class="two">
+    <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Gauge</th><th>Reading</th><th>Signal</th></tr></thead>
+        <thead><tr><th>SPY 771.33 · Tally <span class="up">6 On / 0 Off</span></th><th>Value</th><th>Read</th></tr></thead>
         <tbody>
-          <tr><td>20-day MA 746.01</td><td class="num up">+1.56%</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>50-day MA 745.32</td><td class="num up">+1.66%</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>200-day MA 700.83</td><td class="num up">+8.11%</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>RSI(14)</td><td class="num">59.5</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>52-wk range position</td><td class="num">97.98%</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>Volume vs 20-day avg</td><td class="num">1.23×</td><td><span class="tag t-on">Risk-On</span></td></tr>
+          <tr><td>vs 20-day MA (747.20)</td><td class="up tnum">+3.23%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>vs 50-day MA (745.89)</td><td class="up tnum">+3.41%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>vs 200-day MA (701.36)</td><td class="up tnum">+9.98%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>RSI(14)</td><td class="tnum">66.0</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>52-wk range position</td><td class="tnum">98.6%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>Volume vs 20-day avg</td><td class="up tnum">1.35×</td><td><span class="pill p-on">Risk-On</span></td></tr>
         </tbody>
       </table>
-      <div class="meta" style="font-size:12px;color:var(--mut);margin-top:8px">SPY firmly above all three MAs and pinned near the top of its 52-week range — an unambiguous risk-on posture, though extended.</div>
     </div>
-    <div class="card">
-      <div style="font-weight:700;margin-bottom:8px">QQQ 700.07 <span class="pill">Tally: 3 Risk-On · 2 Caution · 1 Risk-Off</span></div>
+    <div class="tbl-wrap">
       <table>
-        <thead><tr><th>Gauge</th><th>Reading</th><th>Signal</th></tr></thead>
+        <thead><tr><th>QQQ 723.85 · Tally <span class="up">6 On / 0 Off</span></th><th>Value</th><th>Read</th></tr></thead>
         <tbody>
-          <tr><td>20-day MA 699.88</td><td class="num up">+0.03%</td><td><span class="tag t-cau">Caution</span></td></tr>
-          <tr><td>50-day MA 714.83</td><td class="num dn">−2.06%</td><td><span class="tag t-off">Risk-Off</span></td></tr>
-          <tr><td>200-day MA 645.55</td><td class="num up">+8.45%</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>RSI(14)</td><td class="num">50.0</td><td><span class="tag t-cau">Caution</span></td></tr>
-          <tr><td>52-wk range position</td><td class="num">74.84%</td><td><span class="tag t-on">Risk-On</span></td></tr>
-          <tr><td>Volume vs 20-day avg</td><td class="num">1.09×</td><td><span class="tag t-on">Risk-On</span></td></tr>
+          <tr><td>vs 20-day MA (700.60)</td><td class="up tnum">+3.32%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>vs 50-day MA (715.01)</td><td class="up tnum">+1.24%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>vs 200-day MA (646.16)</td><td class="up tnum">+12.02%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>RSI(14)</td><td class="tnum">58.0</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>52-wk range position</td><td class="tnum">87.2%</td><td><span class="pill p-on">Risk-On</span></td></tr>
+          <tr><td>Volume vs 20-day avg</td><td class="up tnum">1.40×</td><td><span class="pill p-on">Risk-On</span></td></tr>
         </tbody>
       </table>
-      <div class="meta" style="font-size:12px;color:var(--mut);margin-top:8px">Notable divergence: even after a +2.1% Nasdaq day, QQQ sits <em>below</em> its 50-day and barely above its 20-day with a neutral RSI — today was a bounce still repairing the trend, not a fresh breakout. Reclaiming 714.83 would confirm.</div>
     </div>
   </div>
+  <div style="color:var(--muted);font-size:12.5px;margin-top:9px">Both benchmarks post a clean 6-of-6 Risk-On sweep — trend, momentum and volume aligned. Only caveat: both sit near 52-week highs with SPY RSI at 66, so the tape is <b style="color:var(--amber)">extended</b>, not broken.</div>
 </section>
 
 <!-- 3. SECTOR SCORECARD -->
 <section>
-  <h2 class="sec"><span class="n">3</span>Sector Scorecard</h2>
-  <div class="card">
+  <h2 class="sec"><span class="num">03</span> Sector Scorecard <span class="note">1-day = SPDR ETF (Alpha Vantage) · 1-week = sector index 5-day</span></h2>
+  <div class="tbl-wrap">
     <table>
-      <thead><tr><th>#</th><th>Sector (index)</th><th>1-Week (5D)</th><th></th><th>1-Day*</th></tr></thead>
+      <thead><tr><th>#</th><th>Sector (ETF)</th><th>1-Day</th><th style="width:210px">1-Day move</th><th>1-Week (5D)</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Consumer Discretionary <span class="muted">$SRCD</span></td><td class="num up">+10.36%</td><td><div class="barcell"><div class="bar"><span class="pos" style="width:44%"></span></div></div></td><td class="num muted">+6.07%</td></tr>
-        <tr><td>2</td><td>Communication Svcs <span class="muted">$SRTS</span></td><td class="num up">+8.32%</td><td><div class="barcell"><div class="bar"><span class="pos" style="width:35%"></span></div></div></td><td class="num muted">+4.60%</td></tr>
-        <tr><td>3</td><td>Information Tech <span class="muted">$SRIT</span></td><td class="num up">+2.49%</td><td><div class="barcell"><div class="bar"><span class="pos" style="width:11%"></span></div></div></td><td class="num muted">−0.54%</td></tr>
-        <tr><td>4</td><td>Financials <span class="muted">$SRFI</span></td><td class="num up">+0.77%</td><td><div class="barcell"><div class="bar"><span class="pos" style="width:4%"></span></div></div></td><td class="num muted">−0.13%</td></tr>
-        <tr><td>5</td><td>Energy <span class="muted">$SREN</span></td><td class="num up">+0.61%</td><td><div class="barcell"><div class="bar"><span class="pos" style="width:3%"></span></div></div></td><td class="num muted">+0.78%</td></tr>
-        <tr><td>6</td><td>Industrials <span class="muted">$SRIN</span></td><td class="num dn">−0.08%</td><td><div class="barcell"><div class="bar"><span class="neg" style="width:1%"></span></div></div></td><td class="num muted">+0.79%</td></tr>
-        <tr><td>7</td><td>Health Care <span class="muted">$SRHC</span></td><td class="num dn">−0.70%</td><td><div class="barcell"><div class="bar"><span class="neg" style="width:3%"></span></div></div></td><td class="num muted">−0.55%</td></tr>
-        <tr><td>8</td><td>Consumer Staples <span class="muted">$SRCS</span></td><td class="num dn">−0.74%</td><td><div class="barcell"><div class="bar"><span class="neg" style="width:3%"></span></div></div></td><td class="num muted">−0.37%</td></tr>
-        <tr><td>9</td><td>Materials <span class="muted">$SRMA</span></td><td class="num dn">−0.75%</td><td><div class="barcell"><div class="bar"><span class="neg" style="width:3%"></span></div></div></td><td class="num muted">−2.71%</td></tr>
-        <tr><td>10</td><td>Real Estate <span class="muted">$SRRE</span></td><td class="num dn">−1.48%</td><td><div class="barcell"><div class="bar"><span class="neg" style="width:6%"></span></div></div></td><td class="num muted">−0.68%</td></tr>
-        <tr><td>11</td><td>Utilities <span class="muted">$SRUT</span></td><td class="num dn">−2.88%</td><td><div class="barcell"><div class="bar"><span class="neg" style="width:12%"></span></div></div></td><td class="num muted">−0.74%</td></tr>
+        <tr><td>1</td><td>Technology (XLK)</td><td class="up tnum">+4.98%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:50%;background:var(--green)"></span></div></div></td><td class="up tnum">+7.95%</td></tr>
+        <tr><td>2</td><td>Materials (XLB)</td><td class="up tnum">+1.94%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:20%;background:var(--green)"></span></div></div></td><td class="down tnum">−0.43%</td></tr>
+        <tr><td>3</td><td>Industrials (XLI)</td><td class="up tnum">+1.77%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:18%;background:var(--green)"></span></div></div></td><td class="up tnum">+2.14%</td></tr>
+        <tr><td>4</td><td>Financials (XLF)</td><td class="up tnum">+0.87%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:9%;background:var(--green)"></span></div></div></td><td class="up tnum">+0.47%</td></tr>
+        <tr><td>5</td><td>Comm Services (XLC)</td><td class="up tnum">+0.63%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:6.5%;background:var(--green)"></span></div></div></td><td class="up tnum">+7.17%</td></tr>
+        <tr><td>6</td><td>Cons Staples (XLP)</td><td class="up tnum">+0.60%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:6%;background:var(--green)"></span></div></div></td><td class="down tnum">−2.24%</td></tr>
+        <tr><td>7</td><td>Cons Discretionary (XLY)</td><td class="up tnum">+0.07%</td><td><div class="barcell"><div class="bar"><span style="left:50%;width:1%;background:var(--green)"></span></div></div></td><td class="up tnum">+8.79%</td></tr>
+        <tr><td>8</td><td>Real Estate (XLRE)</td><td class="down tnum">−0.02%</td><td><div class="barcell"><div class="bar"><span style="left:49%;width:1%;background:var(--red)"></span></div></div></td><td class="down tnum">−1.96%</td></tr>
+        <tr><td>9</td><td>Health Care (XLV)</td><td class="down tnum">−0.09%</td><td><div class="barcell"><div class="bar"><span style="left:48%;width:2%;background:var(--red)"></span></div></div></td><td class="down tnum">−3.09%</td></tr>
+        <tr><td>10</td><td>Energy (XLE)</td><td class="down tnum">−0.46%</td><td><div class="barcell"><div class="bar"><span style="left:45%;width:5%;background:var(--red)"></span></div></div></td><td class="up tnum">+1.53%</td></tr>
+        <tr><td>11</td><td>Utilities (XLU)</td><td class="down tnum">−0.56%</td><td><div class="barcell"><div class="bar"><span style="left:44%;width:6%;background:var(--red)"></span></div></div></td><td class="down tnum">−3.11%</td></tr>
       </tbody>
     </table>
-    <div class="meta" style="font-size:12px;color:var(--mut);margin-top:10px">Ranked by 1-week (Barchart sector-index 5-day change). <strong>*1-Day</strong> figures are from the same sector-index feed and are flagged provisional — Alpha Vantage sector-ETF (XLK/XLE/…) quotes were unavailable this run, and the feed's 1-day column disagreed with the broad tape (several prints look stale). Read the week column as the reliable signal: textbook risk-on rotation into cyclicals and growth (discretionary, comm services, tech) while classic defensives (utilities, real estate, staples) bring up the rear.</div>
   </div>
+  <div style="color:var(--muted);font-size:12.5px;margin-top:9px">Textbook risk-on rotation: cyclical/growth (Tech, Materials, Industrials) lead while rate-sensitive defensives (Utilities, Real Estate, Health Care) and Energy lag. Consumer Discretionary and Comm Services own the 1-week leaderboard even after a muted single session — the rotation into risk has legs beyond just today.</div>
 </section>
 
 <!-- 4. MACRO & DRIVERS -->
 <section>
-  <h2 class="sec"><span class="n">4</span>Macro &amp; Drivers</h2>
-  <div class="grid g3">
-    <div class="card driver">
-      <h3>Oil slides ~5% on U.S.–Iran talks</h3>
-      <p>Crude fell after the White House called off "massive" strikes and said fresh Iran talks begin Monday. WTI 84.57, −1.1% on the day and −5.3% over 5 days.</p>
-      <div class="impact"><span class="tag t-on">Risk-On</span><span class="tag t-off">Bearish Energy</span></div>
-    </div>
-    <div class="card driver">
-      <h3>Big-Tech melt-up</h3>
-      <p>Amazon topped $3T (+4.6%); MSFT +4.9% (with unusual long-dated call buying), META +6%, GOOGL +4.9%, NVDA +2.9%. This is the engine behind Comm Svcs ($SRTS +8.3% wk) and Tech leading the sector table.</p>
-      <div class="impact"><span class="tag t-on">Bullish Growth</span></div>
-    </div>
-    <div class="card driver">
-      <h3>Volatility compressed</h3>
-      <p>VIX 15.86 in the low-moderate zone, term structure in full contango (13.3→21.2) and put/call at 0.61. Calm — but complacent positioning leaves little cushion for a surprise.</p>
-      <div class="impact"><span class="tag t-cau">Complacency Watch</span></div>
-    </div>
-    <div class="card driver">
-      <h3>Earnings deluge</h3>
-      <p>The heaviest week of the season. PLTR reports tonight; CAT, MRK, MCD, PFE, SPOT tomorrow. A Japanese supplier "red flag" put Micron (MU) in focus for the AI-hardware trade.</p>
-      <div class="impact"><span class="tag t-cau">Single-Stock Vol</span></div>
-    </div>
-    <div class="card driver">
-      <h3>Labor-market setup</h3>
-      <p>Markets look ahead to Friday's jobs report for the next read on rate-cut timing. DXY soft (99.96), gold −1.5%, TLT −0.7% as longer yields firmed — a mild risk-on / rates-up tone.</p>
-      <div class="impact"><span class="tag t-cau">Macro / Rates</span></div>
-    </div>
-    <div class="card driver">
-      <h3>Rotation tie-in</h3>
-      <p>The sector table maps cleanly onto the day: money into Consumer Discretionary ($SRCD +10.4% wk) and Comm Svcs on risk appetite, out of Utilities ($SRUT −2.9% wk) and Staples as defensives are shunned with oil falling and vol low.</p>
-      <div class="impact"><span class="tag t-on">Cyclical Leadership</span></div>
-    </div>
+  <h2 class="sec"><span class="num">04</span> Macro &amp; Drivers</h2>
+  <div class="grid cards5">
+    <div class="card drv bull"><h4>AI / semis comeback <span class="tag b">Bullish</span></h4><p>XLK +4.98%; Palantir +30% (Q2 U.S. commercial rev +149% Y/Y), semis rip — LRCX +5.7%, AMAT +5.6%, KLAC +4.7%, ARM +5%. Nasdaq ~+9% off the Jul-29 low. <b>Drives Sector #1 (Tech).</b></p></div>
+    <div class="card drv bull"><h4>Geopolitics easing <span class="tag b">Risk-On</span></h4><p>Optimism on reopening the Strait of Hormuz / U.S.–Iran de-escalation lifts risk appetite and pressures crude (WTI $80.36, −2.8% on the week). <b>Explains Energy near the sector cellar.</b></p></div>
+    <div class="card drv neu"><h4>Record highs, stretched <span class="tag n">Watch</span></h4><p>S&amp;P ~7,737 record; Dow &gt; 54,000 first time. Breadth strong (net advancers +603 / +1,392; P/C 0.58) — but SPY sits at 98.6% of its 52-wk range with RSI 66.</p></div>
+    <div class="card drv bull"><h4>Earnings strength <span class="tag b">Bullish</span></h4><p>Caterpillar +5.6% on record revenue lifts Industrials (+3.4% on the tape); broad Q2 beats. A heavy reporting week keeps single-name IV elevated.</p></div>
+    <div class="card drv bear"><h4>Rotation out of bond proxies <span class="tag r">Defensives soft</span></h4><p>TLT $82.82 (−1.7% on the week) as yields firm; Utilities &amp; Real Estate lag while cash chases risk. DXY soft at 99.88, gold flat near $374.</p></div>
   </div>
 </section>
 
 <!-- 5. EARNINGS WATCH -->
 <section>
-  <h2 class="sec"><span class="n">5</span>Earnings Watch</h2>
-  <div class="card">
-    <div style="font-weight:700;margin-bottom:8px">Tomorrow's reporters — Tue, Aug 4 (BMO unless noted)</div>
-    <table>
-      <thead><tr><th>Symbol</th><th>When</th><th>Implied Move (±)</th><th>4-Qtr Avg</th><th>What to watch</th></tr></thead>
-      <tbody>
-        <tr><td>CAT</td><td>BMO</td><td class="num">7.2%</td><td class="num">6.3%</td><td style="text-align:left">Machinery bellwether — backlog, tariffs, construction demand</td></tr>
-        <tr><td>MRK</td><td>BMO</td><td class="num">4.8%</td><td class="num">1.5%</td><td style="text-align:left">Implied rich vs history — Keytruda, pipeline</td></tr>
-        <tr><td>MCD</td><td>BMO</td><td class="num">3.8%</td><td class="num">2.0%</td><td style="text-align:left">Traffic, value-menu, low-end consumer health</td></tr>
-        <tr><td>SPOT</td><td>BMO</td><td class="num">9.1%</td><td class="num">10.2%</td><td style="text-align:left">Implied <em>cheap</em> vs history — subs, ARPU</td></tr>
-        <tr><td>PFE</td><td>BMO</td><td class="num">3.5%</td><td class="num">2.6%</td><td style="text-align:left">Guidance, cost program</td></tr>
-        <tr><td>ENTG</td><td>BMO</td><td class="num">19.3%</td><td class="num">9.1%</td><td style="text-align:left">Semi-materials — implied far above history</td></tr>
-        <tr><td>WIX</td><td>BMO</td><td class="num">18.0%</td><td class="num">15.0%</td><td style="text-align:left">Top IV-rank name (100%) — bookings</td></tr>
-        <tr><td>DOCN</td><td>BMO</td><td class="num">17.3%</td><td class="num">23.3%</td><td style="text-align:left">Implied <em>under</em>-prices history — cloud spend</td></tr>
-        <tr><td>APO · TPG · MPC · ADM · NRG · DUK · HSBC</td><td>BMO</td><td class="num">3.5–8.9%</td><td class="num">—</td><td style="text-align:left">Financials, refiners, ags, utilities across the tape</td></tr>
-      </tbody>
-    </table>
-    <div style="font-weight:700;margin:16px 0 8px">Tonight after the close (Aug 3 AMC)</div>
-    <p class="meta" style="font-size:12.5px;color:var(--mut);margin:0">The marquee print is <strong>PLTR</strong> (implied ±11.4%). Also FANG (±7.8%), ON (±12.7%), VRTX (±6.3%), SNAP (±14.3%), WMB, OKE, EC, CLX — tomorrow's gaps set up here.</p>
-    <div style="font-weight:700;margin:16px 0 8px">Implied-vs-realized move gaps</div>
-    <div class="grid g2">
-      <div>
-        <div class="pill" style="color:var(--red)">Options rich (implied ≫ 4-qtr realized) — favors premium selling</div>
-        <ul class="clean">
-          <li>POWL +12.4pp · ENTG +10.3pp · VOYG +9.8pp</li>
-          <li>SHLS +9.0pp · ON +7.5pp · WHR +6.3pp</li>
-        </ul>
+  <h2 class="sec"><span class="num">05</span> Earnings Watch <span class="note">Implied moves from MarketChameleon · BMO / AMC</span></h2>
+  <div class="two">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Tomorrow · Aug 5 (BMO)</th><th>Impl. Move</th><th>What to watch</th></tr></thead>
+        <tbody>
+          <tr><td>Circle · CRCL</td><td class="tnum">16.2%</td><td>Largest implied move</td></tr>
+          <tr><td>SolarEdge · SEDG</td><td class="tnum">12.2%</td><td>Solar / rates</td></tr>
+          <tr><td>FuboTV · FUBO</td><td class="tnum">11.7%</td><td>Streaming subs</td></tr>
+          <tr><td>Galaxy / Riot</td><td class="tnum">9.7% / 9.6%</td><td>Crypto miners</td></tr>
+          <tr><td>Vishay · VSH</td><td class="tnum">9.4%</td><td>Components</td></tr>
+          <tr><td>GlobalFoundries · GFS</td><td class="tnum">9.2%</td><td>Semi demand read</td></tr>
+          <tr><td>NY Times · NYT</td><td class="tnum">7.6%</td><td>Digital subs</td></tr>
+          <tr><td>Global Payments · GPN</td><td class="tnum">7.4%</td><td>Consumer spend</td></tr>
+          <tr><td>Capri · CPRI</td><td class="tnum">7.3%</td><td>Luxury demand</td></tr>
+          <tr><td>Dynatrace · DT</td><td class="tnum">5.8%</td><td>Software ARR</td></tr>
+          <tr><td>Carlyle · CG</td><td class="tnum">5.0%</td><td>PE fundraising</td></tr>
+          <tr><td>Novo Nordisk · NVO</td><td class="tnum">3.1%</td><td>GLP-1 guide</td></tr>
+          <tr><td>Kraft Heinz · KHC</td><td class="tnum">1.9%</td><td>Low implied</td></tr>
+          <tr><td>EOG Resources · EOG</td><td class="tnum">1.5%</td><td>Low implied</td></tr>
+          <tr><td>CVS Health · CVS</td><td class="tnum">0.7%</td><td>Very low implied</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="tbl-wrap" style="margin-bottom:12px">
+        <table>
+          <thead><tr><th>Tonight · Aug 4 (AMC)</th><th>Impl. Move</th></tr></thead>
+          <tbody>
+            <tr><td>Kodak · KODK</td><td class="tnum">18.4%</td></tr>
+            <tr><td>DaVita · DVA</td><td class="tnum">15.0%</td></tr>
+            <tr><td>Astera Labs · ALAB</td><td class="tnum">13.1%</td></tr>
+            <tr><td>Coupang · CPNG</td><td class="tnum">7.0%</td></tr>
+            <tr><td>Fortune Brands · FBIN</td><td class="tnum">6.7%</td></tr>
+            <tr><td>Booking · BKNG</td><td class="tnum">1.9%</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div>
-        <div class="pill" style="color:var(--grn)">Options cheap (implied ≪ realized) — favors long premium</div>
-        <ul class="clean">
-          <li>BLZE −6.7pp · DOCN −6.0pp · BRBR −3.8pp</li>
-          <li>W −2.1pp · SPOT −1.2pp · VRTX −0.9pp</li>
-        </ul>
+      <div class="card">
+        <div class="lbl">Implied-vs-realized flags</div>
+        <p style="font-size:13px;color:var(--muted);margin-top:6px">Options are pricing <b style="color:var(--amber)">unusually calm</b> prints into <b>CVS (0.7%), EOG (1.5%), KHC &amp; BKNG (1.9%), NVO (3.1%)</b> — cheap straddles if you expect a surprise. Conversely, <b>CRCL (16.2%), KODK (18.4%), DVA (15.0%), ALAB (13.1%), SEDG (12.2%)</b> carry rich implied moves — premium-sale territory, but only for those comfortable with binary event risk. Also inside 14 days: CDW &amp; ETSY (Aug 5), Five9 / FIVN (Aug 6).</p>
       </div>
     </div>
-    <div class="meta" style="font-size:11.5px;color:var(--dim);margin-top:8px">"pp" = percentage points of implied move above/below the trailing 4-quarter average absolute move. Implied moves via MarketChameleon.</div>
   </div>
 </section>
 
 <!-- 6. OPTIONS OVERVIEW -->
 <section>
-  <h2 class="sec"><span class="n">6</span>Options Overview</h2>
-  <div class="grid g3">
-    <div class="setup">
-      <div class="h"><span class="s">VSAT</span><span class="p num">81.29</span></div>
-      <div class="pill" style="color:var(--amb)">Earnings play · reports 8/4</div>
-      <div class="struct"><strong>Structure:</strong> defined-risk short strangle / iron condor — sell ~15-delta call &amp; put, buy further-OTM wings to cap risk, front-month.</div>
-      <div class="th">IV Rank 98.95% (99th pctl), implied move ±16.07, IV 110.95%, options vol 32,488, 3M RelVol 1.34. Premium is extreme into the print; the play is the post-report IV crush, not direction.</div>
-      <div class="mx"><strong>Main risk:</strong> binary earnings gap — a move beyond the ±16% expected range blows through a wing; size tiny.</div>
+  <h2 class="sec"><span class="num">06</span> Options Overview <span class="note">Filters: IVR ≥40% (credit) · earnings cleared (&gt;14d) · opt vol &gt;1,000 · 3M RelVol &gt;1.0 · $20–500</span></h2>
+  <div class="two">
+    <div>
+      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Top setups — in-play (pass all filters)</div>
+      <div class="setup">
+        <div class="hd"><span class="tk">NTAP</span><span class="strat">Bull Put Spread</span><span class="stats">IVR 100% · earn Aug 26 · vol 4,510 · RelVol 1.13 · $190.46</span></div>
+        <div class="body">Rich IV with the next catalyst 22 days out — clean premium to harvest and a bullish bias that matches the regime. <b>Structure:</b> sell the ~30-delta put, buy the ~15-delta put, ~30–40 DTE; target a credit near <b>⅓ of strike width</b>. Profits if NetApp holds above the short strike into a strong tech tape.</div>
+      </div>
+      <div class="setup">
+        <div class="hd"><span class="tk">CSX</span><span class="strat">Iron Condor</span><span class="stats">IVR 49.96% · vol 11,228 · RelVol 1.10 · $51.03</span></div>
+        <div class="body">Mid-tier IV rank, liquid, earnings behind it — a neutral range play. <b>Structure:</b> short ~16-delta strangle with ~5-delta long wings, 30–45 DTE. Thesis: rails drift sideways while theta works.</div>
+      </div>
+      <div class="setup">
+        <div class="hd"><span class="tk">JEPQ</span><span class="strat">Iron Condor</span><span class="stats">IVR 49.72% · vol 19,914 · RelVol 1.13 · $59.56</span></div>
+        <div class="body">ETF wrapper — no single-name earnings-gap risk. <b>Structure:</b> tight condor around spot, ~16-delta shorts, 30–45 DTE. Thesis: harvest premium on a Nasdaq-income vehicle in a calm-vol regime.</div>
+      </div>
     </div>
-    <div class="setup">
-      <div class="h"><span class="s">WIX</span><span class="p num">56.84</span></div>
-      <div class="pill" style="color:var(--amb)">Earnings play · reports 8/4</div>
-      <div class="struct"><strong>Structure:</strong> bull put spread or iron condor — sell ~20–25-delta put spread (≈⅓-width credit) to harvest the crush with a slight upside lean.</div>
-      <div class="th">IV Rank 100% (100th pctl), implied move ±10.0, IV 97.68%, options vol 8,760, 3M RelVol 1.33. Richest IV-rank name on the board.</div>
-      <div class="mx"><strong>Main risk:</strong> defined but earnings-binary; a downside surprise pins the short strike.</div>
+    <div>
+      <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Monitoring — failed a filter</div>
+      <div class="tbl-wrap mon">
+        <table>
+          <thead><tr><th>Name</th><th>Screen</th><th>Reason held back</th></tr></thead>
+          <tbody>
+            <tr><td>PL</td><td>Iron Condor</td><td>3M RelVol 0.49 &lt; 1.0</td></tr>
+            <tr><td>IBM</td><td>Iron Condor</td><td>3M RelVol 0.66 &lt; 1.0</td></tr>
+            <tr><td>OSCR</td><td>Iron Condor</td><td>3M RelVol 0.44 &lt; 1.0</td></tr>
+            <tr><td>ARKK</td><td>Iron Condor</td><td>3M RelVol 0.98 &lt; 1.0 (marginal)</td></tr>
+            <tr><td>SHAK</td><td>Bull Put Spread</td><td>IVR 100% — earnings inside 14d</td></tr>
+            <tr><td>TDC / ZETA</td><td>Credit</td><td>Earnings 08/04 — event risk</td></tr>
+            <tr><td>DEO / VSAT</td><td>Credit</td><td>Earnings 08/04 — event risk</td></tr>
+            <tr><td>NYT / CDW / ETSY</td><td>Credit</td><td>Earnings 08/05 — inside 14d</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="color:var(--dim);font-size:12px;margin-top:8px">Most high-IV-rank single names are elevated <i>because</i> earnings are imminent — that IV is an event premium, not a free edge. NTAP is the exception: 100% IV rank with the print three-plus weeks out.</div>
     </div>
-    <div class="setup">
-      <div class="h"><span class="s">MAR</span><span class="p num">346.83</span></div>
-      <div class="pill" style="color:var(--red)">Bearish · debit</div>
-      <div class="struct"><strong>Structure:</strong> put debit spread — buy ~ATM/40-delta put, sell ~20-delta put, 30–45 DTE, to fund a bearish lean cheaply.</div>
-      <div class="th">IV Rank 41.85% (&lt;50 → suits a debit), implied move ±9.61, IV 28.62%, options vol 8,586, 3M RelVol 2.87 (heavy), price mid-range. Post-report momentum name flagged in premarket movers.</div>
-      <div class="mx"><strong>Main risk:</strong> a low-vol tape can grind higher; verify earnings are already cleared before entry.</div>
-    </div>
-  </div>
-  <div class="card" style="margin-top:12px">
-    <div style="font-weight:700;margin-bottom:8px">Monitoring list — screened but held back, with the filter each failed</div>
-    <table>
-      <thead><tr><th>Symbol</th><th>Screen</th><th>Reason held</th></tr></thead>
-      <tbody>
-        <tr><td>GSK</td><td>Bearish Diagonal</td><td style="text-align:left">IV Rank 27% — below the 40% credit threshold (options vol 1,748, RelVol 1.13 OK)</td></tr>
-        <tr><td>VSAT / WIX</td><td>BPS / BCS / CSP (non-earnings)</td><td style="text-align:left">Earnings within 14 days (report 8/4) — moved to the earnings-play bucket above, excluded from standard credit screens</td></tr>
-        <tr><td>YUM</td><td>Ratio Put Diagonal</td><td style="text-align:left">IV Rank 59% qualifies, but confirm earnings date &amp; options-volume floor before sizing — held pending verification</td></tr>
-        <tr><td>FERG</td><td>Bear Call Spread</td><td style="text-align:left">Metrics incomplete in today's feed — held pending IV-rank / RelVol confirmation</td></tr>
-      </tbody>
-    </table>
-    <div class="meta" style="font-size:11.5px;color:var(--dim);margin-top:8px">Filters applied: IV Rank ≥40% (credit) or &lt;50% (debit) · earnings cleared (none within 14 days unless an explicit earnings play) · options volume &gt;1,000 · 3M RelVol &gt;1.0 · price $20–$500. Structures are expressed in delta / percentage terms, not fixed strikes.</div>
   </div>
 </section>
 
 <!-- 7. STRATEGY IN FOCUS -->
 <section>
-  <h2 class="sec"><span class="n">7</span>Strategy in Focus</h2>
-  <div class="feat">
-    <span class="badge">Featured · Bull Put Spread</span>
-    <p style="margin:12px 0 0;font-size:14px">Chosen for a <strong>NORMAL</strong> regime on a Monday: a defined-risk credit strategy with a neutral-to-bullish lean, which fits a tape that's above its 20- and 50-day with VIX in the low-moderate zone. Because index vol is compressed, the edge comes from selling into <em>elevated single-name IV rank</em> rather than the broad market.</p>
-    <div class="grid g2" style="margin-top:14px">
-      <div class="card">
-        <div style="font-weight:700;margin-bottom:6px">Educational example (delta / % terms)</div>
-        <ul class="clean">
-          <li>Pick a liquid underlying with IV Rank ≥40% and no earnings inside the cycle.</li>
-          <li><strong>Sell</strong> the ~30-delta put; <strong>buy</strong> the ~15-delta put below it — a defined-width spread.</li>
-          <li>Target ~30–45 DTE and a credit near <strong>⅓ of the strike width</strong>.</li>
-          <li>Short strike sits ~5–8% below spot for a downside buffer; manage at ~50% of max profit or roll near 21 DTE.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div style="font-weight:700;margin-bottom:6px;color:var(--amb)">Main risk</div>
-        <p style="margin:0;font-size:13px;color:var(--mut)">Max loss is defined (width minus credit) but is realized on a sharp gap down through the short strike — and a low-VIX backdrop means thinner premium for the same risk, so the reward is modest relative to the tail. A fast volatility spike (VIX back above 18–22) can widen the spread against you before the buffer helps. Assignment / early-exercise risk rises if the short leg goes deep ITM near expiry. Size positions so a full-width loss is survivable, and avoid names reporting earnings inside the trade window.</p>
-      </div>
-    </div>
+  <h2 class="sec"><span class="num">07</span> Strategy in Focus <span class="note">Regime NORMAL · Tuesday → credit, bullish bias</span></h2>
+  <div class="focusbox">
+    <h3>Bull Put Spread — a defined-risk way to be bullish and get paid to wait</h3>
+    <p>With the regime NORMAL and the tape firmly risk-on, a bull put spread expresses a bullish-to-neutral view while capping risk and collecting premium. You <b>sell a put</b> below the market and <b>buy a further-out-of-the-money put</b> as protection, in the same expiry.</p>
+    <p><b>Worked example (delta / % terms):</b> on a liquid, up-trending underlying with IV Rank ≥ 40%, sell the <b>~30-delta put</b> and buy the <b>~15-delta put</b> in a 30–45 DTE cycle. A typical net credit runs <b>~30–35% of the strike width</b> (e.g. collect ~$1.15 on a $3-wide spread). Max profit = the credit, kept in full if the underlying finishes above the short strike; breakeven = short strike − credit; the position is mildly long (net ≈ +0.15 delta) with positive theta working for you each day.</p>
+    <div class="risk"><b>Main risk:</b> the trade's maximum loss (strike width − credit) is several times the credit collected, and it is realized on a move through the long strike. A sharp reversal, an IV spike above VIX ~22, or SPY slipping back under its 50-day at <b>745.89</b> can turn the spread against you quickly, and rising IV inflates the short put you are short. Size each spread so its worst case is a small, pre-defined fraction of the account, and avoid names with earnings inside the trade window — which is exactly why most 100%-IV-rank screener hits sit on the monitoring list, not the setup list.</div>
   </div>
 </section>
 
 <!-- 8. GAME PLAN -->
 <section>
-  <h2 class="sec"><span class="n">8</span>Game Plan — Next Session</h2>
-  <div class="card">
-    <p style="margin:0 0 12px;font-size:13.5px;color:var(--mut)">Backdrop: indices at/near records with the Dow at an all-time high, VIX compressed, oil easing on Iran de-escalation — into the heaviest earnings night of the week (PLTR) and a Friday jobs report. Constructive but extended and complacent.</p>
-    <div class="gp">
-      <div class="col favor">
-        <h4>▲ Favor</h4>
-        <ul class="clean">
-          <li>Defined-risk premium selling on rich-IV-rank earnings names (crush trades)</li>
-          <li>Cyclical / growth leadership: discretionary, comm services, tech</li>
-          <li>Neutral-to-bullish credit structures over naked long premium while IV is low</li>
-        </ul>
-      </div>
-      <div class="col avoid">
-        <h4>▼ Avoid</h4>
-        <ul class="clean">
-          <li>Chasing extended mega-caps with undefined risk</li>
-          <li>Lagging defensives — utilities, real estate, staples</li>
-          <li>Short naked vol into binary earnings (PLTR, VSAT, ON)</li>
-        </ul>
-      </div>
-      <div class="col watch">
-        <h4>◆ Signals to Watch</h4>
-        <ul class="clean">
-          <li>SPY 50-day <strong>745.32</strong> / 20-day <strong>746.01</strong> (≈1.6% below spot) — first support</li>
-          <li>QQQ 50-day <strong>714.83</strong> — a reclaim confirms tech; failure keeps it in repair</li>
-          <li>VIX: &lt;15 = complacency · &gt;18 flips regime to Caution · &gt;22 to Defense</li>
-          <li>Put/call 0.61 &amp; WTI ~84.57 + Iran headlines</li>
-        </ul>
-      </div>
-    </div>
+  <h2 class="sec"><span class="num">08</span> Game Plan — Next Session</h2>
+  <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">Backdrop: record highs, strong breadth and a calm VIX (16.5) in contango — but a stretched tape after a ~9% Nasdaq run off the Jul-29 low, with a heavy Aug-5 earnings wave on deck.</p>
+  <div class="plan">
+    <div class="col"><h4 style="color:var(--green)">Favor</h4><ul>
+      <li>Leadership tech / semis bought on pullbacks, not chased at the highs</li>
+      <li>Premium selling in cleared high-IV names (NTAP-style)</li>
+      <li>Neutral condors in mid-IVR ETFs (JEPQ)</li>
+    </ul></div>
+    <div class="col"><h4 style="color:var(--red)">Avoid</h4><ul>
+      <li>Chasing extended defensives — Utilities &amp; Real Estate lagging</li>
+      <li>Naked premium into big-move earnings (CRCL, SEDG, ALAB)</li>
+      <li>Energy longs while crude slides on Hormuz de-escalation</li>
+    </ul></div>
+    <div class="col"><h4 style="color:var(--blue)">Signals to watch</h4><ul>
+      <li>SPY 50-day <b>745.89</b> / 20-day <b>747.20</b> — a close below flips regime to caution</li>
+      <li>VIX <b>18</b> (caution) and <b>22</b> (defense) thresholds — now 16.5</li>
+      <li>Breadth roll: net advancers turning negative or new-high/new-low narrowing</li>
+      <li>IWM <b>301.71</b> — small-caps confirming = healthy broadening</li>
+    </ul></div>
   </div>
 </section>
 
 <!-- 9. BOTTOM LINE -->
 <section>
-  <h2 class="sec"><span class="n">9</span>Bottom Line</h2>
+  <h2 class="sec"><span class="num">09</span> Bottom Line</h2>
   <div class="bottom">
-    <p style="margin:0;font-size:14px">A broad, Big-Tech-led melt-up carried the Dow to a record and lifted the S&amp;P 500 +1.5% and Nasdaq +2.1%, with oil down ~5% on U.S.–Iran de-escalation and VIX pinned in the low-moderate zone — a textbook <strong>NORMAL</strong> risk-on regime, if a complacent one. The swing factors from here are single-stock: tonight's PLTR print and a dense Tuesday slate (CAT, MRK, MCD, SPOT), then Friday's jobs report.</p>
-    <div class="focus"><strong>Top focus:</strong> trade the earnings deluge with <em>defined risk</em> and a premium-selling tilt on the richest IV-rank names — the tape is extended and positioning is complacent, so let structure, not conviction, carry the risk.</div>
+    A textbook risk-on session: a tech-led melt-up to record highs on Big-Tech earnings and easing Middle-East tension, with calm volatility, a contango VIX curve and broad participation. Every Key-Indicator gauge reads Risk-On and the regime is <b>NORMAL</b> — but with SPY at 98.6% of its 52-week range and RSI at 66, the edge is in defined-risk, income-oriented structures rather than fresh directional bets into a stretched tape.
+    <div class="focus"><b>Top focus:</b> the NTAP bull put spread — clean 100% IV rank with earnings cleared to Aug 26 — while respecting the SPY 50-day at <b>745.89</b> as the line that would flip the regime out of NORMAL.</div>
   </div>
 </section>
 
-<!-- DISCLAIMER -->
-<div class="disc">
-  <strong>Disclaimer — Educational use only.</strong> The Daily Brief is for informational and educational purposes only and is not investment advice or a recommendation to buy or sell any security. Options trading involves substantial risk and is not suitable for all investors. Data is sourced from third parties and may be delayed or inaccurate. Do your own analysis and consult a licensed advisor before making any trade.
+<!-- DISCLAIMER BAND -->
+<div class="discBand">
+  <h4>⚠ Disclaimer — Educational Use Only</h4>
+  <p>The Daily Brief is for informational and educational purposes only and is not investment advice or a recommendation to buy or sell any security. Options trading involves substantial risk and is not suitable for all investors. Data is sourced from third parties and may be delayed or inaccurate. Do your own analysis and consult a licensed advisor before making any trade.</p>
 </div>
 
-<footer>The Daily Brief · Generated Monday, August 3, 2026 · U.S. market close · All figures third-party sourced and may be delayed</footer>
+<footer>
+  Generated Tuesday, August 4, 2026 · Prices &amp; volumes: Alpha Vantage · Moving averages, RSI, VIX term structure &amp; breadth: watchlist dashboards · Implied moves: MarketChameleon · Narrative: public market coverage.
+  <div class="src">Sources: Alpha Vantage GLOBAL_QUOTE (SPY/QQQ/DIA/IWM + 11 SPDR sector ETFs); Barchart watchlist &amp; screener summaries; MarketChameleon earnings alerts; TheStreet &amp; CNN Business market coverage (Aug 4, 2026).</div>
+</footer>
 
 </div>
 </body>
