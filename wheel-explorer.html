@@ -354,7 +354,7 @@
   </div>
 
   <div class="foot">
-    Generated Aug 22, 2026 7:54 PM · Data: Barchart end-of-day option screeners · Educational use only
+    Generated Aug 22, 2026 7:55 PM · Data: Barchart end-of-day option screeners · Educational use only
   </div>
 
 </div>
@@ -500,7 +500,10 @@
       [[s.lo, s.lo+'N'], s.hi ? [s.hi, s.hi+'N'] : null].forEach(function(p){
         if(!p) return;
         var n=$(p[1]); if(!n || n===document.activeElement) return;
-        n.value = (+$(p[0]).value).toFixed(s.dp);
+        // Show the slider's own precision, but never round away a real value -
+        // a box reading 0.23 while the filter runs on 0.225 is a box that lies.
+        var v = +$(p[0]).value, t = v.toFixed(s.dp);
+        n.value = (Math.abs(+t - v) < 1e-9) ? t : String(+v.toFixed(6));
       });
     });
   }
