@@ -57,6 +57,13 @@
     font-size:12px;white-space:nowrap}
   .f .hint{color:var(--dim);font-size:11px;margin-top:5px;line-height:1.4}
   .f input[type=range]{width:100%;margin:2px 0;accent-color:#5aa9ff;height:16px}
+  .f .nums{display:flex;align-items:center;gap:6px;margin-top:6px}
+  .f .nums input[type=number]{flex:1 1 0;min-width:0;background:var(--panel2);
+    border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:5px 7px;
+    font-family:inherit;font-size:12px;font-variant-numeric:tabular-nums;
+    -moz-appearance:textfield}
+  .f .nums input[type=number]:focus{outline:none;border-color:var(--blue)}
+  .f .nums .sep{color:var(--dim);font-size:11px;flex:0 0 auto}
   .f .full{color:var(--dim);font-size:10.5px;margin-top:3px;
     font-variant-numeric:tabular-nums}
   .f input[type=text]{width:100%;background:var(--panel2);border:1px solid var(--line);
@@ -141,7 +148,9 @@
   <div class="note"><b>Nothing here is filtered out of the data.</b> Every slider opens to the full
     range of today's export — 2095 put contracts and 2253 call contracts across 598
     tickers. The page simply <em>opens</em> on a conservative view. Press
-    <b>Open everything</b> to see the entire file, including the ranges the daily page holds back.</div>
+    <b>Open everything</b> to see the entire file, including the ranges the daily page holds back.
+    Every slider also has a pair of boxes beneath it — type exact numbers there (say a $4 to $150
+    underlying) and press Enter or click away.</div>
 
   <div class="layout">
 
@@ -345,7 +354,7 @@
   </div>
 
   <div class="foot">
-    Generated Aug 22, 2026 7:43 PM · Data: Barchart end-of-day option screeners · Educational use only
+    Generated Aug 22, 2026 7:54 PM · Data: Barchart end-of-day option screeners · Educational use only
   </div>
 
 </div>
@@ -402,19 +411,96 @@
     }
     SL.forEach(function(s){
       var lo=$(s.lo), hi=s.hi?$(s.hi):null;
+      // step='any' so a typed value is honoured EXACTLY. Dragging still snaps -
+      // snap() rounds to s.step on drag, so the thumb feels identical to before
+      // while the box below can hold a number the step grid would have refused.
       [lo,hi].forEach(function(el){
         if(!el) return;
-        el.min=s.b[0]; el.max=s.b[1]; el.step=s.step;
+        el.min=s.b[0]; el.max=s.b[1]; el.step='any';
       });
       lo.value=s.b[0]; if(hi) hi.value=s.b[1];
       $(s.full).textContent = 'file range ' + fmtv(s,s.b[0]) + ' – ' + fmtv(s,s.b[1]);
       lo.addEventListener('input', function(){
+        lo.value = snap(s, +lo.value);
         if(hi && +lo.value > +hi.value) hi.value = lo.value;
         render();
       });
       if(hi) hi.addEventListener('input', function(){
+        hi.value = snap(s, +hi.value);
         if(+hi.value < +lo.value) lo.value = hi.value;
         render();
+      });
+      buildNums(s, lo, hi);
+    });
+    syncNums();
+  }
+
+  // Round a dragged value onto the step grid, then hold it inside the file range.
+  function snap(s, v){
+    var g = Math.round(v / s.step) * s.step;
+    g = Math.max(s.b[0], Math.min(s.b[1], g));
+    return +g.toFixed(6);
+  }
+
+  // A typed pair under each slider. Built in JS so it tracks SL - single-ended
+  // filters get one box, and a slider dropped for lack of data takes its boxes
+  // with it.
+  function buildNums(s, lo, hi){
+    var box = lo.parentNode, row = document.createElement('div');
+    row.className = 'nums';
+    function mk(id, ph, aria){
+      var n = document.createElement('input');
+      n.type='number'; n.step='any'; n.min=s.b[0]; n.max=s.b[1];
+      n.id=id; n.placeholder=ph; n.setAttribute('aria-label', aria);
+      return n;
+    }
+    var nlo = mk(s.lo+'N', fmtv(s,s.b[0]), 'minimum');
+    row.appendChild(nlo);
+    var sep = document.createElement('span'); sep.className='sep';
+    sep.textContent = hi ? 'to' : 'and up';
+    row.appendChild(sep);
+    var nhi = null;
+    if(hi){ nhi = mk(s.hi+'N', fmtv(s,s.b[1]), 'maximum'); row.appendChild(nhi); }
+    box.insertBefore(row, $(s.full));
+
+    // 'change' not 'input': committing per keystroke would clamp "150" the moment
+    // "1" was typed and fight the reader for the box.
+    nlo.addEventListener('change', function(){ commitNum(s, 0, nlo); });
+    if(nhi) nhi.addEventListener('change', function(){ commitNum(s, 1, nhi); });
+    [nlo,nhi].forEach(function(n){
+      if(!n) return;
+      n.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); n.blur(); } });
+    });
+  }
+
+  // Typed entry is authoritative: clamped to the file range, but never snapped.
+  function commitNum(s, which, el){
+    var lo=$(s.lo), hi=s.hi?$(s.hi):null;
+    var raw = el.value.trim();
+    var target = which===0 ? lo : hi;
+    if(raw === ''){                       // blank = reopen that end to the file
+      target.value = which===0 ? s.b[0] : s.b[1];
+    } else {
+      var v = parseFloat(raw);
+      if(isNaN(v)){ syncNums(); return; }
+      target.value = Math.max(s.b[0], Math.min(s.b[1], v));
+    }
+    if(hi){                               // keep the pair from crossing
+      if(+lo.value > +hi.value){
+        if(which===0) hi.value = lo.value; else lo.value = hi.value;
+      }
+    }
+    syncNums(); render();
+  }
+
+  // Push slider state back into the boxes, so dragging and typing always agree.
+  // A focused box is left alone - never overwrite what someone is mid-way through.
+  function syncNums(){
+    SL.forEach(function(s){
+      [[s.lo, s.lo+'N'], s.hi ? [s.hi, s.hi+'N'] : null].forEach(function(p){
+        if(!p) return;
+        var n=$(p[1]); if(!n || n===document.activeElement) return;
+        n.value = (+$(p[0]).value).toFixed(s.dp);
       });
     });
   }
@@ -458,6 +544,7 @@
         $(s.tag).innerHTML = wide ? '<span class="modtag">changed</span>' : '';
       }
     });
+    syncNums();
   }
 
   function pass(r, F){
