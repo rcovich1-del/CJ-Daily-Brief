@@ -3,767 +3,660 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Daily Brief — Friday, August 28, 2026</title>
+<title>The Daily Brief — Sunday, August 30, 2026</title>
 <style>
   :root {
     --bg: #0d0f14;
     --card: #141720;
-    --border: #1e2333;
-    --text: #e2e8f0;
-    --dim: #64748b;
+    --card2: #1a1e2a;
+    --border: #252b3a;
+    --text: #e2e6f0;
+    --dim: #6b7394;
     --blue: #5aa9ff;
-    --green: #34d399;
-    --red: #f87171;
-    --amber: #fbbf24;
-    --purple: #a78bfa;
-    --teal: #2dd4bf;
-    --header-bg: #0a0c11;
+    --green: #3ddc84;
+    --red: #ff5555;
+    --amber: #ffb347;
+    --purple: #b389f7;
+    --cyan: #44d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.6; }
-  .header { background: var(--header-bg); border-bottom: 1px solid var(--border); padding: 20px 24px 16px; }
-  .header h1 { font-size: 22px; font-weight: 700; color: var(--blue); letter-spacing: -0.3px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); line-height: 1.5; font-size: 14px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 20px 16px 60px; }
+
+  /* HEADER */
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; }
+  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); }
   .header .sub { color: var(--dim); font-size: 12px; margin-top: 4px; }
-  .header .disclaimer-line { color: var(--amber); font-size: 11px; margin-top: 6px; border-top: 1px solid #2a1f00; padding-top: 6px; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 20px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .full-width { grid-column: 1 / -1; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .section-title { font-size: 13px; font-weight: 700; color: var(--dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .section-title .num { background: var(--blue); color: #000; border-radius: 4px; padding: 1px 6px; font-size: 10px; font-weight: 800; }
-  .regime-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .regime-normal { background: rgba(52,211,153,0.15); color: var(--green); border: 1px solid rgba(52,211,153,0.3); }
-  .regime-caution { background: rgba(251,191,36,0.15); color: var(--amber); border: 1px solid rgba(251,191,36,0.3); }
-  .regime-defense { background: rgba(248,113,113,0.15); color: var(--red); border: 1px solid rgba(248,113,113,0.3); }
-  /* Market Snapshot */
-  .index-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-  .index-card { background: #0d0f14; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
-  .index-symbol { font-size: 15px; font-weight: 800; color: var(--text); }
-  .index-price { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; margin: 4px 0 2px; }
-  .index-change { font-size: 12px; font-variant-numeric: tabular-nums; }
-  .index-vol { font-size: 11px; color: var(--dim); margin-top: 4px; }
+  .header .disc-line { color: var(--dim); font-size: 11px; margin-top: 6px; font-style: italic; }
+
+  /* REGIME BADGE */
+  .regime-bar { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin-bottom: 20px; }
+  .regime-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+  .regime-normal { background: rgba(61,220,132,.15); color: var(--green); border: 1px solid rgba(61,220,132,.3); }
+  .regime-caution { background: rgba(255,179,71,.15); color: var(--amber); border: 1px solid rgba(255,179,71,.3); }
+  .regime-defense { background: rgba(255,85,85,.15); color: var(--red); border: 1px solid rgba(255,85,85,.3); }
+  .regime-label { color: var(--dim); font-size: 12px; }
+
+  /* SECTION HEADERS */
+  h2 { font-size: 15px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .section { margin-bottom: 28px; }
+
+  /* CARDS / GRID */
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+  .card .sym { font-size: 13px; font-weight: 700; color: var(--text); }
+  .card .price { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .card .chg { font-size: 13px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .card .meta { font-size: 11px; color: var(--dim); margin-top: 6px; }
   .up { color: var(--green); }
-  .dn { color: var(--red); }
-  .flat { color: var(--dim); }
-  /* VIX panel */
-  .vix-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-  .vix-main { background: #0d0f14; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
-  .vix-term { background: #0d0f14; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
-  .vix-label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; }
-  .vix-value { font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--green); }
-  .vix-zone { display: inline-block; margin-top: 4px; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.25); }
-  .term-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-  .term-row:last-child { border-bottom: none; }
-  .term-name { font-size: 11px; color: var(--dim); }
-  .term-val { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); }
-  .breadth-row { margin-top: 8px; font-size: 12px; color: var(--dim); }
-  .breadth-row span { color: var(--amber); font-weight: 600; }
-  /* Key Indicators */
-  .indicator-table { width: 100%; border-collapse: collapse; }
-  .indicator-table th { font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; text-align: left; border-bottom: 1px solid var(--border); }
-  .indicator-table td { padding: 6px 8px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 12px; font-variant-numeric: tabular-nums; }
-  .indicator-table tr:last-child td { border-bottom: none; }
-  .tag { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; }
-  .tag-on { background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
-  .tag-off { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
-  .tag-caution { background: rgba(251,191,36,0.12); color: var(--amber); border: 1px solid rgba(251,191,36,0.2); }
-  .tally-row { margin-top: 10px; display: flex; gap: 10px; font-size: 12px; }
-  /* Sector scorecard */
-  .sector-row { display: flex; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03); gap: 8px; }
-  .sector-row:last-child { border-bottom: none; }
-  .sector-name { width: 145px; font-size: 12px; color: var(--dim); flex-shrink: 0; }
-  .sector-etf { width: 40px; font-size: 11px; color: var(--text); font-weight: 600; flex-shrink: 0; }
-  .bar-wrap { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; position: relative; }
-  .bar-fill { height: 6px; border-radius: 3px; position: absolute; top: 0; }
-  .bar-up { background: var(--green); right: 50%; }
-  .bar-dn { background: var(--red); left: 50%; }
-  .sector-pct-1d { width: 60px; text-align: right; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; flex-shrink: 0; }
-  .sector-pct-5d { width: 60px; text-align: right; font-size: 11px; color: var(--dim); font-variant-numeric: tabular-nums; flex-shrink: 0; }
-  /* Macro cards */
-  .macro-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
-  .macro-card { background: #0d0f14; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
-  .macro-card-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .macro-card-body { font-size: 11px; color: var(--dim); line-height: 1.5; }
-  .macro-tag { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 8px; margin-top: 4px; text-transform: uppercase; }
-  .macro-tag-bear { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
-  .macro-tag-bull { background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.2); }
-  .macro-tag-mix { background: rgba(251,191,36,0.12); color: var(--amber); border: 1px solid rgba(251,191,36,0.2); }
-  /* Earnings */
-  .earnings-table { width: 100%; border-collapse: collapse; }
-  .earnings-table th { font-size: 10px; color: var(--dim); text-transform: uppercase; padding: 4px 8px; border-bottom: 1px solid var(--border); text-align: left; }
-  .earnings-table td { padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 12px; vertical-align: top; }
-  .earnings-table tr:last-child td { border-bottom: none; }
-  /* Options */
-  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .options-setup { background: #0d0f14; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
-  .options-setup h4 { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
-  .setup-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-  .meta-pill { font-size: 10px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; color: var(--dim); }
-  .options-thesis { font-size: 12px; color: var(--dim); line-height: 1.5; }
-  .monitor-item { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 12px; display: flex; gap: 8px; }
-  .monitor-item:last-child { border-bottom: none; }
-  .monitor-ticker { font-weight: 700; color: var(--text); min-width: 50px; }
-  .monitor-reason { color: var(--dim); font-size: 11px; }
-  /* Strategy */
-  .strategy-box { background: rgba(90,169,255,0.05); border: 1px solid rgba(90,169,255,0.2); border-radius: 8px; padding: 16px; }
-  .strategy-name { font-size: 16px; font-weight: 800; color: var(--blue); margin-bottom: 6px; }
-  .strategy-body { font-size: 13px; color: var(--text); line-height: 1.7; }
-  .strategy-example { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-top: 12px; }
-  .strategy-example h5 { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-  .strategy-risk { background: rgba(248,113,113,0.05); border: 1px solid rgba(248,113,113,0.15); border-radius: 6px; padding: 10px; margin-top: 10px; }
-  .strategy-risk h5 { font-size: 11px; color: var(--red); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  /* Game Plan */
-  .gameplan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .gameplan-card { background: #0d0f14; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
-  .gameplan-card h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 700; }
-  .gameplan-card ul { list-style: none; padding: 0; }
-  .gameplan-card ul li { font-size: 12px; color: var(--dim); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
-  .gameplan-card ul li:last-child { border-bottom: none; }
-  .gameplan-card ul li::before { content: '›'; margin-right: 6px; color: var(--blue); }
-  .favor h4 { color: var(--green); }
-  .avoid h4 { color: var(--red); }
-  .watch h4 { color: var(--amber); }
-  /* Bottom Line */
-  .bottom-line { background: rgba(90,169,255,0.05); border: 1px solid rgba(90,169,255,0.15); border-radius: 10px; padding: 18px; }
-  .bottom-line-summary { font-size: 14px; color: var(--text); line-height: 1.7; }
-  .top-focus { margin-top: 12px; padding: 10px 14px; background: rgba(90,169,255,0.08); border-left: 3px solid var(--blue); border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--blue); }
-  /* Disclaimer banner */
-  .disclaimer-banner { background: #0d0f14; border: 1px solid #7c5e12; border-radius: 10px; padding: 16px; margin: 16px 16px 24px; }
-  .disclaimer-banner h4 { font-size: 12px; font-weight: 700; color: var(--amber); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-  .disclaimer-banner p { font-size: 12px; color: #a89060; line-height: 1.6; }
-  /* Responsive */
-  @media (max-width: 900px) {
-    .container { grid-template-columns: 1fr; }
-    .full-width { grid-column: auto; }
-    .index-grid { grid-template-columns: repeat(2, 1fr); }
-    .macro-grid { grid-template-columns: repeat(2, 1fr); }
-    .options-grid { grid-template-columns: 1fr; }
-    .gameplan-grid { grid-template-columns: 1fr; }
+  .down { color: var(--red); }
+  .flat { color: var(--amber); }
+  .neutral { color: var(--dim); }
+
+  /* INDICATOR TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--dim); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  td { padding: 7px 8px; border-bottom: 1px solid rgba(37,43,58,.5); font-variant-numeric: tabular-nums; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; letter-spacing: .5px; }
+  .tag-on { background: rgba(61,220,132,.12); color: var(--green); }
+  .tag-cau { background: rgba(255,179,71,.12); color: var(--amber); }
+  .tag-off { background: rgba(255,85,85,.12); color: var(--red); }
+
+  /* BAR */
+  .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .bar-bg { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .bar-fill-up { height: 100%; border-radius: 3px; background: var(--green); }
+  .bar-fill-dn { height: 100%; border-radius: 3px; background: var(--red); }
+  .bar-val { font-size: 12px; font-variant-numeric: tabular-nums; min-width: 48px; text-align: right; }
+
+  /* VIX TERM */
+  .vix-term { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .vix-pill { background: var(--card2); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; text-align: center; font-size: 12px; }
+  .vix-pill .label { color: var(--dim); font-size: 10px; display: block; margin-bottom: 2px; }
+
+  /* MACRO CARDS */
+  .driver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 10px; }
+  .driver-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .driver-card .title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .driver-card .body { font-size: 12px; color: #c5ccdd; line-height: 1.5; }
+  .impact-bull { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; background: rgba(61,220,132,.12); color: var(--green); margin-top: 6px; }
+  .impact-bear { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; background: rgba(255,85,85,.12); color: var(--red); margin-top: 6px; }
+  .impact-neu { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; background: rgba(255,179,71,.12); color: var(--amber); margin-top: 6px; }
+
+  /* EARNINGS */
+  .earn-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+  .earn-card .sym { font-weight: 700; font-size: 14px; }
+  .earn-card .date { font-size: 11px; color: var(--dim); }
+  .earn-card .detail { font-size: 12px; color: #c5ccdd; margin-top: 4px; line-height: 1.5; }
+
+  /* OPTIONS */
+  .setup-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; }
+  .setup-card .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .setup-card .sym { font-size: 14px; font-weight: 700; }
+  .setup-card .struct { font-size: 12px; color: var(--purple); font-weight: 600; }
+  .setup-card .body { font-size: 12px; color: #c5ccdd; line-height: 1.6; }
+  .monitoring-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(37,43,58,.5); font-size: 12px; }
+  .monitoring-row:last-child { border-bottom: none; }
+  .monitoring-row .reason { color: var(--amber); font-size: 11px; }
+
+  /* STRATEGY BOX */
+  .strategy-box { background: var(--card2); border: 1px solid rgba(90,169,255,.25); border-radius: 10px; padding: 18px; }
+  .strategy-box h3 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+  .strategy-box p { font-size: 13px; color: #c5ccdd; line-height: 1.7; margin-bottom: 10px; }
+  .strategy-box .risk-box { background: rgba(255,85,85,.08); border: 1px solid rgba(255,85,85,.2); border-radius: 6px; padding: 10px 14px; margin-top: 10px; font-size: 12px; color: #e8a0a0; }
+
+  /* GAME PLAN */
+  .gp-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+  .gp-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .gp-card .gp-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; }
+  .gp-card .gp-item { font-size: 12px; color: #c5ccdd; margin-bottom: 4px; padding-left: 10px; position: relative; }
+  .gp-card .gp-item::before { content: '→'; position: absolute; left: 0; color: var(--blue); }
+
+  /* BOTTOM LINE */
+  .bottomline { background: linear-gradient(135deg, rgba(90,169,255,.08), rgba(179,137,247,.05)); border: 1px solid rgba(90,169,255,.2); border-radius: 10px; padding: 18px; }
+  .bottomline p { font-size: 13px; color: var(--text); line-height: 1.7; margin-bottom: 8px; }
+  .bottomline .focus { font-size: 13px; font-weight: 700; color: var(--blue); border-top: 1px solid var(--border); padding-top: 10px; margin-top: 4px; }
+
+  /* DISCLAIMER */
+  .disclaimer-footer { margin-top: 40px; border: 2px solid var(--amber); border-radius: 10px; padding: 18px; background: rgba(255,179,71,.05); }
+  .disclaimer-footer .disc-title { font-size: 13px; font-weight: 700; color: var(--amber); margin-bottom: 8px; }
+  .disclaimer-footer p { font-size: 12px; color: #c5ccdd; line-height: 1.7; }
+
+  /* TALLY */
+  .tally { display: flex; gap: 16px; margin-top: 10px; font-size: 12px; }
+  .tally-item { display: flex; align-items: center; gap: 6px; }
+
+  /* SENTIMENT ROW */
+  .sentiment-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .sent-pill { background: var(--card2); border-radius: 5px; padding: 4px 10px; font-size: 11px; font-variant-numeric: tabular-nums; }
+
+  @media(max-width: 700px) {
+    .grid-4 { grid-template-columns: repeat(2,1fr); }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .gp-row { grid-template-columns: 1fr; }
+    .driver-grid { grid-template-columns: 1fr; }
   }
-  .sep-label { font-size: 10px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 8px; display: block; }
 </style>
 </head>
 <body>
+<div class="wrap">
 
 <!-- HEADER -->
 <div class="header">
   <h1>The Daily Brief</h1>
-  <div class="sub">Friday, August 28, 2026 &nbsp;·&nbsp; End-of-Day Edition &nbsp;·&nbsp; <span class="regime-badge regime-normal">Regime: Normal</span></div>
-  <div class="disclaimer-line">Educational use only — not investment advice. See full disclaimer below.</div>
+  <div class="sub">Sunday, August 30, 2026 &nbsp;·&nbsp; Data as of market close Friday, August 28, 2026</div>
+  <div class="disc-line">For informational and educational purposes only — not investment advice. See full disclaimer below.</div>
   <div class="sub" style="margin-top:8px">Companion pages: <a href="wheel-explorer.html" style="color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(90,169,255,.35)">The Wheel Strategy &rarr;</a> <span style="color:var(--dim)">daily cash-secured put &amp; covered call screen</span> &nbsp;·&nbsp; <a href="sp-overview.html" style="color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(90,169,255,.35)">S&amp;P 500 Overview &rarr;</a> <span style="color:var(--dim)">weekly index &amp; sector review</span></div>
 </div>
 
-<div class="container">
+<!-- REGIME -->
+<div class="regime-bar">
+  <span class="regime-badge regime-normal">NORMAL</span>
+  <span class="regime-label">VIX 14.35 (LOW &lt;15) &nbsp;·&nbsp; SPY barely above 20D MA ($769.22) &nbsp;·&nbsp; Sixth consecutive weekly VIX decline &nbsp;·&nbsp; Jackson Hole hawkish tone watched closely for follow-through</span>
+</div>
 
-<!-- ===== SECTION 1: MARKET SNAPSHOT ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">1</span> Market Snapshot</div>
-
-  <div class="index-grid">
-    <div class="index-card">
-      <div class="index-symbol">SPY</div>
-      <div class="index-price dn">$769.35</div>
-      <div class="index-change dn">▼ $1.75 &nbsp;−0.23%</div>
-      <div class="index-vol">Vol: 35.2M &nbsp;·&nbsp; 20D Avg: 39.7M &nbsp;<span style="color:var(--amber)">88.7%</span></div>
+<!-- 1. MARKET SNAPSHOT -->
+<div class="section">
+  <h2>1 · Market Snapshot</h2>
+  <div class="grid-4" style="margin-bottom:12px">
+    <div class="card">
+      <div class="sym">SPY &nbsp;<span style="font-size:10px;color:var(--dim)">S&amp;P 500 ETF</span></div>
+      <div class="price">$769.35</div>
+      <div class="chg down">▼ $1.75 &nbsp; −0.23%</div>
+      <div class="meta">Vol 36.7M &nbsp;·&nbsp; Prev $771.10<br>Week +0.5% (Mag7 +2.2%)</div>
     </div>
-    <div class="index-card">
-      <div class="index-symbol">QQQ</div>
-      <div class="index-price dn">$716.43</div>
-      <div class="index-change dn">▼ $4.68 &nbsp;−0.65%</div>
-      <div class="index-vol">Vol: 33.6M &nbsp;·&nbsp; 20D Avg: 33.2M &nbsp;<span style="color:var(--green)">101%</span></div>
+    <div class="card">
+      <div class="sym">QQQ &nbsp;<span style="font-size:10px;color:var(--dim)">Nasdaq-100 ETF</span></div>
+      <div class="price">$716.43</div>
+      <div class="chg down">▼ $4.68 &nbsp; −0.65%</div>
+      <div class="meta">Vol 34.1M &nbsp;·&nbsp; Prev $721.11<br>Semi weakness weighed</div>
     </div>
-    <div class="index-card">
-      <div class="index-symbol">IWM</div>
-      <div class="index-price dn">$295.75</div>
-      <div class="index-change dn">▼ $4.06 &nbsp;−1.35%</div>
-      <div class="index-vol">Vol: 18.9M &nbsp;·&nbsp; 20D Avg: 16.7M &nbsp;<span style="color:var(--amber)">113%</span></div>
+    <div class="card">
+      <div class="sym">IWM &nbsp;<span style="font-size:10px;color:var(--dim)">Russell 2000 ETF</span></div>
+      <div class="price">$295.75</div>
+      <div class="chg down">▼ $4.06 &nbsp; −1.35%</div>
+      <div class="meta">Vol 19.1M &nbsp;·&nbsp; Prev $299.81<br>Small caps underperformed</div>
     </div>
-    <div class="index-card">
-      <div class="index-symbol">DIA</div>
-      <div class="index-price dn">$535.06</div>
-      <div class="index-change flat">▼ $0.16 &nbsp;−0.03%</div>
-      <div class="index-vol">Vol: 2.5M</div>
+    <div class="card">
+      <div class="sym">DIA &nbsp;<span style="font-size:10px;color:var(--dim)">Dow Jones ETF</span></div>
+      <div class="price">$535.06</div>
+      <div class="chg down">▼ $0.16 &nbsp; −0.03%</div>
+      <div class="meta">Vol 2.7M &nbsp;·&nbsp; Prev $535.22<br>Dow most resilient Friday</div>
     </div>
   </div>
 
-  <div class="vix-panel">
-    <div class="vix-main">
-      <div class="vix-label">CBOE VIX (30-day implied vol)</div>
-      <div class="vix-value">14.43</div>
-      <div>▼ 0.70 &nbsp;<span class="dn" style="font-size:12px">−4.60%</span> &nbsp;&nbsp;<span class="vix-zone">LOW ZONE &lt;15</span></div>
-      <div class="breadth-row" style="margin-top:10px;">
-        NYSE A/D: <span style="color:var(--red)">−259 net decliners</span> &nbsp;|&nbsp;
-        Put/Call: <span>0.70</span> &nbsp;|&nbsp;
-        S&amp;P &gt;20D MA: <span>42.3%</span> &nbsp;|&nbsp;
-        NYSE 1M-Highs: <span>114</span> vs Lows: <span style="color:var(--red)">140</span>
+  <!-- VIX + Macro Row -->
+  <div class="grid-3" style="margin-bottom:12px">
+    <div class="card">
+      <div class="sym">VIX &nbsp;<span style="font-size:10px;color:var(--dim)">CBOE Volatility Index</span></div>
+      <div class="price" style="color:var(--green)">14.35</div>
+      <div class="chg" style="color:var(--green)">▼ 1.10% &nbsp;·&nbsp; <span style="color:var(--dim)">LOW zone (&lt;15)</span></div>
+      <div class="meta">6th consecutive weekly decline &nbsp;·&nbsp; YTD low territory<br>Options Action flagged: VIX hits year-to-date low</div>
+      <div class="vix-term">
+        <div class="vix-pill"><span class="label">VXST 9D</span><span style="color:var(--green)">~12.8</span></div>
+        <div class="vix-pill"><span class="label">VIX 30D</span><span style="color:var(--green)">14.35</span></div>
+        <div class="vix-pill"><span class="label">VXV 3M</span><span style="color:var(--amber)">~16.2</span></div>
+        <div class="vix-pill"><span class="label">VXMT 6M</span><span style="color:var(--amber)">~18.0</span></div>
+      </div>
+      <div class="meta" style="margin-top:6px">Term structure in contango (near &lt; far) → normal, vol risk priced further out</div>
+    </div>
+    <div class="card">
+      <div class="sym">Macro Indicators</div>
+      <div style="margin-top:8px">
+        <table>
+          <tr><td style="color:var(--dim);font-size:11px">10Y Treasury</td><td class="up" style="text-align:right;font-weight:700">4.67%</td></tr>
+          <tr><td style="color:var(--dim);font-size:11px">WTI Crude Oil</td><td style="text-align:right;font-weight:700;color:var(--red)">~$83.90</td></tr>
+          <tr><td style="color:var(--dim);font-size:11px">DXY (USD)</td><td style="text-align:right;font-weight:700;color:var(--amber)">Firm (Warsh)</td></tr>
+          <tr><td style="color:var(--dim);font-size:11px">Gold (GLD)</td><td class="up" style="text-align:right;font-weight:700">Elevated IV</td></tr>
+          <tr><td style="color:var(--dim);font-size:11px">Bitcoin Proxy</td><td style="text-align:right;font-weight:700;color:var(--red)">Bearish flow</td></tr>
+        </table>
       </div>
     </div>
-    <div class="vix-term">
-      <div class="vix-label" style="margin-bottom:8px">VIX Term Structure (contango ✓)</div>
-      <div class="term-row">
-        <span class="term-name">VXST (9-day)</span>
-        <span class="term-val">11.22</span>
+    <div class="card">
+      <div class="sym">Breadth &amp; Flow</div>
+      <div style="margin-top:8px;font-size:12px;color:#c5ccdd;line-height:1.8">
+        <div>SPX stocks above 200D: <span class="up" style="font-weight:700">~71%</span> (down from 75% two weeks ago)</div>
+        <div>CCMP above 200D: <span style="color:var(--amber);font-weight:700">~49%</span> — roughly half</div>
+        <div>RUT above 200D: <span style="color:var(--amber);font-weight:700">~65%</span> (easing)</div>
+        <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border)">Options Flow (Aug 28):</div>
+        <div class="up">Bullish: SPY +3.0M, QQQ +817K, DIS, CRM, TLT</div>
+        <div class="down">Bearish: NVDA −1.1M, TSLA −995K, SOXL, MSTR</div>
       </div>
-      <div class="term-row">
-        <span class="term-name">VIX (30-day)</span>
-        <span class="term-val" style="color:var(--green)">14.43</span>
-      </div>
-      <div class="term-row">
-        <span class="term-name">VXV (3-month)</span>
-        <span class="term-val">17.48</span>
-      </div>
-      <div class="term-row">
-        <span class="term-name">VXMT (6-month)</span>
-        <span class="term-val">20.30</span>
-      </div>
-      <div style="font-size:11px; color:var(--dim); margin-top:8px;">Normal upward slope — no inversion, near-term fear subdued</div>
     </div>
-  </div>
-
-  <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; font-size:12px;">
-    <span>TLT <strong style="color:var(--text)">$82.88</strong> <span class="dn">−0.20%</span> &nbsp;+1.01% 5D</span>
-    <span>GLD <strong style="color:var(--text)">$408.89</strong> <span class="up">+0.30%</span> &nbsp;−3.42% 5D</span>
-    <span>WTI Oil <strong style="color:var(--text)">$83.61</strong> <span class="flat">−0.05%</span> &nbsp;−3.83% 5D</span>
-    <span>DXY <strong style="color:var(--text)">99.70</strong> <span class="flat">−0.01%</span> &nbsp;+0.90% 5D</span>
-    <span>HYG <strong style="color:var(--text)">$79.74</strong> <span class="flat">−0.04%</span></span>
   </div>
 </div>
 
-<!-- ===== SECTION 2: KEY INDICATORS ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">2</span> Key Indicators — SPY &amp; QQQ Technical Gauges</div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+<!-- 2. KEY INDICATORS -->
+<div class="section">
+  <h2>2 · Key Indicators — SPY &amp; QQQ Gauges</h2>
+  <div class="grid-2">
     <!-- SPY -->
-    <div>
-      <div style="font-size:13px; font-weight:700; color:var(--blue); margin-bottom:8px;">SPY — $769.35</div>
-      <table class="indicator-table">
-        <thead>
-          <tr><th>Gauge</th><th>Level</th><th>Distance</th><th>Signal</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>vs 20D MA</td>
-            <td>$769.22</td>
-            <td class="up">+0.02%</td>
-            <td><span class="tag tag-caution">Caution</span></td>
-          </tr>
-          <tr>
-            <td>vs 50D MA</td>
-            <td>$753.96</td>
-            <td class="up">+2.04%</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>vs 200D MA</td>
-            <td>$709.82</td>
-            <td class="up">+8.39%</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>RSI (14)</td>
-            <td colspan="2">56.61</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>52W Range</td>
-            <td colspan="2">93.3% of range</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>Volume vs 20D</td>
-            <td colspan="2">88.7% of avg</td>
-            <td><span class="tag tag-caution">Caution</span></td>
-          </tr>
-        </tbody>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:10px;font-size:14px">SPY &nbsp;<span style="color:var(--dim);font-weight:400;font-size:12px">$769.35 · close Aug 28</span></div>
+      <table>
+        <tr>
+          <th>Gauge</th><th>Value</th><th>% Dist.</th><th>Signal</th>
+        </tr>
+        <tr>
+          <td>vs 20D MA <span style="color:var(--dim);font-size:11px">$769.22</span></td>
+          <td class="up">$769.35</td>
+          <td class="up">+0.02%</td>
+          <td><span class="tag tag-cau">CAUTION</span></td>
+        </tr>
+        <tr>
+          <td>vs 50D MA <span style="color:var(--dim);font-size:11px">$753.96</span></td>
+          <td class="up">above</td>
+          <td class="up">+2.04%</td>
+          <td><span class="tag tag-on">RISK-ON</span></td>
+        </tr>
+        <tr>
+          <td>vs 200D MA <span style="color:var(--dim);font-size:11px">$707.43</span></td>
+          <td class="up">above</td>
+          <td class="up">+8.75%</td>
+          <td><span class="tag tag-on">RISK-ON</span></td>
+        </tr>
+        <tr>
+          <td>RSI(14)</td>
+          <td>56.66</td>
+          <td>—</td>
+          <td><span class="tag tag-on">RISK-ON</span></td>
+        </tr>
+        <tr>
+          <td>Vol vs 20D Avg</td>
+          <td>36.7M</td>
+          <td>~Below avg</td>
+          <td><span class="tag tag-cau">CAUTION</span></td>
+        </tr>
       </table>
-      <div class="tally-row">
-        <span class="tag tag-on">Risk-On ×4</span>
-        <span class="tag tag-caution">Caution ×2</span>
-        <span class="tag tag-off">Risk-Off ×0</span>
+      <div class="tally">
+        <div class="tally-item"><span class="tag tag-on">RISK-ON</span> <span>3</span></div>
+        <div class="tally-item"><span class="tag tag-cau">CAUTION</span> <span>2</span></div>
+        <div class="tally-item"><span class="tag tag-off">RISK-OFF</span> <span>0</span></div>
       </div>
     </div>
     <!-- QQQ -->
-    <div>
-      <div style="font-size:13px; font-weight:700; color:var(--purple); margin-bottom:8px;">QQQ — $716.43</div>
-      <table class="indicator-table">
-        <thead>
-          <tr><th>Gauge</th><th>Level</th><th>Distance</th><th>Signal</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>vs 20D MA</td>
-            <td>$717.94</td>
-            <td class="dn">−0.21%</td>
-            <td><span class="tag tag-off">Risk-Off</span></td>
-          </tr>
-          <tr>
-            <td>vs 50D MA</td>
-            <td>$712.06</td>
-            <td class="up">+0.61%</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>vs 200D MA</td>
-            <td>$655.17</td>
-            <td class="up">+9.35%</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>RSI (14)</td>
-            <td colspan="2">51.88</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>52W Range</td>
-            <td colspan="2">83.3% of range</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-          <tr>
-            <td>Volume vs 20D</td>
-            <td colspan="2">101.2% of avg</td>
-            <td><span class="tag tag-on">Risk-On</span></td>
-          </tr>
-        </tbody>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:10px;font-size:14px">QQQ &nbsp;<span style="color:var(--dim);font-weight:400;font-size:12px">$716.43 · close Aug 28</span></div>
+      <table>
+        <tr>
+          <th>Gauge</th><th>Value</th><th>% Dist.</th><th>Signal</th>
+        </tr>
+        <tr>
+          <td>vs 20D MA <span style="color:var(--dim);font-size:11px">$717.94</span></td>
+          <td class="down">below</td>
+          <td class="down">−0.21%</td>
+          <td><span class="tag tag-cau">CAUTION</span></td>
+        </tr>
+        <tr>
+          <td>vs 50D MA <span style="color:var(--dim);font-size:11px">$712.05</span></td>
+          <td class="up">above</td>
+          <td class="up">+0.62%</td>
+          <td><span class="tag tag-cau">CAUTION</span></td>
+        </tr>
+        <tr>
+          <td>vs 200D MA <span style="color:var(--dim);font-size:11px">$654.20</span></td>
+          <td class="up">above</td>
+          <td class="up">+9.51%</td>
+          <td><span class="tag tag-on">RISK-ON</span></td>
+        </tr>
+        <tr>
+          <td>RSI(14)</td>
+          <td>51.90</td>
+          <td>—</td>
+          <td><span class="tag tag-cau">CAUTION</span></td>
+        </tr>
+        <tr>
+          <td>Vol vs 20D Avg</td>
+          <td>34.1M</td>
+          <td>Normal</td>
+          <td><span class="tag tag-on">RISK-ON</span></td>
+        </tr>
       </table>
-      <div class="tally-row">
-        <span class="tag tag-on">Risk-On ×5</span>
-        <span class="tag tag-caution">Caution ×0</span>
-        <span class="tag tag-off">Risk-Off ×1</span>
+      <div class="tally">
+        <div class="tally-item"><span class="tag tag-on">RISK-ON</span> <span>2</span></div>
+        <div class="tally-item"><span class="tag tag-cau">CAUTION</span> <span>3</span></div>
+        <div class="tally-item"><span class="tag tag-off">RISK-OFF</span> <span>0</span></div>
       </div>
     </div>
   </div>
-
-  <div style="margin-top:12px; font-size:12px; color:var(--dim); background:#0d0f14; border:1px solid var(--border); border-radius:6px; padding:10px;">
-    <strong style="color:var(--amber)">⚠ Breadth Warning:</strong> Only 42.3% of S&amp;P 500 stocks trade above their 20D MA (below 50% threshold). NYSE is posting more 1-month lows (140) than highs (114). Advance/decline finished at −259 on the day. Market leadership is narrow — mega-cap names masking underlying weakness.
-  </div>
-</div>
-
-<!-- ===== SECTION 3: SECTOR SCORECARD ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">3</span> Sector Scorecard — Ranked by 1-Day Performance</div>
-
-  <div style="display:flex; gap:8px; font-size:10px; color:var(--dim); margin-bottom:10px;">
-    <span>1D = Alpha Vantage ETF close &nbsp;·&nbsp; 1W = S&amp;P 500 sector index 5D change (Barchart)</span>
-  </div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 24px;">
-    <div>
-      <!-- Header -->
-      <div style="display:flex; gap:8px; font-size:10px; color:var(--dim); text-transform:uppercase; letter-spacing:0.5px; padding:4px 0; border-bottom:1px solid var(--border); margin-bottom:4px;">
-        <span style="width:145px">Sector</span><span style="width:40px">ETF</span><span style="flex:1"></span>
-        <span style="width:60px; text-align:right">1-Day</span><span style="width:60px; text-align:right">1-Week</span>
-      </div>
-      <!-- XLC -->
-      <div class="sector-row">
-        <span class="sector-name">Comm. Services</span>
-        <span class="sector-etf">XLC</span>
-        <div class="bar-wrap"><div class="bar-fill bar-up" style="width:calc(1.42% * 25)"></div></div>
-        <span class="sector-pct-1d up">+1.42%</span>
-        <span class="sector-pct-5d up">+1.56%</span>
-      </div>
-      <!-- XLY -->
-      <div class="sector-row">
-        <span class="sector-name">Cons. Discretionary</span>
-        <span class="sector-etf">XLY</span>
-        <div class="bar-wrap"><div class="bar-fill bar-up" style="width:calc(1.15% * 25)"></div></div>
-        <span class="sector-pct-1d up">+1.15%</span>
-        <span class="sector-pct-5d flat">+0.06%</span>
-      </div>
-      <!-- XLE -->
-      <div class="sector-row">
-        <span class="sector-name">Energy</span>
-        <span class="sector-etf">XLE</span>
-        <div class="bar-wrap"><div class="bar-fill bar-up" style="width:calc(0.63% * 25)"></div></div>
-        <span class="sector-pct-1d up">+0.63%</span>
-        <span class="sector-pct-5d dn">−1.96%</span>
-      </div>
-      <!-- XLP -->
-      <div class="sector-row">
-        <span class="sector-name">Cons. Staples</span>
-        <span class="sector-etf">XLP</span>
-        <div class="bar-wrap"><div class="bar-fill bar-up" style="width:calc(0.43% * 25)"></div></div>
-        <span class="sector-pct-1d up">+0.43%</span>
-        <span class="sector-pct-5d dn">−0.50%</span>
-      </div>
-      <!-- XLF -->
-      <div class="sector-row">
-        <span class="sector-name">Financials</span>
-        <span class="sector-etf">XLF</span>
-        <div class="bar-wrap"><div class="bar-fill bar-up" style="width:calc(0.38% * 25)"></div></div>
-        <span class="sector-pct-1d up">+0.38%</span>
-        <span class="sector-pct-5d up">+1.06%</span>
-      </div>
-    </div>
-    <div>
-      <div style="display:flex; gap:8px; font-size:10px; color:var(--dim); text-transform:uppercase; letter-spacing:0.5px; padding:4px 0; border-bottom:1px solid var(--border); margin-bottom:4px;">
-        <span style="width:145px">Sector</span><span style="width:40px">ETF</span><span style="flex:1"></span>
-        <span style="width:60px; text-align:right">1-Day</span><span style="width:60px; text-align:right">1-Week</span>
-      </div>
-      <!-- XLB -->
-      <div class="sector-row">
-        <span class="sector-name">Materials</span>
-        <span class="sector-etf">XLB</span>
-        <div class="bar-wrap"><div class="bar-fill bar-dn" style="width:calc(0.09% * 25)"></div></div>
-        <span class="sector-pct-1d flat">−0.09%</span>
-        <span class="sector-pct-5d flat">−0.39%</span>
-      </div>
-      <!-- XLV -->
-      <div class="sector-row">
-        <span class="sector-name">Health Care</span>
-        <span class="sector-etf">XLV</span>
-        <div class="bar-wrap"><div class="bar-fill bar-dn" style="width:calc(0.24% * 25)"></div></div>
-        <span class="sector-pct-1d dn">−0.24%</span>
-        <span class="sector-pct-5d dn">−2.00%</span>
-      </div>
-      <!-- XLRE -->
-      <div class="sector-row">
-        <span class="sector-name">Real Estate</span>
-        <span class="sector-etf">XLRE</span>
-        <div class="bar-wrap"><div class="bar-fill bar-dn" style="width:calc(0.40% * 25)"></div></div>
-        <span class="sector-pct-1d dn">−0.40%</span>
-        <span class="sector-pct-5d dn">−1.28%</span>
-      </div>
-      <!-- XLI -->
-      <div class="sector-row">
-        <span class="sector-name">Industrials</span>
-        <span class="sector-etf">XLI</span>
-        <div class="bar-wrap"><div class="bar-fill bar-dn" style="width:calc(0.93% * 25)"></div></div>
-        <span class="sector-pct-1d dn">−0.93%</span>
-        <span class="sector-pct-5d dn">−1.73%</span>
-      </div>
-      <!-- XLU -->
-      <div class="sector-row">
-        <span class="sector-name">Utilities</span>
-        <span class="sector-etf">XLU</span>
-        <div class="bar-wrap"><div class="bar-fill bar-dn" style="width:calc(1.04% * 25)"></div></div>
-        <span class="sector-pct-1d dn">−1.04%</span>
-        <span class="sector-pct-5d flat">−0.20%</span>
-      </div>
-      <!-- XLK -->
-      <div class="sector-row">
-        <span class="sector-name">Info Technology</span>
-        <span class="sector-etf">XLK</span>
-        <div class="bar-wrap"><div class="bar-fill bar-dn" style="width:calc(1.55% * 25)"></div></div>
-        <span class="sector-pct-1d dn">−1.55%</span>
-        <span class="sector-pct-5d up">+1.80%</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:10px; font-size:11px; color:var(--dim);">
-    Note: Tech (XLK) was Friday's worst sector despite the strongest 1-week reading (+1.80%) — this reflects Thursday's NVDA +8.7% surge providing a weekly tailwind followed by Friday giveback. Industrials and Health Care are weak on both time frames. Energy's 1-day gain conflicts with its poor 5-day trend (−1.96%).
+  <div class="card" style="margin-top:10px;font-size:12px;color:var(--dim)">
+    <strong style="color:var(--amber)">Combined Read:</strong> SPY holding barely above its 20D MA — one weak session could breach it. QQQ slipped below its 20D, a mild caution signal. Both well above 50D and 200D. Overall tone: constructive but fragile at the margin. RSI mid-range on both — no overbought or oversold extremes.
   </div>
 </div>
 
-<!-- ===== SECTION 4: MACRO & DRIVERS ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">4</span> Macro &amp; Drivers</div>
-  <div class="macro-grid">
-
-    <div class="macro-card">
-      <div class="macro-card-title">🏛️ Warsh Jackson Hole — Hawkish Lean</div>
-      <div class="macro-card-body">Fed Chair Kevin Warsh's Jackson Hole keynote cautioned that better summer CPI/PCE readings "do not tell me underlying trends have meaningfully improved." Markets interpreted this as a rate-cut pause stance, pressuring growth stocks and pulling the Nasdaq lower Friday.</div>
-      <div class="macro-tag macro-tag-bear">Rates Bearish · Growth Headwind</div>
-    </div>
-
-    <div class="macro-card">
-      <div class="macro-card-title">🤖 Nvidia Earnings Beat — AI Demand Confirmed</div>
-      <div class="macro-card-body">NVDA surged +8.7% Thursday (293M shares traded) on blowout results and bullish AI infrastructure outlook. Friday saw some giveback as broader tech sold off on Warsh's comments. Info Tech sector still +1.80% for the week — AI capex theme intact. Directly supports XLK on the weekly timeframe.</div>
-      <div class="macro-tag macro-tag-bull">AI Structural Long · Tech Sector Support</div>
-    </div>
-
-    <div class="macro-card">
-      <div class="macro-card-title">💳 PayPal Gap-Down −14% Premarket</div>
-      <div class="macro-card-body">PYPL dropped from $61.47 to ~$52.62 in premarket (3.6M shares before open). No specific news catalyst was flagged — potentially guidance or analyst action. With $52.6B market cap, this is a significant move in consumer fintech and could signal caution in payment-processing names.</div>
-      <div class="macro-tag macro-tag-bear">Fintech · Consumer Stress Signal</div>
-    </div>
-
-    <div class="macro-card">
-      <div class="macro-card-title">🛢️ WTI Oil Weakening</div>
-      <div class="macro-card-body">WTI crude at $83.61, essentially flat on the day but down −3.83% over 5 days. Energy sector (XLE) posted +0.63% today driven by specific names, masking the broader supply concerns. The multi-day oil weakness ties into global demand expectations tempering, consistent with Warsh's growth caution.</div>
-      <div class="macro-tag macro-tag-mix">Energy Mixed · Supply Demand Uncertain</div>
-    </div>
-
-    <div class="macro-card">
-      <div class="macro-card-title">🍫 Cocoa Surge / Earnings Surprises</div>
-      <div class="macro-card-body">Cocoa prices surging on West African crop risks — commodity inflation resurgence. Meanwhile, Elastic (ESTC) +22.9%, Gap (GAP) +17.3%, and Affirm (AFRM) +12.5% all gapped on positive company-specific news — confirming that stock-pickers are being rewarded in this environment despite macro headwinds.</div>
-      <div class="macro-tag macro-tag-mix">Commodity Risk · Stock-Picker's Market</div>
-    </div>
-
+<!-- 3. SECTOR SCORECARD -->
+<div class="section">
+  <h2>3 · Sector Scorecard — All 11 Sectors, Ranked by 1-Day Return</h2>
+  <div class="card">
+    <table>
+      <tr>
+        <th>Sector</th><th>ETF</th><th>Price</th><th>1-Day</th><th>1-Day Bar</th><th>1-Week*</th>
+      </tr>
+      <tr>
+        <td><strong>Communication Services</strong></td><td style="color:var(--dim)">XLC</td><td>$112.99</td>
+        <td class="up">+1.42%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-up" style="width:95%"></div></div></div></td>
+        <td class="up">Leader</td>
+      </tr>
+      <tr>
+        <td><strong>Consumer Discretionary</strong></td><td style="color:var(--dim)">XLY</td><td>$117.21</td>
+        <td class="up">+1.15%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-up" style="width:77%"></div></div></div></td>
+        <td class="up">Strong</td>
+      </tr>
+      <tr>
+        <td><strong>Energy</strong></td><td style="color:var(--dim)">XLE</td><td>$62.68</td>
+        <td class="up">+0.63%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-up" style="width:42%"></div></div></div></td>
+        <td style="color:var(--dim)">Mixed</td>
+      </tr>
+      <tr>
+        <td><strong>Consumer Staples</strong></td><td style="color:var(--dim)">XLP</td><td>$85.45</td>
+        <td class="up">+0.43%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-up" style="width:29%"></div></div></div></td>
+        <td style="color:var(--dim)">Mixed</td>
+      </tr>
+      <tr>
+        <td><strong>Financials</strong></td><td style="color:var(--dim)">XLF</td><td>$58.10</td>
+        <td class="up">+0.38%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-up" style="width:25%"></div></div></div></td>
+        <td style="color:var(--dim)">Mixed</td>
+      </tr>
+      <tr>
+        <td><strong>Materials</strong></td><td style="color:var(--dim)">XLB</td><td>$53.18</td>
+        <td style="color:var(--dim)">−0.09%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-dn" style="width:6%"></div></div></div></td>
+        <td style="color:var(--dim)">Mixed</td>
+      </tr>
+      <tr>
+        <td><strong>Health Care</strong></td><td style="color:var(--dim)">XLV</td><td>$171.16</td>
+        <td class="down">−0.24%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-dn" style="width:16%"></div></div></div></td>
+        <td class="down">Weak</td>
+      </tr>
+      <tr>
+        <td><strong>Real Estate</strong></td><td style="color:var(--dim)">XLRE</td><td>$44.48</td>
+        <td class="down">−0.40%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-dn" style="width:27%"></div></div></div></td>
+        <td class="down">Weak (rate pressure)</td>
+      </tr>
+      <tr>
+        <td><strong>Industrials</strong></td><td style="color:var(--dim)">XLI</td><td>$177.14</td>
+        <td class="down">−0.93%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-dn" style="width:62%"></div></div></div></td>
+        <td class="down">Weak</td>
+      </tr>
+      <tr>
+        <td><strong>Utilities</strong></td><td style="color:var(--dim)">XLU</td><td>$42.73</td>
+        <td class="down">−1.04%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-dn" style="width:69%"></div></div></div></td>
+        <td class="down">Weak (rate sensitive)</td>
+      </tr>
+      <tr>
+        <td><strong>Information Technology</strong></td><td style="color:var(--dim)">XLK</td><td>$185.69</td>
+        <td class="down">−1.55%</td>
+        <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill-dn" style="width:100%"></div></div></div></td>
+        <td class="down">Laggard (semi drag)</td>
+      </tr>
+    </table>
+    <div style="font-size:11px;color:var(--dim);margin-top:8px">* 1-Week direction estimated from context — sector rotation watchlist email unavailable this cycle. NVDA/semi weakness drove XLK underperformance; comm services (META/GOOG) and discretionary (AFRM, GAP catalyst) led.</div>
   </div>
 </div>
 
-<!-- ===== SECTION 5: EARNINGS WATCH ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">5</span> Earnings Watch</div>
+<!-- 4. MACRO & DRIVERS -->
+<div class="section">
+  <h2>4 · Macro &amp; Drivers</h2>
+  <div class="driver-grid">
+    <div class="driver-card">
+      <div class="title">🏔️ Warsh at Jackson Hole</div>
+      <div class="body">Fed Chair Kevin Warsh delivered a hawkish message: inflation remains uncomfortably high and the central bank's commitment to price stability has not softened. Markets sold off modestly Friday on the speech, with rates ticking higher and rate-sensitive sectors (Utilities, Real Estate) taking the biggest hits.</div>
+      <span class="impact-bear">BEARISH — Rate sensitive</span>
+    </div>
+    <div class="driver-card">
+      <div class="title">📡 Mag-7 Strength Underpins SPY</div>
+      <div class="body">Despite Friday weakness, Mag-7 stocks gained 2.2% for the week, with Microsoft up ~30% over the past month. Bullish options flow on SPY (+3.0M net delta) and QQQ (+817K) suggests institutional money still leaning long large-cap tech, even as semis (NVDA −1.1M bearish flow) face pressure.</div>
+      <span class="impact-bull">BULLISH — Broad index support</span>
+    </div>
+    <div class="driver-card">
+      <div class="title">⚡ Semiconductor Headwinds</div>
+      <div class="body">NVDA, TSLA, SOXL, and MRVL saw the largest bearish options flow on Friday. MU (−1.4%), SMCI (−1.3%), and DELL (−3.4%) declined in premarket Aug 28, consistent with semi inventory/demand concerns. SOXL saw −615K net delta vs SOXS +224K. XLK was the session's worst sector (−1.55%). DELL reports earnings Tuesday Sept 1.</div>
+      <span class="impact-bear">BEARISH — XLK / Semiconductors</span>
+    </div>
+    <div class="driver-card">
+      <div class="title">🛢️ Oil Declining from Weekly High</div>
+      <div class="body">WTI crude traded around $83.90 on Aug 25, down from $89.75 the prior week, an ~6% weekly decline. Energy (XLE +0.63%) still closed higher Friday, suggesting the sector held on supply factors, but the falling oil price outlook introduces headwinds for XLE going into September. Watch the $82 floor.</div>
+      <span class="impact-neu">MIXED — XLE sector watch</span>
+    </div>
+    <div class="driver-card">
+      <div class="title">🎯 Earnings Catalyst Cluster</div>
+      <div class="body">A dense earnings cluster hits the first week of September: DELL, PANW, and MDT all report Tuesday Sept 1; AVGO, SNOW, and HPE report Wednesday Sept 2. AVGO is the marquee AI chip earnings test (IV Rank 47.5%, implied ±$5.37). PANW (IV Rank 67%, Exp Move ±$30) is the cybersecurity bellwether. Implied moves elevated going in.</div>
+      <span class="impact-neu">NEUTRAL → depends on prints</span>
+    </div>
+  </div>
+</div>
 
-  <span class="sep-label">Notable Today / Recent Reports</span>
-  <table class="earnings-table">
-    <thead>
-      <tr>
-        <th>Symbol</th><th>Company</th><th>Move</th><th>Catalyst / What to Watch</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong style="color:var(--green)">NVDA</strong></td>
-        <td>Nvidia</td>
-        <td class="up">+8.74% Thu</td>
-        <td>Blowout Q2 earnings, AI infrastructure demand surged past estimates. Data center revenue strong. Partial giveback Friday on hawkish Fed backdrop. Watch: Does Friday's pullback hold above $220?</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">ESTC</strong></td>
-        <td>Elastic N.V.</td>
-        <td class="up">+22.9% pre</td>
-        <td>Q1 FY2027 results beat expectations. Strong enterprise search/AI integration revenue. Implied move likely underestimated realized move — good example of underestimated IV event.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">GAP</strong></td>
-        <td>Gap Inc.</td>
-        <td class="up">+17.3% pre</td>
-        <td>Leadership transition at Old Navy announced alongside positive guidance signals. Retail consumer resilience despite macro uncertainty.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--green)">AFRM</strong></td>
-        <td>Affirm Holdings</td>
-        <td class="up">+12.5% pre</td>
-        <td>BNPL expansion: Affirm and Shopify launched Shop Pay Installments in Australia. Consumer credit expansion story.</td>
-      </tr>
-      <tr>
-        <td><strong style="color:var(--red)">PYPL</strong></td>
-        <td>PayPal Holdings</td>
-        <td class="dn">−14.4% pre</td>
-        <td>Dropped from $61.47 to $52.62 premarket with no specific news. Significant negative surprise event — watch for follow-through or bounce next week.</td>
-      </tr>
-    </tbody>
+<!-- 5. EARNINGS WATCH -->
+<div class="section">
+  <h2>5 · Earnings Watch</h2>
+  <div style="font-weight:600;font-size:12px;color:var(--amber);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Reporting This Week (Sept 1–5, 2026)</div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:16px">
+    <div class="earn-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <span class="sym">DELL <span style="font-size:11px;font-weight:400;color:var(--dim)">Dell Technologies</span></span>
+        <span style="font-size:11px;background:rgba(255,179,71,.1);color:var(--amber);padding:2px 7px;border-radius:3px">Tues Sep 1 · After Close</span>
+      </div>
+      <div class="detail">IV Rank 66.7% · Imp Vol 72.9% · Exp Move ±$44.20 (±9.7%). Price $456.24, below 20D MA ($457.95). What to watch: AI server revenue, Gen5 storage demand, and capex outlook from hyperscalers. MRVL and semi peer weakness in premarket was a yellow flag. If AI infra commentary disappoints, expect gap lower.</div>
+    </div>
+    <div class="earn-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <span class="sym">PANW <span style="font-size:11px;font-weight:400;color:var(--dim)">Palo Alto Networks</span></span>
+        <span style="font-size:11px;background:rgba(255,179,71,.1);color:var(--amber);padding:2px 7px;border-radius:3px">Tues Sep 1 · After Close</span>
+      </div>
+      <div class="detail">IV Rank 67% · Imp Vol 60.7% · Exp Move ±$30.16 (±8.1%). Price $371.59, above 20D ($366.86) and 50D ($343.42). Cybersecurity spending remains resilient. Watch: platformization adoption metrics, remaining performance obligations (RPO) growth, and fiscal Q4 guidance. The stock has outperformed XLK significantly this cycle.</div>
+    </div>
+    <div class="earn-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <span class="sym">AVGO <span style="font-size:11px;font-weight:400;color:var(--dim)">Broadcom</span></span>
+        <span style="font-size:11px;background:rgba(255,179,71,.1);color:var(--amber);padding:2px 7px;border-radius:3px">Wed Sep 2 · After Close</span>
+      </div>
+      <div class="detail">IV Rank 47.5% · Imp Vol 49.5% · Exp Move ±$5.37 (~1.5%). Price $368.79, below 20D ($391.06) — notable technical weakness. Key AI ASIC orders from hyperscalers and VMware integration progress are primary drivers. Given semi sector headwinds (NVDA bearish flow), setup is two-sided. Implied move appears tight relative to sector volatility.</div>
+    </div>
+    <div class="earn-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <span class="sym">MDT <span style="font-size:11px;font-weight:400;color:var(--dim)">Medtronic</span></span>
+        <span style="font-size:11px;background:rgba(255,179,71,.1);color:var(--amber);padding:2px 7px;border-radius:3px">Tues Sep 1 · Before Open</span>
+      </div>
+      <div class="detail">IV Rank 66.5% · Imp Vol 29.3% (low absolute IV) · Exp Move ±$3.83 (~4.2%). Price $91.23, above 20D ($90.22) and 50D ($85.49). Medtech recovery in cardiac rhythm management and spine segment. XLV weakness Friday could create modest headwind. Watch: FX guidance, fiscal 2027 outlook, and procedure volumes.</div>
+    </div>
+    <div class="earn-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <span class="sym">SNOW / HPE <span style="font-size:11px;font-weight:400;color:var(--dim)">Snowflake / HP Enterprise</span></span>
+        <span style="font-size:11px;background:rgba(255,179,71,.1);color:var(--amber);padding:2px 7px;border-radius:3px">Wed Sep 2</span>
+      </div>
+      <div class="detail">SNOW: IV Rank 68.3%, Exp Move ±$34.51 (±10.5%) — elevated implied move. Above all major MAs (price $328 vs 50D $287, 200D $217) — strong trend. Watch: AI workload adoption and product revenue. HPE: IV Rank 44.5%, Exp Move ±$5.07 (~9.7%), price $52.31 below 20D ($54.42). Both are AI infrastructure narratives.</div>
+    </div>
+  </div>
+
+  <div style="font-weight:600;font-size:12px;color:var(--dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">Looking Ahead — Late Cycle</div>
+  <table>
+    <tr><th>Name</th><th>Date</th><th>Implied Move</th><th>IV Rank</th><th>Watch</th></tr>
+    <tr>
+      <td><strong>ORCL</strong> Oracle</td><td style="color:var(--dim)">Sep 8</td><td>±$6.98</td><td>60.6%</td>
+      <td style="font-size:11px;color:#c5ccdd">Cloud ERP adoption, OCI capacity</td>
+    </tr>
+    <tr>
+      <td><strong>ADBE</strong> Adobe</td><td style="color:var(--dim)">Sep 10</td><td>±$10.46</td><td>75.6%</td>
+      <td style="font-size:11px;color:#c5ccdd">AI monetization in Creative Cloud</td>
+    </tr>
+    <tr>
+      <td><strong>NKE</strong> Nike</td><td style="color:var(--dim)">Sep 29</td><td>±$1.12</td><td>43.8%</td>
+      <td style="font-size:11px;color:#c5ccdd">China recovery, inventory burn, margin</td>
+    </tr>
+    <tr>
+      <td><strong>ACN</strong> Accenture</td><td style="color:var(--dim)">Oct 1</td><td>±$6.84</td><td>69.3%</td>
+      <td style="font-size:11px;color:#c5ccdd">IT services demand, GenAI bookings</td>
+    </tr>
   </table>
-
-  <span class="sep-label" style="margin-top:16px">Week Ahead Earnings Calendar</span>
-  <div style="font-size:12px; color:var(--dim); background:#0d0f14; border:1px solid var(--border); border-radius:8px; padding:12px; line-height:1.8;">
-    <strong style="color:var(--text)">No formal earnings alerts were flagged for today (Aug 28)</strong> by Market Chameleon — the primary earnings catalyst this week was NVDA (Thursday). Heading into the week of September 1–5:
-    <br><br>
-    Key names likely in focus: <strong style="color:var(--text)">MU</strong> (Micron, premarket showed elevated pre-open activity), <strong style="color:var(--text)">DELL</strong> (Dell Technologies, premarket −1.4%), <strong style="color:var(--text)">TTWO</strong> (Take-Two Interactive, premarket +2.6%). Verify specific report dates before positioning — <em>implied-vs-realized move gaps are your signal for structuring options plays around these events.</em>
-    <br><br>
-    <span style="color:var(--amber)">⚠ Pre-position Rule:</span> Confirm no earnings within 14 days before entering any credit spread or income strategy. AAPL (Feb 2027 options in screener) clears this window cleanly.
-  </div>
+  <div style="font-size:11px;color:var(--dim);margin-top:8px">Note: AVGO implied move (±1.5%) appears compressed vs historical average for a high-beta semi — watch for potential underestimated move. SNOW (±10.5%) and DELL (±9.7%) are priced for volatility.</div>
 </div>
 
-<!-- ===== SECTION 6: OPTIONS OVERVIEW ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">6</span> Options Overview — Setups &amp; Monitoring</div>
+<!-- 6. OPTIONS OVERVIEW -->
+<div class="section">
+  <h2>6 · Options Overview</h2>
+  <div style="font-weight:600;font-size:12px;color:var(--amber);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">In-Play Setups (Pass All Filters)</div>
 
-  <span class="sep-label">In-Play Setups (passed filters)</span>
-  <div class="options-grid">
-
-    <div class="options-setup">
-      <h4>AAOI — Cash-Secured Put</h4>
-      <div class="setup-meta">
-        <span class="meta-pill">Price: $106.23</span>
-        <span class="meta-pill">IV: 80.76%</span>
-        <span class="meta-pill">Delta: −0.43</span>
-        <span class="meta-pill">Exp: Sep 18</span>
-        <span class="meta-pill">OTM Prob: 52.4%</span>
-        <span class="meta-pill">Ann Return: 122%</span>
+  <div class="setup-card">
+    <div class="header-row">
+      <div>
+        <span class="sym">NKE</span> &nbsp;<span style="color:var(--dim);font-size:12px">Nike Inc · $39.60 · +3.02% Friday</span>
       </div>
-      <div class="options-thesis">
-        Sell the ≈0.43-delta put at a strike approximately 1% below the current price (Sep 18 expiry). Bid: $6.90, BE: $98.10 (−7.6% downside). High IV at 80.76% compensates for the elevated risk in this name. AAOI is an optical interconnect play — rides the AI/data center capex theme. <em>Structure: 1 contract CSP requires ~$10,500 collateral. Risk: full move to zero if company falters.</em>
-        <br><br>
-        <strong>Oct 16 alternative:</strong> $100 strike (5.86% OTM), delta −0.36, IV 85.54%, Ann 76.4% — more conservative, more time.
-      </div>
+      <span class="struct">Cash-Secured Put / Bull Put Spread</span>
     </div>
-
-    <div class="options-setup">
-      <h4>ADBE — Cash-Secured Put</h4>
-      <div class="setup-meta">
-        <span class="meta-pill">Price: $291.52</span>
-        <span class="meta-pill">IV: 47.94%</span>
-        <span class="meta-pill">Delta: −0.37</span>
-        <span class="meta-pill">Exp: Oct 16</span>
-        <span class="meta-pill">OTM Prob: 59.1%</span>
-        <span class="meta-pill">Ann Return: 38.2%</span>
-      </div>
-      <div class="options-thesis">
-        Sell the ≈0.37-delta put at a strike approximately 4% below spot (Oct 16 expiry). Bid: $13.65, BE: $266.35 (+0.73% buffer above 52W low range). ADBE has been beaten down from AI headwinds but retains strong FCF and enterprise pricing power. IV at 47.94% is above the 40% IVR threshold minimum — credit premium is fair. Next earnings expected December — this expiry clears the window cleanly.
-        <br><br>
-        <em>This setup ties directly to the Tech sector 1W leader (+1.80%) — ADBE is a high-quality name within that trend.</em>
-      </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:11px;margin-bottom:10px">
+      <div><span style="color:var(--dim)">IV Rank</span><br><strong>43.8%</strong> ✓ ≥40%</div>
+      <div><span style="color:var(--dim)">3M RelVol</span><br><strong class="up">1.13</strong> ✓ &gt;1.0</div>
+      <div><span style="color:var(--dim)">Options Vol</span><br><strong>256,486</strong> ✓</div>
+      <div><span style="color:var(--dim)">Earnings</span><br><strong>Sep 29</strong> ✓ &gt;14 days</div>
     </div>
-
-    <div class="options-setup">
-      <h4>AAL — Cash-Secured Put</h4>
-      <div class="setup-meta">
-        <span class="meta-pill">Price: $13.64</span>
-        <span class="meta-pill">IV: 45.50%</span>
-        <span class="meta-pill">Delta: −0.44</span>
-        <span class="meta-pill">Exp: Sep 18</span>
-        <span class="meta-pill">OTM Prob: 53.8%</span>
-        <span class="meta-pill">Ann Return: 64.1%</span>
-      </div>
-      <div class="options-thesis">
-        Sell the ≈0.44-delta put at $13.50 (1% OTM, Sep 18). Bid: $0.48, BE: $13.02. AAL has above-average options volume and is within the $20–500 screener price range on the lower end. High annualized return reflects elevated airline-sector risk. Requires only ~$1,350 collateral per contract.
-        <br><br>
-        <span style="color:var(--amber)">Note: Airline stocks carry macro cyclicality risk — oil weakness (WTI −3.8% 5D) is a tailwind for input costs, but consumer spending slowdown is a risk. Size accordingly.</span>
-      </div>
+    <div class="body">
+      <strong>Setup:</strong> Sell a 30-delta cash-secured put in the 35-37 strike range (approximately 7-12% OTM from current price $39.60), targeting the Oct expiry (∼52 days). IV at 38.5% provides decent premium relative to NKE's typical low-vol profile.<br><br>
+      <strong>Thesis:</strong> NKE bounced +3% Friday, showing relative strength on a down tape. The stock is below its 20D ($40.71), 50D ($41.92), and 200D ($52.06) MAs — structurally in a downtrend — but the elevated IV Rank (44%) and volume relative strength (RelVol 1.13) suggest heightened activity and a potential short-squeeze dynamic. A cash-secured put at the 35-strike area (∼12% OTM) provides premium collection with a comfortable cushion above recent support, while the bull put spread version caps risk if the downtrend resumes.<br><br>
+      <strong>Structure (% terms):</strong> Sell the ∼30-delta put (∼$37-38 strike), optionally buy a lower strike put at ∼20-delta for defined risk. Target: collect ∼0.5-0.8% of NKE's price in premium. Breakeven at entry price minus net premium received.
     </div>
-
-    <div class="options-setup">
-      <h4>MSTR — Unusual Call Flow</h4>
-      <div class="setup-meta">
-        <span class="meta-pill">Price: ~$137</span>
-        <span class="meta-pill">Vol/OI: &gt;100×</span>
-        <span class="meta-pill">Exp: Sep 4</span>
-        <span class="meta-pill">Strikes: $141 &amp; $146</span>
-      </div>
-      <div class="options-thesis">
-        On Thursday, MSTR saw massive call volume in Sep 4 $141 (Vol/OI 170×) and $146 (Vol/OI 139×) strikes — strongly directional near-term bets. This is an informational signal, not a recommended trade. MSTR is a Bitcoin proxy; its implied vol is extremely high. If positioning for similar upside: <em>consider a bull call spread to limit debit cost vs outright long calls.</em>
-        <br><br>
-        <span style="color:var(--amber)">Monitor-only for most: the risk profile is extreme with this name.</span>
-      </div>
+    <div class="risk-box">
+      <strong>Main Risk:</strong> NKE is in a multi-year downtrend (well below 200D MA $52.06) with ongoing headwinds from China consumer softness, inventory write-downs, and market share pressure from HOKA/On Running. A disappointing pre-announcement or macro deterioration could push NKE toward the $35 handle rapidly. This is not a trending-bullish setup — it is a volatility-harvesting bet on a support floor holding. Size accordingly (smaller than a trending name), and close the position if price breaks below $38 with conviction.
     </div>
-
   </div>
 
-  <span class="sep-label" style="margin-top:16px">Monitoring List (screened but failed filter)</span>
-  <div style="background:#0d0f14; border:1px solid var(--border); border-radius:8px; padding:12px;">
-    <div class="monitor-item">
-      <span class="monitor-ticker">AAPL</span>
-      <span class="monitor-reason">Dec 18 $315 CSP: IV 25.65% is below 40% IVR threshold — premium too compressed in this low-VIX environment to justify the capital commitment. Watch for IV expansion above 30% before entry.</span>
+  <div class="setup-card" style="margin-top:10px">
+    <div class="header-row">
+      <div>
+        <span class="sym">GDX</span> &nbsp;<span style="color:var(--dim);font-size:12px">VanEck Gold Miners ETF · Vol 40.9M Friday</span>
+      </div>
+      <span class="struct">Iron Condor / Credit Spread</span>
     </div>
-    <div class="monitor-item">
-      <span class="monitor-ticker">TSLA</span>
-      <span class="monitor-reason">CC screener hit at Dec 2028 $900 strike — strike 158% OTM, not a realistic income setup; excessive moneyness distance disqualifies as a covered call candidate under normal income strategy filters.</span>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:11px;margin-bottom:10px">
+      <div><span style="color:var(--dim)">IV</span><br><strong>46.3%</strong></div>
+      <div><span style="color:var(--dim)">20D MA</span><br><strong>$92.85</strong></div>
+      <div><span style="color:var(--dim)">50D MA</span><br><strong>$82.42</strong></div>
+      <div><span style="color:var(--dim)">Trend</span><br><strong class="up">Bullish</strong></div>
     </div>
-    <div class="monitor-item">
-      <span class="monitor-ticker">SNAP</span>
-      <span class="monitor-reason">CC screener at Jan 2028 $15 strike, stock at $5.43 — 176% OTM. While IV is high (70.8%), this is effectively a lottery ticket structure, not income generation. Flag for debit spread consideration instead.</span>
+    <div class="body">
+      <strong>Thesis:</strong> GDX shows 20D MA ($92.85) well above 50D MA ($82.42) — a strong uptrend structure. Gold-related ETFs dominate the ETF bull screener. Bearish options flow on GLD (−515K net delta) introduces a counter-signal — possible hedging by large gold holders rather than directional selling. In a normal regime with VIX at multi-year lows and gold in an uptrend, an iron condor (selling a defined range of GDX movement) can harvest elevated IV while limiting directional risk. Structure: sell the ∼20-delta call and ∼20-delta put, buy further OTM wings, targeting the Oct expiry.
     </div>
-    <div class="monitor-item">
-      <span class="monitor-ticker">BAC</span>
-      <span class="monitor-reason">Sep 25 $66 call at $0.15 — delta 0.083, requires 8.1% move in 29 days vs expected 3.81%. Probability of profit very low for directional play; passes unusual activity flag only. Volume-based monitoring.</span>
+    <div class="risk-box">
+      <strong>Main Risk:</strong> Gold can gap on geopolitical events or surprise Fed commentary. The bearish institutional flow on GLD is a meaningful caution signal — if professional money is positioning for a gold retreat, GDX could fall sharply. The short call side of the condor would gain in that scenario, but keep spreads wide (at least 5-8% OTM on each side).
     </div>
-    <div class="monitor-item">
-      <span class="monitor-ticker">IWM / Small Caps</span>
-      <span class="monitor-reason">IWM is below both 20D MA (−1.50%) and 50D MA (−0.53%) — small-cap weakness disqualifies bullish put spreads until price recovers above 50D ($297.31). Any bullish small-cap setup conflicts with technicals.</span>
+  </div>
+
+  <div style="font-weight:600;font-size:12px;color:var(--dim);margin:14px 0 8px;text-transform:uppercase;letter-spacing:.5px">Monitoring List (Failed a Filter)</div>
+  <div class="card">
+    <div class="monitoring-row">
+      <span><strong>DELL</strong> — $456.24 · IV Rank 66.7%</span>
+      <span class="reason">⚠ Earnings Sep 1 — within 14 days · Earnings play only</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>PANW</strong> — $371.59 · IV Rank 67%</span>
+      <span class="reason">⚠ Earnings Sep 1 — within 14 days · Earnings play only</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>AVGO</strong> — $368.79 · IV Rank 47.5%</span>
+      <span class="reason">⚠ Earnings Sep 2 — within 14 days · Earnings play only</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>SNOW</strong> — $328.00 · IV Rank 68.3%</span>
+      <span class="reason">⚠ Earnings Sep 2 — within 14 days · Earnings play only</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>HPE</strong> — $52.31 · IV Rank 44.5%</span>
+      <span class="reason">⚠ Earnings Sep 2 — within 14 days · Earnings play only</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>MDT</strong> — $91.23 · IV Rank 66.5%</span>
+      <span class="reason">⚠ Earnings Sep 1 — within 14 days · Earnings play only</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>ORCL</strong> — $150.85 · IV Rank 60.6%</span>
+      <span class="reason">✗ 3M RelVol 0.55 — below 1.0 minimum; re-check after earnings Sep 8</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>ADBE</strong> — $291.52 · IV Rank 75.6%</span>
+      <span class="reason">✗ 3M RelVol 0.57 — below 1.0 minimum; re-check after earnings Sep 10</span>
+    </div>
+    <div class="monitoring-row">
+      <span><strong>ACN</strong> — $189.61 · IV Rank 69.3%</span>
+      <span class="reason">✗ 3M RelVol 0.57 and options vol 12,134 — marginally fails filter</span>
     </div>
   </div>
 </div>
 
-<!-- ===== SECTION 7: STRATEGY IN FOCUS ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">7</span> Strategy in Focus — Cash-Secured Put (CSP)</div>
-  <div style="display:grid; grid-template-columns:1fr 2fr; gap:16px;">
-    <div>
-      <div style="font-size:12px; color:var(--dim); margin-bottom:8px;">Regime: NORMAL &nbsp;·&nbsp; Day: Friday &nbsp;·&nbsp; VIX: 14.43 (Low)</div>
-      <div class="regime-badge regime-normal" style="display:block; margin-bottom:10px;">Featured: Cash-Secured Put</div>
-      <div style="font-size:12px; color:var(--dim); line-height:1.6;">
-        <strong style="color:var(--text)">When to use:</strong> Normal regime with defined downside support levels. Sell the obligation to buy 100 shares at a chosen strike below the current price, collecting premium for the commitment.
-        <br><br>
-        <strong style="color:var(--text)">Regime fit:</strong> VIX at 14.43 is low, but high-IV individual names still offer attractive premium. The normal regime supports bullish-to-neutral bias.
-        <br><br>
-        <strong style="color:var(--text)">IV Rule:</strong> Only target stocks with IV Rank ≥ 40% — today's market has many names with elevated company-specific vol even as VIX is subdued.
-      </div>
-    </div>
-    <div>
-      <div class="strategy-box">
-        <div class="strategy-name">Cash-Secured Put (CSP) — Educational Example</div>
-        <div class="strategy-body">
-          A Cash-Secured Put obligates you to buy 100 shares at the strike price if the stock falls to or below that level by expiration. In exchange, you collect premium upfront. The collateral requirement = strike × 100.
-        </div>
-        <div class="strategy-example">
-          <h5>Example in Delta / Percentage Terms (not a recommendation)</h5>
-          <p style="font-size:12px; color:var(--dim); line-height:1.8;">
-            <strong style="color:var(--text)">Stock:</strong> XYZ at $100 &nbsp;·&nbsp; <strong style="color:var(--text)">IV Rank:</strong> 55% &nbsp;·&nbsp; <strong style="color:var(--text)">Target:</strong> 30-delta put<br>
-            <strong style="color:var(--text)">Strike chosen:</strong> ~5% below spot = $95 &nbsp;·&nbsp; <strong style="color:var(--text)">Bid:</strong> $2.50<br>
-            <strong style="color:var(--text)">Breakeven:</strong> $92.50 (7.5% below spot)<br>
-            <strong style="color:var(--text)">Potential return:</strong> $2.50 / $95 = 2.6% in 30 days = 31% annualized<br>
-            <strong style="color:var(--text)">Collateral:</strong> $9,500 (secured in cash or T-Bills)<br>
-            <br>
-            <strong style="color:var(--text)">Best outcome:</strong> Stock stays above $95 at expiration → full $250 premium kept.<br>
-            <strong style="color:var(--text)">Assignment:</strong> Stock falls below $95 → you own 100 shares at $95 (your adjusted cost is $92.50 after premium).
-          </p>
-        </div>
-        <div class="strategy-risk">
-          <h5>⚠ Main Risk</h5>
-          <p style="font-size:12px; color:#c47a7a; line-height:1.5;">
-            The primary risk is owning a stock you did not want at a price above fair value. A stock that gaps down 20–30% (earnings miss, fraud, macro shock) means you are immediately underwater even after the premium buffer. <strong>Never sell a CSP on a stock you are unwilling to own at the strike price.</strong> Size positions so that assignment would represent no more than 3–5% of total portfolio capital in any single name. In a normal regime, limit total CSP exposure to 15–20% of total capital across all positions.
-          </p>
-        </div>
-      </div>
+<!-- 7. STRATEGY IN FOCUS -->
+<div class="section">
+  <h2>7 · Strategy in Focus — Cash-Secured Put</h2>
+  <div class="strategy-box">
+    <h3>Cash-Secured Put (Normal Regime · Tuesday Sept 1 Session)</h3>
+    <p><strong>Why now:</strong> VIX at 14.35 is at multi-year lows — this is the low end of what's typically favorable for selling premium. In a normal regime, volatility is low and trending lower, making premium selling strategies like cash-secured puts attractive when IV Rank ≥40% ensures you're selling at a relative high point in that name's volatility. The key is picking a name where IV Rank is elevated even as VIX is low — these are stocks with company-specific catalysts inflating their individual IV above the market average.</p>
+    <p><strong>How it works (delta and percentage terms):</strong> A cash-secured put means selling a single put option on a stock you'd be willing to own, with enough cash reserved to buy 100 shares at the strike price. Aim for the 25-35 delta put strike — roughly 5-10% below the current stock price. This gives approximately a 65-75% probability (100 minus delta) that the option expires worthless. For NKE at $39.60, a 30-delta put might be the $37 strike. If NKE closes above $37 at expiry, you keep the entire premium (profit). If it falls below $37, you buy 100 shares at $37 — effectively a 6.6% discount to Friday's close. Premium received on a 30-day option might be $0.60-$0.80, representing ~1.5-2% of the strike price annualized to ~18-24% return if repeated monthly.</p>
+    <p><strong>IV Rank matters:</strong> NKE's IV Rank of 43.8% means its IV is near the upper 44th percentile of its 1-year range. You're selling premium when NKE's implied vol is near the higher end of what it's been — that's the edge. Avoid selling puts when IV Rank is &lt;30% (selling cheap premium).</p>
+    <div class="risk-box">
+      <strong>Main Risk:</strong> The cash-secured put's maximum loss is substantial — if the underlying stock falls sharply (a poor earnings report, sector collapse, or macro shock), you are obligated to buy 100 shares at the strike, which could be well above the new market price. For NKE, which is already in a multi-year downtrend (200D MA is $52 vs current $39.60 — the stock has already fallen 24% from its 200D), the risk of an accelerating decline is real. Never sell a cash-secured put on a stock you would not be comfortable owning at the strike price for an extended period. Size to a maximum of 3-5% of your total portfolio per position, and set a stop-loss rule (e.g., if the stock falls 10% below the strike, close the position regardless of time remaining).
     </div>
   </div>
 </div>
 
-<!-- ===== SECTION 8: GAME PLAN ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">8</span> Game Plan — Next Session Backdrop</div>
-
-  <div style="font-size:12px; color:var(--dim); margin-bottom:12px;">
-    Next trading session: <strong style="color:var(--text)">Monday, August 31, 2026</strong> (no holiday). SPY finished Friday up +0.5% for the week despite today's loss. The Warsh hawkish tone and breadth deterioration are the primary watch items heading into the weekend.
+<!-- 8. GAME PLAN -->
+<div class="section">
+  <h2>8 · Game Plan — Next Session (Tuesday, September 1, 2026)</h2>
+  <div class="card" style="margin-bottom:12px;font-size:13px;color:#c5ccdd;line-height:1.7">
+    <strong style="color:var(--text)">Session Backdrop:</strong> September 1 is a full trading day (Labor Day is Sept 7). Earnings heavy: DELL, PANW, and MDT all report after close or pre-market. Jackson Hole follow-through risk remains — bond markets will price any additional Fed commentary. Mag-7 tech tone set by Microsoft's continued run. Breadth still declining at the margin.
   </div>
-
-  <div class="gameplan-grid">
-    <div class="gameplan-card favor">
-      <h4>Favor</h4>
-      <ul>
-        <li>Communication Services (XLC +1.42%) — positive momentum, 1W leader</li>
-        <li>Consumer Discretionary (XLY +1.15%) — held up well despite macro</li>
-        <li>Financials (XLF) — stable, benefiting from higher-rate environment; +1.06% 1W</li>
-        <li>High-IV individual names for CSP income (AAOI, ADBE, AAL)</li>
-        <li>Gold (GLD $408.89) — 5D pullback may be buying opportunity vs. long-term trend</li>
-        <li>AI-exposed names on pullbacks — NVDA still +1% for the week after Thursday's surge</li>
-      </ul>
+  <div class="gp-row">
+    <div class="gp-card">
+      <div class="gp-label" style="color:var(--green)">Favor</div>
+      <div class="gp-item">Communication services (XLC) — options flow bullish on DIS, CRM</div>
+      <div class="gp-item">Consumer discretionary (XLY) — AFRM, GAP catalysts Friday</div>
+      <div class="gp-item">Gold miners (GDX/GDXJ) — above 20/50D, strong trend</div>
+      <div class="gp-item">Large-cap tech leaders (MSFT, META) — Mag-7 strength</div>
     </div>
-    <div class="gameplan-card avoid">
-      <h4>Avoid</h4>
-      <ul>
-        <li>Broad tech/XLK long — hawkish Fed headwind, semiconductors giving back Thursday gains</li>
-        <li>IWM / small-cap long entries — below 20D ($300.26) and 50D ($297.31) MAs</li>
-        <li>Utilities (XLU −1.04%) — weakening vs both MAs; does not benefit from lower-rate thesis if Warsh holds</li>
-        <li>Health Care (XLV) — weakest weekly sector at −2.00%; no near-term catalyst</li>
-        <li>Industrials (XLI) — −0.93% today, −1.73% week; cyclical weakness consistent with growth concerns</li>
-        <li>CSPs on names with earnings within 14 days — verify before entry</li>
-      </ul>
+    <div class="gp-card">
+      <div class="gp-label" style="color:var(--red)">Avoid / Caution</div>
+      <div class="gp-item">Semiconductors — NVDA/MRVL bearish flow, SOXL −615K delta</div>
+      <div class="gp-item">Utilities (XLU) — rate sensitive, Warsh hawkish = headwind</div>
+      <div class="gp-item">Real estate (XLRE) — 10Y at 4.67% compresses cap rates</div>
+      <div class="gp-item">PYPL — dropped 14.4% Friday premarket, no news; downtrend</div>
     </div>
-    <div class="gameplan-card watch">
-      <h4>Signals to Watch</h4>
-      <ul>
-        <li>SPY 20D MA: $769.22 — a close below triggers regime review (currently +0.02% above)</li>
-        <li>SPY 50D MA: $753.96 — defense threshold; a break here would shift regime to Defense</li>
-        <li>QQQ 20D MA: $717.94 — QQQ already below; watch for reclaim or further deterioration</li>
-        <li>VIX 16 = caution zone entry; VIX 18 = regime shifts to Caution</li>
-        <li>VIX 22+ = regime shifts to Defense; VIX 25+ = Stand Down</li>
-        <li>PYPL price action Monday — follow-through gap lower or mean-reversion bounce?</li>
-        <li>S&amp;P 500 stocks above 20D MA: currently 42.3% — watch for further deterioration below 40%</li>
-      </ul>
+    <div class="gp-card">
+      <div class="gp-label" style="color:var(--blue)">Signals to Watch</div>
+      <div class="gp-item">SPY holds above 20D MA ($769.22) — one bad session breaches it</div>
+      <div class="gp-item">QQQ reclaims $717.94 (20D) → bullish re-confirmation</div>
+      <div class="gp-item">VIX spikes above 16.0 → caution signal; above 18 → shift to caution regime</div>
+      <div class="gp-item">DELL earnings gap → bellwether for AI infrastructure spend</div>
+      <div class="gp-item">10Y yield: holds above 4.70% = further pressure on rate-sensitives</div>
     </div>
   </div>
 </div>
 
-<!-- ===== SECTION 9: BOTTOM LINE ===== -->
-<div class="card full-width">
-  <div class="section-title"><span class="num">9</span> Bottom Line</div>
-  <div class="bottom-line">
-    <div class="bottom-line-summary">
-      Markets closed mixed on Friday, August 28 as Fed Chair Warsh's Jackson Hole keynote delivered a mildly hawkish message that tempered enthusiasm from Thursday's Nvidia-led surge. The S&amp;P 500 finished the week up approximately 0.5% despite Friday's −0.23% pullback, with the Dow nearly flat (−0.03%) and small caps lagging sharply (IWM −1.35%). The regime remains technically <strong style="color:var(--green)">Normal</strong> — VIX at 14.43 (low zone) and SPY above its 20D MA ($769.22) — but breadth is flashing warning signs: only 42.3% of S&amp;P 500 stocks trade above their 20D moving average, NYSE lows outnumber highs, and the advance/decline finished negative. The VIX term structure remains in healthy contango. Sector leadership is bifurcated — Communication Services and Consumer Discretionary outperformed on the day while Technology gave back its Thursday gains. Income opportunities exist in high-IV individual names where company-specific vol far exceeds the subdued index vol.
-    </div>
-    <div class="top-focus">
-      ★ Top Focus: Monitor SPY's hold of the 20D MA at $769.22 and the breadth ratio (S&amp;P stocks above 20D) — if breadth falls further below 40% while SPY is barely above its average, the regime call is vulnerable to a downgrade. The Warsh tone and next week's economic data will be the deciding factors.
-    </div>
+<!-- 9. BOTTOM LINE -->
+<div class="section">
+  <h2>9 · Bottom Line</h2>
+  <div class="bottomline">
+    <p>The market wrapped up the week in broadly positive territory (+0.5% for SPY) but ended Friday on the back foot after Fed Chair Warsh's Jackson Hole remarks reinforced a hawkish inflation stance. The split tape — Mag-7 and communication services leading while semis and rate-sensitives lagged — reflects a market navigating the tension between AI-driven growth optimism and a rates-higher-for-longer reality. VIX at 14.35 is at a year-to-date low, the sixth straight weekly decline, signaling complacency; this is historically a regime where low-cost hedges and defined-risk option structures make sense.</p>
+    <p>SPY is barely clinging to its 20D MA ($769.22) — just $0.13 above it at Friday's close. QQQ has already slipped below its 20D ($717.94). Breadth is slowly deteriorating. The regime is NORMAL, but it is a fragile normal. The dense earnings calendar (DELL, PANW, MDT on Sept 1; AVGO, SNOW, HPE on Sept 2) provides numerous catalysts for volatility in either direction before the Sept 8 ORCL / Sept 10 ADBE prints.</p>
+    <div class="focus">Top Focus: Watch whether SPY holds its 20D MA ($769.22) and QQQ reclaims $717.94 by mid-week. If DELL and AVGO AI commentary disappoints, expect a broader tech selloff that pushes both indices below those pivots, shifting the regime from Normal to Caution. If prints impress, the relief rally likely extends into ORCL/ADBE territory.</div>
   </div>
 </div>
 
-</div><!-- end container -->
-
-<!-- ===== DISCLAIMER BANNER ===== -->
-<div class="disclaimer-banner" style="max-width:1200px; margin:0 auto 24px; margin-left:16px; margin-right:16px;">
-  <h4>⚠ Disclaimer — Read Before Acting</h4>
-  <p>
-    Disclaimer — Educational use only. The Daily Brief is for informational and educational purposes only and is not investment advice or a recommendation to buy or sell any security. Options trading involves substantial risk and is not suitable for all investors. Data is sourced from third parties and may be delayed or inaccurate. Do your own analysis and consult a licensed advisor before making any trade.
-  </p>
-  <p style="margin-top:8px; font-size:11px; color:#7a6040;">
-    Data sources: Alpha Vantage (quotes), Barchart (watchlists, screeners), Market Chameleon (earnings alerts, premarket movers), web search (market narrative). All prices as of end-of-day August 28, 2026. Past performance does not guarantee future results.
-  </p>
+<!-- DISCLAIMER FOOTER -->
+<div class="disclaimer-footer">
+  <div class="disc-title">⚠ Disclaimer — Please Read</div>
+  <p>Educational use only. The Daily Brief is for informational and educational purposes only and is not investment advice or a recommendation to buy or sell any security. Options trading involves substantial risk and is not suitable for all investors. Data is sourced from third parties (Alpha Vantage, Barchart, MarketChameleon, public web sources) and may be delayed or inaccurate. All prices reflect the market close of Friday, August 28, 2026. VIX term structure values (VXST, VXV, VXMT) are estimated from context as index data requires a premium API subscription. The 1-week sector data is directional and estimated — the Barchart macro watchlist email was not available this cycle. Do your own analysis and consult a licensed advisor before making any trade.</p>
 </div>
 
+</div>
 </body>
 </html>
